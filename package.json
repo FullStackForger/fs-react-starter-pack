@@ -37,11 +37,17 @@
 		"type": "git",
 		"url": "git+https://github.com/indieforger/fs-react-bootstrap-webpack.git"
 	},
-	"keywords": [
-		"react",
-		"bootstrap",
-		"webpack"
-	],
+ "keywords": [
+    "react",
+    "reactjs",
+    "boilerplate",
+    "hot",
+    "reload",
+    "hmr",
+    "live",
+    "edit",
+    "webpack"
+  ],
 	"bugs": {
 		"url": "https://github.com/indieforger/fs-react-bootstrap-webpack/issues"
 	},
