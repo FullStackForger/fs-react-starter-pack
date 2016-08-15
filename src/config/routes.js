@@ -10,7 +10,7 @@ import Signup from '../components/page-signup/component'
 const routes = {
   path: '/',
   component: Layout,
-  indexRoute: { component:  Layout },
+  indexRoute: { component:  Home },
   childRoutes: [
 		{ path: '/home', component: Home },
 		{ path: '/info', component: Info },
