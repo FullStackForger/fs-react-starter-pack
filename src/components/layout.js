@@ -4,7 +4,10 @@ import PageNavBar from './page-navbar/component'
 export default class App extends Component {
   render() {
     return (
-      <PageNavBar />
+			<div>
+      	<PageNavBar />
+				{this.props.children}
+			</div>
     );
   }
 }
