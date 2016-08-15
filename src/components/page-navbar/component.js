@@ -1,6 +1,7 @@
 import React from 'react'
 import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { FormGroup, FormControl, Button } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
 const PageNavBar = () => (
   <Navbar>
@@ -12,12 +13,20 @@ const PageNavBar = () => (
     </Navbar.Header>
     <Navbar.Collapse>
       <Nav>
-				<NavItem eventKey={1} href="#">Home</NavItem>
-        <NavItem eventKey={2} href="#">Info</NavItem>
+				<LinkContainer to='/home'>
+					<NavItem eventKey={1} href="#">Home</NavItem>
+				</LinkContainer>
+				<LinkContainer to='/info'>
+        	<NavItem eventKey={2} href="#">Info</NavItem>
+				</LinkContainer>
       </Nav>
 			<Nav pullRight>
-				<NavItem eventKey={5} href="#">Login</NavItem>
-				<NavItem eventKey={6} href="#">Signup</NavItem>
+				<LinkContainer to='/login'>
+					<NavItem eventKey={5} href="#">Login</NavItem>
+				</LinkContainer>
+				<LinkContainer to='/signup'>
+					<NavItem eventKey={6} href="#">Signup</NavItem>
+				</LinkContainer>
 
  				<NavDropdown eventKey={7} title="Dropdown" id="basic-nav-dropdown">
           <MenuItem eventKey={7.1}>Profile</MenuItem>
