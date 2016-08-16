@@ -17,7 +17,7 @@ const PageNavBar = () => (
 					<NavItem eventKey={1} href="#">Home</NavItem>
 				</LinkContainer>
 				<LinkContainer to='/info'>
-        	<NavItem eventKey={2} href="#">Info</NavItem>
+					<NavItem eventKey={2} href="#">Info</NavItem>
 				</LinkContainer>
       </Nav>
 			<Nav pullRight>
@@ -28,11 +28,18 @@ const PageNavBar = () => (
 					<NavItem eventKey={6} href="#">Signup</NavItem>
 				</LinkContainer>
 
- 				<NavDropdown eventKey={7} title="Dropdown" id="basic-nav-dropdown">
-          <MenuItem eventKey={7.1}>Profile</MenuItem>
-					<MenuItem eventKey={7.3}>Account</MenuItem>
+				<NavDropdown eventKey={7} title="Dropdown" id="basic-nav-dropdown">
+					<LinkContainer to='/profile'>
+						<MenuItem eventKey={7.1}>Profile</MenuItem>
+					</LinkContainer>
+					<LinkContainer to='/account'>
+						<MenuItem eventKey={7.3}>Account</MenuItem>
+					</LinkContainer>
 					<MenuItem divider />
-          <MenuItem eventKey={7.2}>Logout</MenuItem>
+					<LinkContainer to='/logout'>
+						<MenuItem eventKey={7.2}>Logout</MenuItem>
+					</LinkContainer>
+
         </NavDropdown>
       </Nav>
     </Navbar.Collapse>
