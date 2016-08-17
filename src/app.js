@@ -10,6 +10,11 @@ import routes from './config/routes'
 
 const history = syncHistoryWithStore(hashHistory, store)
 
+history.listen(location => {
+	//analyticsService.track(location.pathname)
+	console.log(JSON.stringify(location))
+})
+
 ReactDOM.render(
 	<Provider store={store}>
 		<Router history={history} routes={routes} />
