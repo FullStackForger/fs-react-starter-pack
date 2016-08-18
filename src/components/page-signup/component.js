@@ -2,8 +2,15 @@ import React from 'react'
 
 import { Grid, Col, Panel } from 'react-bootstrap'
 import { Form, FormGroup, FormControl } from 'react-bootstrap'
-import { FieldGroup } from 'react-bootstrap'
+import { FieldGroup, HelpBlock } from 'react-bootstrap'
 import { Checkbox, Button, ControlLabel } from 'react-bootstrap'
+import { Link } from 'react-router'
+import { LinkContainer } from 'react-router-bootstrap'
+
+const css = {
+	signupBlock: { textAlign: 'center', marginTop: '1em' },
+	signupSpan: { paddingRight: '0.5em' }
+}
 
 export default () => (
 	<Grid>
@@ -50,6 +57,11 @@ export default () => (
 					<Button bsStyle="primary" bsSize="large" block>
 						Sign up
 					</Button>
+
+					<HelpBlock style={css.signupBlock}>
+						<span style={css.signupSpan}>Registered already?</span>
+						<Link to="/login">Log in</Link>
+					</HelpBlock>
 				</Form>
 			</Panel>
 		</Col>
