@@ -29,11 +29,8 @@ const PageNavBar = () => (
 				</LinkContainer>
 
 				<NavDropdown eventKey={7} title="Dropdown" id="basic-nav-dropdown">
-					<LinkContainer to='/profile'>
-						<MenuItem eventKey={7.1}>Profile</MenuItem>
-					</LinkContainer>
 					<LinkContainer to='/account'>
-						<MenuItem eventKey={7.3}>Account</MenuItem>
+						<MenuItem eventKey={7.1}>Account</MenuItem>
 					</LinkContainer>
 					<MenuItem divider />
 					<LinkContainer to='/logout'>
