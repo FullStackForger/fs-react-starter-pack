@@ -12,7 +12,7 @@ const css = {
 }
 
 //todo: move it to container perhaps
-import auth from '../../utils/auth'
+import auth from '../auth/auth'
 import history from '../../config/history'
 const onLoginClick = () => {
 	auth.login({ username: 'dummy' })

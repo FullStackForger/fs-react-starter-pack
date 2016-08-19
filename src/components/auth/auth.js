@@ -1,4 +1,4 @@
-import Storage from '../components/storage/storage'
+import Storage from '../storage/storage'
 
 const storage = new Storage()
 const conf = {
