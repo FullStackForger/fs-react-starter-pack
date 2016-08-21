@@ -3,6 +3,14 @@ import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { FormGroup, FormControl, Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
+//todo: move it to container perhaps
+import auth from '../../utils/auth'
+import history from '../../config/history'
+const onLogoutClick = () => {
+	auth.logout()
+	history.push('/logout')
+}
+
 const PageNavBar = () => (
   <Navbar>
     <Navbar.Header>
@@ -20,6 +28,7 @@ const PageNavBar = () => (
 					<NavItem eventKey={2} href="#">Info</NavItem>
 				</LinkContainer>
       </Nav>
+
 			<Nav pullRight>
 				<LinkContainer to='/login'>
 					<NavItem eventKey={5} href="#">Login</NavItem>
@@ -27,18 +36,19 @@ const PageNavBar = () => (
 				<LinkContainer to='/signup'>
 					<NavItem eventKey={6} href="#">Signup</NavItem>
 				</LinkContainer>
+			</Nav>
 
+			<Nav pullRight>
 				<NavDropdown eventKey={7} title="Dropdown" id="basic-nav-dropdown">
 					<LinkContainer to='/account'>
 						<MenuItem eventKey={7.1}>Account</MenuItem>
 					</LinkContainer>
 					<MenuItem divider />
-					<LinkContainer to='/logout'>
-						<MenuItem eventKey={7.2}>Logout</MenuItem>
-					</LinkContainer>
+					<MenuItem eventKey={7.2} onClick={onLogoutClick}>Logout</MenuItem>
+				</NavDropdown>
+			</Nav>
 
-        </NavDropdown>
-      </Nav>
+
     </Navbar.Collapse>
   </Navbar>
 );
