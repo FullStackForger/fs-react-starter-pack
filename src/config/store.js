@@ -1,10 +1,6 @@
-import { createStore, combineReducers } from 'redux'
-import { routerReducer } from 'react-router-redux'
+import { createStore } from 'redux'
 
-const reducers = combineReducers({
-	dummy: (state = {}, action) => (state),
-	routing: routerReducer
-})
+import reducers from './reducers'
 
 const store = createStore(reducers)
 
