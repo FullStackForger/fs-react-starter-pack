@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {PropTypes} from 'react'
 import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { FormGroup, FormControl, Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
@@ -62,6 +62,10 @@ class PageNavBar extends React.Component {
 			</Navbar>
 		)
 	}
+}
+
+PageNavBar.propTypes = {
+	authenticated: PropTypes.bool
 }
 
 PageNavBar.defaultProps = {
