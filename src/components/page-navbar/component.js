@@ -3,20 +3,10 @@ import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { FormGroup, FormControl, Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
-
-//todo: move it to container perhaps
-import auth from '../../utils/auth'
-import history from '../../config/history'
-const onLogoutClick = () => {
-	auth.logout()
-	history.push('/logout')
-}
-
 class PageNavBar extends React.Component {
 
 	constructor(props) {
 		super(props)
-		this.onLogoutClick = onLogoutClick
 	}
 
 	render() {
@@ -53,7 +43,10 @@ class PageNavBar extends React.Component {
 									<MenuItem eventKey={7.1}>Account</MenuItem>
 								</LinkContainer>
 								<MenuItem divider />
-								<MenuItem eventKey={7.2} onClick={this.onLogoutClick}>Logout</MenuItem>
+								<LinkContainer to='/logout'>
+									<MenuItem eventKey={7.2}>Logout</MenuItem>
+								</LinkContainer>
+
 							</NavDropdown>
 						</Nav>
 					)}
@@ -69,7 +62,7 @@ PageNavBar.propTypes = {
 }
 
 PageNavBar.defaultProps = {
-	authenticated: false
+	authenticated: true
 }
 
 export default PageNavBar
