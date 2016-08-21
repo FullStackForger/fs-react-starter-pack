@@ -62,7 +62,7 @@ PageNavBar.propTypes = {
 }
 
 PageNavBar.defaultProps = {
-	authenticated: true
+	authenticated: false
 }
 
 export default PageNavBar
