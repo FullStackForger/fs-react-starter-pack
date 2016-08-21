@@ -18,9 +18,8 @@ class PageNavBar extends React.Component {
 		super(props)
 		this.onLogoutClick = onLogoutClick
 	}
-	render() {
-		let authenticated = true
 
+	render() {
 		return (
 			<Navbar>
 				<Navbar.Header>
@@ -38,7 +37,7 @@ class PageNavBar extends React.Component {
 							<NavItem eventKey={2} href="#">Info</NavItem>
 						</LinkContainer>
 					</Nav>
-					{(() => { if (authenticated) { return (
+					{(() => { if (!this.props.authenticated) { return (
 						<Nav pullRight>
 							<LinkContainer to='/login'>
 								<NavItem eventKey={5} href="#">Login</NavItem>
@@ -63,6 +62,10 @@ class PageNavBar extends React.Component {
 			</Navbar>
 		)
 	}
+}
+
+PageNavBar.defaultProps = {
+	authenticated: false
 }
 
 export default PageNavBar
