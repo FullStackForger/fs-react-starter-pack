@@ -21,7 +21,7 @@ const routes = {
 		{ path: '/info', component: Info },
 		{ path: '/login', component: Login, onEnter: (nextState, replace) => loginCheck(nextState, replace, false, '/') },
 		{ path: '/signup', component: Signup, onEnter: (nextState, replace) => loginCheck(nextState, replace, false, '/')  },
-		{ path: '/logout', component: Logout, onEnter: (nextState, replace) => loginCheck(nextState, replace, false, '/')  },
+		{ path: '/logout', component: Logout, onEnter: (nextState, replace) => loginCheck(nextState, replace, true, '/')  },
 		{ path: '/account', component: Account, onEnter: (nextState, replace) => loginCheck(nextState, replace, true, '/login')  }
 	]
 }
