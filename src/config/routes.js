@@ -9,7 +9,7 @@ import Signup from '../components/page-signup/component'
 import auth from '../utils/auth'
 
 const loginCheck = (nextState, replace, authState, redirectPath) => {
-	if (auth.isLoggedIn() !== authState) replace(redirectPath)
+	if (auth.isAuthenticated() !== authState) replace(redirectPath)
 }
 
 const routes = {
