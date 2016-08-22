@@ -58,11 +58,7 @@ class PageNavBar extends React.Component {
 }
 
 PageNavBar.propTypes = {
-	authenticated: PropTypes.bool
-}
-
-PageNavBar.defaultProps = {
-	authenticated: false
+	authenticated: PropTypes.bool.required
 }
 
 export default PageNavBar
