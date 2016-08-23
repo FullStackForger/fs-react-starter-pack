@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PageNavBar from './page-navbar/component'
+import PageNavBar from './page-navbar/container'
 
 export default class App extends Component {
   render() {
