@@ -11,15 +11,9 @@ const css = {
 	signupSpan: { paddingRight: '0.5em' }
 }
 
-//todo: move it to container perhaps
-import auth from '../auth/auth'
-import history from '../../config/history'
-const onLoginClick = () => {
-	auth.login({ username: 'dummy' })
-	history.push('/account')
-}
-
-export default () => (
+export default ({
+	onLoginClick
+}) => (
 	<Grid>
 		<Col md={6} mdPush={3}>
 			<Panel>
