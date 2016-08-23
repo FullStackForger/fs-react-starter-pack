@@ -3,7 +3,7 @@ const cache = {}
 export default class Storage {
 	constructor(opts = {}) {
 		Object.keys(Storage.defaults).map((key) =>  {
-			return opts.hasOwnProperty(key)
+			this[key] = opts.hasOwnProperty(key)
 				? opts[key]
 				: Storage.defaults[key]
 		})
