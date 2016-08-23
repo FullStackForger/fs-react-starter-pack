@@ -1,4 +1,5 @@
 import Storage from '../storage/storage'
+import * as actions from './actions'
 
 const storage = new Storage()
 const conf = {
@@ -14,10 +15,9 @@ const login = (user, options) => setToken('some.random.token')
 const logout = () => removeToken()
 
 export default {
-	login: login,
-	signup: signup,
-	logout: logout,
+	actions: actions,
 	isAuthenticated: isAuthenticated,
 	getToken: getToken,
+	setToken: setToken,
 	removeToken: removeToken
 }

@@ -1,21 +1,21 @@
 import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_SIGNIN } from './actions'
+import auth from './auth'
+import * as actions from './actions'
 
 const defaultState = {
-	authenticated: false,
-	token: ''
+	authenticated: auth.isAuthenticated(),
+	token: auth.getToken()
 }
 
 const authReducer = (state = defaultState, action) => {
+	console.log('authReducer', state, action)
 	switch(action) {
-		case AUTH_LOGIN:
-			login()
-			break
-		case AUTH_LOGOUT:
-			logout()
-			break
-		case AUTH_SIGNIN:
-			signup()
-			break
+		case actions.AUTH_LOGIN:
+			return Object.assign(state, { authenticated: true })
+		case actions.AUTH_LOGOUT:
+			return Object.assign(state, { authenticated: false })
+		case actions.AUTH_SIGNIN:
+			return Object.assign(state, { authenticated: false })
 	}
 	return state
 }
