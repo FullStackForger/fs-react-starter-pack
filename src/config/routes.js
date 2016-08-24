@@ -2,8 +2,8 @@ import Layout from '../components/layout'
 import Account from '../components/page-account/component'
 import Home from '../components/page-home/component'
 import Info from '../components/page-info/component'
-import Login from '../components/page-login/container'		// <- container
-import Logout from '../components/page-logout/component'
+import Login from '../components/page-login/container'
+import Logout from '../components/page-logout/container'
 import Signup from '../components/page-signup/component'
 
 import auth from '../components/auth/auth'
