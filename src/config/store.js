@@ -4,8 +4,6 @@ import reducers from './reducers'
 import middleware from './middleware'
 import DevTools from './devtools'
 
-//const store = createStore(reducers, middleware)
-
 const initialState = {}
 const store = createStore(reducers, initialState, compose(
 	applyMiddleware(...middleware),

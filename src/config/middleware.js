@@ -1,5 +1,5 @@
 import authMiddleware from '../components/auth/middleware'
 
-export default {
+export default [
 	authMiddleware
-}
+]
