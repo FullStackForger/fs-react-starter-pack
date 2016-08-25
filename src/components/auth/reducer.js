@@ -8,15 +8,22 @@ const defaultState = {
 }
 
 const authReducer = (state = defaultState, action) => {
-	console.log('authReducer', state, action)
 	switch(action) {
 		case actions.AUTH_LOGIN:
-			return Object.assign(state, { authenticated: true })
+			state = Object.assign(state, { authenticated: true })
+			break
 		case actions.AUTH_LOGOUT:
-			return Object.assign(state, { authenticated: false })
+			state = Object.assign(state, { authenticated: false })
+			break
 		case actions.AUTH_SIGNIN:
-			return Object.assign(state, { authenticated: false })
+			state = Object.assign(state, { authenticated: false })
+			break
+		default:
+			state = Object.assign(state)
+			break
 	}
+
+	console.log('authReducer', state, action)
 	return state
 }
 
