@@ -23,6 +23,9 @@
     "react-router-bootstrap": "^0.23.1",
     "react-router-redux": "^4.0.5",
     "redux": "^3.6.0",
+    "redux-devtools": "^3.3.1",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.0.11",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.1"
   },
