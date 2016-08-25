@@ -1,4 +1,4 @@
-import { createStore, compose } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 
 import reducers from './reducers'
 import middleware from './middleware'
@@ -8,7 +8,7 @@ import DevTools from './devtools'
 
 const initialState = {}
 const store = createStore(reducers, initialState, compose(
-	middleware,
+	applyMiddleware(...middleware),
 	window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument()
 ));
 
