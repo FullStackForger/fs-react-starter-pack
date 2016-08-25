@@ -9,13 +9,14 @@ const defaultState = {
 
 const authReducer = (state = defaultState, action) => {
 	switch(action) {
-		case actions.AUTH_LOGIN:
+		case actions.AUTH_LOGIN_SUCCESS:
 			state = Object.assign(state, { authenticated: true })
+			debugger;
 			break
-		case actions.AUTH_LOGOUT:
+		case actions.AUTH_LOGOUT_SUCCESS:
 			state = Object.assign(state, { authenticated: false })
 			break
-		case actions.AUTH_SIGNIN:
+		case actions.AUTH_SIGNIN_SUCCESS:
 			state = Object.assign(state, { authenticated: false })
 			break
 		default:
