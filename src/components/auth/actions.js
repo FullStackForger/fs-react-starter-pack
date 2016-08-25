@@ -7,16 +7,16 @@ export const AUTH_SIGNUP = 'AUTH_SIGNIN'
 export const AUTH_SIGNUP_SUCCESS = 'AUTH_SIGNUP_SUCCESS'
 export const AUTH_SIGNUP_FAILED = 'AUTH_SIGNUP_FAILED'
 
-export const onLogin = (userData) => ({
+export const login = (userData) => ({
 	type: AUTH_LOGIN,
 	payload: userData
 })
 
-export const onLogout = () => ({
+export const logout = () => ({
 	type: AUTH_LOGOUT
 })
 
-export const onSignup = (userData) => ({
+export const signup = (userData) => ({
 	type: AUTH_SIGNUP,
 	payload: userData
 })

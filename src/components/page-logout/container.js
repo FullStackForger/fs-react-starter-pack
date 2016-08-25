@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-	onLogout: () => dispatch(auth.actions.onLogout())
+	onLogout: () => dispatch(auth.actions.logout())
 })
 
 export default connect(
