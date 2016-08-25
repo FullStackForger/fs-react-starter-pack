@@ -6,7 +6,6 @@ class LogoutPage extends React.Component {
 
 	constructor(props) {
 		super(props)
-		debugger;
 
 		this.timer = null
 		this.state = {
@@ -48,7 +47,9 @@ class LogoutPage extends React.Component {
 					<Panel>
 						<HelpBlock style={{textAlign: 'center'}}>
 							<p><strong>You have been logged out.</strong></p>
-							<p>Redirecting to home page... in {this.state.timeout}s</p>
+							<p>Redirecting to <Link to="/">home page</Link>
+							...in {this.state.timeout}s</p>
+							<p>or <Link to="/login">login</Link> again.</p>
 						</HelpBlock>
 					</Panel>
 
