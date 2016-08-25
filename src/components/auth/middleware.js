@@ -17,7 +17,7 @@ const authMiddleware = (store) => (next) => (action) => {
 			})
 			break
 		case actions.AUTH_LOGOUT:
-		auth.removeToken()
+			auth.removeToken()
 			next({
 				type: actions.AUTH_LOGOUT_SUCCESS
 			})
