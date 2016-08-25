@@ -6,6 +6,8 @@ class LogoutPage extends React.Component {
 
 	constructor(props) {
 		super(props)
+		debugger;
+
 		this.timer = null
 		this.state = {
 			timeout: this.props.timeout
@@ -14,6 +16,7 @@ class LogoutPage extends React.Component {
 	}
 
 	componentDidMount() {
+		this.props.onLogout()
 		this.timer = setInterval(() => {
 			let timeout = this.state.timeout - 1
 			if (timeout <= 0) {

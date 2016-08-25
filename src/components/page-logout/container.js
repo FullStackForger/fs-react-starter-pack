@@ -1,17 +1,17 @@
 import { connect } from 'react-redux'
 import history from '../../config/history'
 import PageLogout from './component'
-
-const logout = () => {
-	console.log('test')
-	history.push('/')
-}
+import auth from '../auth/auth'
 
 const mapStateToProps = (state, ownProps) => ({
 	timeout: 3,
-	onTimeout: logout
+	onTimeout: () => history.push('/')
 })
-const mapDispatchToProps = (dispatch, ownProps) => ({})
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+	onLogout: () => dispatch(auth.actions.onLogout())
+})
+
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
