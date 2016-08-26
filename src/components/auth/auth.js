@@ -10,8 +10,8 @@ const setToken = (token) => storage.set(conf.tokenName, token)
 const getToken = () => (storage.get(conf.tokenName))
 const removeToken = () => storage.remove(conf.tokenName)
 const isAuthenticated = () => (!!getToken())
-const signup = (user, options) => setToken('some.random.token')
-const login = (user, options) => setToken('some.random.token')
+const signup = (user, options) => setToken('some.signup.token')
+const login = (user, options) => setToken('some.login.token')
 const logout = () => removeToken()
 
 export default {
