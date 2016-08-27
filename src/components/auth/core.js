@@ -24,12 +24,12 @@ const init = opts => {
 
 const subscribe = fn => {
 	let id = uid()
-	subscribers.push({ id: id, fn: fn})
+	internals.subscribers.push({ id: id, fn: fn})
 	return id
 }
 
 const unsubscribe = id => {
-	subscribers = subscribers.filter(s => (s.id !== id))
+	internals.subscribers = internals.subscribers.filter(s => (s.id !== id))
 }
 
 const setToken = (token) => internals.storage.set(internals.config.tokenName, token)
