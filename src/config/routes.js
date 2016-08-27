@@ -9,7 +9,6 @@ import Signup from '../components/page-signup/component'
 import auth from '../components/auth/auth'
 
 const loginCheck = (nextState, replace, authState, redirectPath) => {
-	console.log(auth.isAuthenticated(), authState)
 	if (auth.isAuthenticated() !== authState) replace(redirectPath)
 }
 
