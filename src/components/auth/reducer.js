@@ -65,7 +65,7 @@ const signupReducer = (state, action) => {
 	})
 }
 
-const authReducer = (state = defaultState, action) => {
+export default (state = defaultState, action) => {
 
 	switch(action.type) {
 
@@ -121,5 +121,3 @@ const authReducer = (state = defaultState, action) => {
 
 	return Object.assign(state)
 }
-
-export default authReducer
