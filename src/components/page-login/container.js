@@ -12,10 +12,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 		event.preventDefault()
 
 		let subscriberId = auth.subscribe((authStore) => {
-			debugger;
 			if (authStore.authenticated) {
 				auth.unsubscribe(subscriberId)
-				history.push('/')
 			}
 		})
 		dispatch(auth.actions.login({username: 'dummy' }))

@@ -1,66 +1,6 @@
 import core from './core'
 import * as ACT from './actions'
 
-const loginReducer = (state, action) => {
-	const store = core.config.store
-
-	core.login(action.payload).then(token => {
-		store.dispatch({
-			type: ACT.AUTH_LOGIN_SUCCESS,
-			payload: { token: token },
-		})
-	}, err => {
-		store.dispatch({
-			type: ACT.AUTH_LOGIN_FAILED,
-			payload: { error: err }
-		})
-	})
-
-	return Object.assign(state, {
-		authenticating: true
-	})
-}
-
-const logoutReducer = (state, action) => {
-	const store = core.config.store
-
-	core.logout().then(() => {
-		store.dispatch({
-			type: ACT.AUTH_LOGOUT_SUCCESS
-		})
-	}, err => {
-		store.dispatch({
-			type: ACT.AUTH_LOGOUT_FAILED,
-			payload: { error: err }
-		})
-	})
-
-	return Object.assign(state, {
-		authenticated: false,
-		authenticating: false
-	})
-}
-
-const signupReducer = (state, action) => {
-	const store = core.config.store
-
-	core.signup(action.payload).then(token => {
-		store.dispatch({
-			type: ACT.AUTH_SIGNUP_SUCCESS,
-			payload: { token: token }
-		})
-	}, err => {
-		store.dispatch({
-			type: ACT.AUTH_SIGNUP_FAILED,
-			payload: { error: error }
-		})
-	})
-
-	return Object.assign(state, {
-		authenticating: true
-	})
-}
-
 const authReducer = (state = core.defaults.state, action) => {
 	state = Object.assign(state, {
 		authenticated: core.isAuthenticated(),
@@ -73,7 +13,10 @@ const authReducer = (state = core.defaults.state, action) => {
 		// LOGIN
 
 		case ACT.AUTH_LOGIN:
-			return loginReducer(state, action)
+		return Object.assign(state, {
+			authenticating: true,
+			authenticated: false
+		})
 		case ACT.AUTH_LOGIN_SUCCESS:
 			return Object.assign(state, {
 				authenticated: true,
@@ -83,30 +26,34 @@ const authReducer = (state = core.defaults.state, action) => {
 			return Object.assign(state, {
 				authenticated: false,
 				authenticating: false,
-				message: action.payload.error.message
+				error: action.payload.error
 			})
 
 		// LOGOUT
 
 		case ACT.AUTH_LOGOUT:
-			return logoutReducer(state, action)
+		return Object.assign(state, {
+			authenticating: true
+		})
 		case ACT.AUTH_LOGOUT_SUCCESS:
 			return Object.assign(state, {
 				authenticated: false,
 				authenticating: false
 			})
-		case ACT.AUTH_LOGOUT_SUCCESS:
 		case ACT.AUTH_LOGIN_FAILED:
 			return Object.assign(state, {
 				authenticated: false,
 				authenticating: false,
-				message: action.payload.error.message
+				error: action.payload.error
 			})
 
 		// SIGNUP
 
 		case ACT.AUTH_SIGNUP:
-			return signupReducer(state, action)
+			return Object.assign(state, {
+				authenticating: true,
+				authenticated: false
+			})
 		case ACT.AUTH_SIGNIN_SUCCESS:
 			return Object.assign(state, {
 				authenticated: true,
@@ -116,7 +63,7 @@ const authReducer = (state = core.defaults.state, action) => {
 			return Object.assign(state, {
 				authenticated: false,
 				authenticating: false,
-				message: action.payload.error.message
+				error: action.payload.error
 			})
 	}
 
