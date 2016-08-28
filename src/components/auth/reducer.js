@@ -1,11 +1,6 @@
 import core from './core'
 import * as ACT from './actions'
 
-const defaultState = {
-	authenticated: core.isAuthenticated(),
-	token: core.getToken(core.config.tokenName)
-}
-
 const loginReducer = (state, action) => {
 	const store = core.config.store
 
@@ -41,7 +36,8 @@ const logoutReducer = (state, action) => {
 	})
 
 	return Object.assign(state, {
-		leaving: true
+		authenticated: false,
+		authenticating: false
 	})
 }
 
@@ -65,7 +61,12 @@ const signupReducer = (state, action) => {
 	})
 }
 
-export default (state = defaultState, action) => {
+const authReducer = (state = core.defaults.state, action) => {
+	state = Object.assign(state, {
+		authenticated: core.isAuthenticated(),
+		token: core.getToken(),
+		updated: true
+	})
 
 	switch(action.type) {
 
@@ -119,5 +120,7 @@ export default (state = defaultState, action) => {
 			})
 	}
 
-	return Object.assign(state)
+	return Object.assign(state, { updated: false })
 }
+
+export default core.interceptState(authReducer)

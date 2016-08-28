@@ -1,17 +1,25 @@
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 
 import auth from '../auth/auth'
 
 import PageLogin from './component'
 import history from '../../config/history'
 
-const mapStateToProps = (state, ownProps) => (state)
-
 const mapDispatchToProps = (dispatch, ownProps) => ({
-	onLoginClick: (userData) => dispatch(auth.actions.login({ username: 'dummy' }))
+	//dispatchLoginAction: dispatch(auth.actions.login({ username: 'dummy' }))
+	onLoginClick (event) {
+		event.preventDefault()
+
+		let subscriberId = auth.subscribe((authStore) => {
+			debugger;
+			if (authStore.authenticated) {
+				auth.unsubscribe(subscriberId)
+				history.push('/')
+			}
+		})
+		dispatch(auth.actions.login({username: 'dummy' }))
+	}
 })
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(PageLogin)
+export default connect(false, mapDispatchToProps)(PageLogin)
