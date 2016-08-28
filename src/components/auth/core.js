@@ -2,15 +2,30 @@ import Storage from '../storage/storage'
 import uid from 'uid'
 
 const defaults = {
-	tokenName: 'if-token',
-	store: null
+	config: {
+		tokenName: 'if-token',
+		store: null
+	},
+	state: {
+		authenticating: false,
+		authenticated: false,
+		token: null,
+		error: null
+	}
 }
 
 const internals = {
 	initialized: false,
 	subscribers: [],
-	config: Object.assign({}, defaults),
+	config: Object.assign({}, defaults.config),
+	state: Object.assign({}, defaults.state),
 	storage: new Storage()
+}
+
+internals.notifySubscribers = () => {
+	internals.subscribers.forEach(subscriber => {
+		subscriber.fn(Object.assign(internals.state))
+	})
 }
 
 const init = opts => {
@@ -43,6 +58,7 @@ const isAuthenticated = () => (!!getToken())
 const signup = (user, options) => (new Promise((resolve, reject) => {
 	setTimeout(() => {
 		setToken('some.signup.token')
+		internals.notifySubscribers()
 		resolve(getToken())
 	}, 10)
 }))
@@ -50,6 +66,7 @@ const signup = (user, options) => (new Promise((resolve, reject) => {
 const login = (user, options) => (new Promise((resolve, reject) => {
 	setTimeout(() => {
 		setToken('some.login.token')
+		internals.notifySubscribers()
 		resolve(getToken())
 	}, 10)
 }))
@@ -59,6 +76,7 @@ const logout = () => {
 		setTimeout(() => {
 			if (!!getToken()) {
 				removeToken()
+				internals.notifySubscribers()
 				resolve({success: true})
 			} else {
 				reject(new Error('You are trying to log out unauthenticated user.'))
@@ -67,8 +85,14 @@ const logout = () => {
 	})
 }
 
+const interceptState = (reducer) => (state, action) => {
+	internals.state = state
+	return  reducer(state, action)
+}
+
 export default {
 	init: init,
+	interceptState: interceptState,
 	config: internals.config,
 	defaults: defaults,
 	isAuthenticated: isAuthenticated,
