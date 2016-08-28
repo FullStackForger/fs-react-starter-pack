@@ -86,8 +86,8 @@ const logout = () => {
 }
 
 const interceptState = (reducer) => (state, action) => {
-	internals.state = state
-	return  reducer(state, action)
+	internals.state = reducer(state, action)
+	return internals.state
 }
 
 export default {
