@@ -10,7 +10,8 @@ const defaults = {
 		authenticating: false,
 		authenticated: false,
 		token: null,
-		error: null
+		error: null,
+		updated: false
 	}
 }
 
@@ -66,7 +67,6 @@ const signup = (user, options) => (new Promise((resolve, reject) => {
 const login = (user, options) => (new Promise((resolve, reject) => {
 	setTimeout(() => {
 		setToken('some.login.token')
-		internals.notifySubscribers()
 		resolve(getToken())
 	}, 10)
 }))
@@ -76,7 +76,6 @@ const logout = () => {
 		setTimeout(() => {
 			if (!!getToken()) {
 				removeToken()
-				internals.notifySubscribers()
 				resolve({success: true})
 			} else {
 				reject(new Error('You are trying to log out unauthenticated user.'))
@@ -87,6 +86,9 @@ const logout = () => {
 
 const interceptState = (reducer) => (state, action) => {
 	internals.state = reducer(state, action)
+	if (internals.state.updated) {
+		internals.notifySubscribers()
+	}
 	return internals.state
 }
 
