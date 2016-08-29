@@ -43,6 +43,7 @@ class LoginPage extends Component {
 	}
 
 	getValidationState(key) {
+		if (!this.state[key].value) return
 		return this.state[key].valid
 			? 'success'
 			: 'error'
