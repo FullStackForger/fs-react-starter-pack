@@ -6,6 +6,8 @@ import { Checkbox, Button, ControlLabel, HelpBlock } from 'react-bootstrap'
 import { Link } from 'react-router'
 import { LinkContainer } from 'react-router-bootstrap'
 
+import { validateEmail, validatePassword } from '../../utils/validators'
+
 const css = {
 	signupBlock: { textAlign: 'center', marginTop: '1em' },
 	signupSpan: { paddingRight: '0.5em' }
@@ -16,8 +18,8 @@ class LoginPage extends Component {
 		super(props)
 
 		this.state = {
-			email:  { value: '', valid: false },
-			password: { value: '', valid: false }
+			email:  { value: '', valid: false, error: null},
+			password: { value: '', valid: false, error: null }
 		}
 
 		this.onLoginClick = this.onLoginClick.bind(this)
@@ -26,13 +28,25 @@ class LoginPage extends Component {
 
 	onChange(key) {
 		return (event) => {
+			let value = event.target.value
+			let valid, error
+			({valid, error} = this.validate(key, value))
 			let state = {}
 			state[key] = {
-				value: event.target.value,
-				valid: false
+				value: value,
+				valid: valid,
+				error: error
 			}
 			this.setState(state)
 		}
+	}
+
+	validate(key, value) {
+		switch (key) {
+			case 'email': return validateEmail(value)
+			case 'password': return validatePassword(value)
+		}
+		return true
 	}
 
 	onLoginClick () {
@@ -43,8 +57,8 @@ class LoginPage extends Component {
 	}
 
 	render() {
-		let email = this.state.email.value
-		let password = this.state.password.value
+		let email = this.state.email
+		let password = this.state.password
 
 		return (
 			<Grid>
@@ -57,7 +71,7 @@ class LoginPage extends Component {
 								</Col>
 								<Col sm={10}>
 									<FormControl type="email" placeholder="Email"
-										value={email}
+										value={email.value}
 										onChange={this.onChange('email')}
 									/>
 									<FormControl.Feedback />
@@ -69,7 +83,7 @@ class LoginPage extends Component {
 								</Col>
 								<Col sm={10}>
 									<FormControl type="password" placeholder="Password"
-										value={password}
+										value={password.value}
 										onChange={this.onChange('password')}
 									/>
 								</Col>
