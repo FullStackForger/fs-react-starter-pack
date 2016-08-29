@@ -10,19 +10,22 @@ const authReducer = (state = core.defaults.state, action) => {
 
 	switch(action.type) {
 
-		// LOGIN
+		// LOGIN && SIGNUP
 
 		case ACT.AUTH_LOGIN:
-		return Object.assign(state, {
-			authenticating: true,
-			authenticated: false
-		})
+		case ACT.AUTH_SIGNUP:
+			return Object.assign(state, {
+				authenticating: true,
+				authenticated: false
+			})
 		case ACT.AUTH_LOGIN_SUCCESS:
+		case ACT.AUTH_SIGNIN_SUCCESS:
 			return Object.assign(state, {
 				authenticated: true,
 				authenticating: false
 			})
 		case ACT.AUTH_LOGIN_FAILED:
+		case ACT.AUTH_SIGNUP_FAILED:
 			return Object.assign(state, {
 				authenticated: false,
 				authenticating: false,
@@ -41,25 +44,6 @@ const authReducer = (state = core.defaults.state, action) => {
 				authenticating: false
 			})
 		case ACT.AUTH_LOGIN_FAILED:
-			return Object.assign(state, {
-				authenticated: false,
-				authenticating: false,
-				error: action.payload.error
-			})
-
-		// SIGNUP
-
-		case ACT.AUTH_SIGNUP:
-			return Object.assign(state, {
-				authenticating: true,
-				authenticated: false
-			})
-		case ACT.AUTH_SIGNIN_SUCCESS:
-			return Object.assign(state, {
-				authenticated: true,
-				authenticating: false
-			})
-		case ACT.AUTH_SIGNUP_FAILED:
 			return Object.assign(state, {
 				authenticated: false,
 				authenticating: false,
