@@ -24,8 +24,10 @@ const internals = {
 }
 
 internals.notifySubscribers = () => {
-	internals.subscribers.forEach(subscriber => {
-		subscriber.fn(Object.assign(internals.state))
+	setTimeout(() => {
+		internals.subscribers.forEach(subscriber => {
+			subscriber.fn(Object.assign(internals.state))
+		})
 	})
 }
 
