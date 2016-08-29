@@ -14,11 +14,11 @@ export const validatePassword = function(password) {
 	let error = null
 	let length = /^(.*){8,}$/
 	if (!length.test(password)) error = 'Password should have at least 8 characters'
-	let specials = /^(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])$/
+	let specials = /^(.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?].*)$/
 	if (!specials.test(password)) error = 'Password should have at least one special character'
-	let letters = /^(?=.*[a-zA-Z])$/
+	let letters = /^(.*[a-zA-Z].*)$/
 	if (!letters.test(password)) error = 'Password should have at least one letter'
-	let digits = /^(?=.*[0-9])$/
+	let digits = /^(.*[0-9].*)$/
 	if (!digits.test(password)) error = 'Password should have at least one digit'
 	return {
 		valid: error === null,
