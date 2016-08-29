@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react'
 import { Grid, Col, Panel } from 'react-bootstrap'
 import { Form, FormGroup, FormControl } from 'react-bootstrap'
 import { Checkbox, Button, ControlLabel, HelpBlock } from 'react-bootstrap'
+import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { Link } from 'react-router'
 import { LinkContainer } from 'react-router-bootstrap'
 
@@ -41,6 +42,12 @@ class LoginPage extends Component {
 		}
 	}
 
+	getValidationState(key) {
+		return this.state[key].valid
+			? 'success'
+			: 'error'
+	}
+
 	validate(key, value) {
 		switch (key) {
 			case 'email': return validateEmail(value)
@@ -59,15 +66,22 @@ class LoginPage extends Component {
 	render() {
 		let email = this.state.email
 		let password = this.state.password
+		let formIsReady = email.valid && password.valid
+
+		const tooltip = (msg) => (
+  		!!msg ? <Tooltip id="tooltip"><strong>{msg}</strong></Tooltip> : false
+		);
 
 		return (
 			<Grid>
 				<Col md={6} mdPush={3}>
 					<Panel>
 						<Form horizontal>
-							<FormGroup controlId="loginEmail"> {/* validationState="success" */ }
+							<FormGroup controlId="loginEmail" validationState={this.getValidationState('email')}>
 								<Col componentClass={ControlLabel} sm={2}>
-									<ControlLabel>Email</ControlLabel>
+									<ControlLabel>
+										Email
+									</ControlLabel>
 								</Col>
 								<Col sm={10}>
 									<FormControl type="email" placeholder="Email"
@@ -75,9 +89,12 @@ class LoginPage extends Component {
 										onChange={this.onChange('email')}
 									/>
 									<FormControl.Feedback />
+									<HelpBlock>
+										{email.error}
+									</HelpBlock>
 								</Col>
 							</FormGroup>
-							<FormGroup controlId="loginPassword">
+							<FormGroup controlId="loginPassword" validationState={this.getValidationState('password')}>
 								<Col componentClass={ControlLabel} sm={2}>
 									Password
 								</Col>
@@ -86,10 +103,14 @@ class LoginPage extends Component {
 										value={password.value}
 										onChange={this.onChange('password')}
 									/>
+									<FormControl.Feedback />
+									<HelpBlock>
+										{password.error}
+									</HelpBlock>
 								</Col>
 							</FormGroup>
 
-							<Button bsStyle="primary" bsSize="large" block
+							<Button bsStyle="primary" bsSize="large" block disabled={!formIsReady}
 								onClick={this.onLoginClick}>
 								Log in
 							</Button>
