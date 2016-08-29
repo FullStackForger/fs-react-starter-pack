@@ -16,11 +16,20 @@ class LoginPage extends Component {
 		super(props)
 
 		this.state = {
-			email: '',
+			email:  '',
 			password: ''
 		}
 
 		this.onLoginClick = this.onLoginClick.bind(this)
+		this.onChange = this.onChange.bind(this)
+	}
+
+	onChange(key) {
+		return (event) => {
+			let state = {}
+			state[key] = event.target.value
+			this.setState(state)
+		}
 	}
 
 	onLoginClick () {
@@ -32,24 +41,26 @@ class LoginPage extends Component {
 			<Col md={6} mdPush={3}>
 				<Panel>
 					<Form horizontal>
-						<FormGroup controlId="formHorizontalEmail"> {/* validationState="success" */ }
+						<FormGroup controlId="loginEmail"> {/* validationState="success" */ }
 							<Col componentClass={ControlLabel} sm={2}>
 								 <ControlLabel>Email</ControlLabel>
 							</Col>
 							<Col sm={10}>
 								<FormControl type="email" placeholder="Email"
 									value={this.state.email}
+									onChange={this.onChange('email')}
 								/>
 								<FormControl.Feedback />
 							</Col>
 						</FormGroup>
-						<FormGroup controlId="formHorizontalPassword">
+						<FormGroup controlId="loginPassword">
 							<Col componentClass={ControlLabel} sm={2}>
 								Password
 							</Col>
 							<Col sm={10}>
 								<FormControl type="password" placeholder="Password"
 									value={this.state.password}
+									onChange={this.onChange('password')}
 								/>
 							</Col>
 						</FormGroup>
