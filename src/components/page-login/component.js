@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component, PropTypes } from 'react'
 
 import { Grid, Col, Panel } from 'react-bootstrap'
 import { Form, FormGroup, FormControl } from 'react-bootstrap'
@@ -11,40 +11,61 @@ const css = {
 	signupSpan: { paddingRight: '0.5em' }
 }
 
-export default ({
-	onLoginClick
-}) => (
-	<Grid>
-		<Col md={6} mdPush={3}>
-			<Panel>
-				<Form horizontal>
-					<FormGroup controlId="formHorizontalEmail">
-						<Col componentClass={ControlLabel} sm={2}>
-							Email
-						</Col>
-						<Col sm={10}>
-							<FormControl type="email" placeholder="Email" />
-						</Col>
-					</FormGroup>
+class LoginPage extends Component {
+	constructor(props) {
+		super(props)
 
-					<FormGroup controlId="formHorizontalPassword">
-						<Col componentClass={ControlLabel} sm={2}>
-							Password
-						</Col>
-						<Col sm={10}>
-							<FormControl type="password" placeholder="Password" />
-						</Col>
-					</FormGroup>
+		this.state = {
+			email: null,
+			password: null
+		}
 
-					<Button bsStyle="primary" bsSize="large" block onClick={onLoginClick}>
-						Log in
-					</Button>
-				</Form>
-				<HelpBlock style={css.signupBlock}>
-						<span style={css.signupSpan}>Don't have an account yet?</span>
-						<Link to="/signup">Sign up</Link>
-				</HelpBlock>
-			</Panel>
-		</Col>
-	</Grid>
-)
+		this.onLoginClick = this.onLoginClick.bind(this)
+	}
+
+	onLoginClick () {
+		this.props.handleSubmit({username: 'dummy' })
+	}
+
+	render() { return (
+		<Grid>
+			<Col md={6} mdPush={3}>
+				<Panel>
+					<Form horizontal>
+						<FormGroup controlId="formHorizontalEmail">
+							<Col componentClass={ControlLabel} sm={2}>
+								Email
+							</Col>
+							<Col sm={10}>
+								<FormControl type="email" placeholder="Email" />
+							</Col>
+						</FormGroup>
+
+						<FormGroup controlId="formHorizontalPassword">
+							<Col componentClass={ControlLabel} sm={2}>
+								Password
+							</Col>
+							<Col sm={10}>
+								<FormControl type="password" placeholder="Password" />
+							</Col>
+						</FormGroup>
+
+						<Button bsStyle="primary" bsSize="large" block onClick={this.onLoginClick}>
+							Log in
+						</Button>
+					</Form>
+					<HelpBlock style={css.signupBlock}>
+							<span style={css.signupSpan}>Don't have an account yet?</span>
+							<Link to="/signup">Sign up</Link>
+					</HelpBlock>
+				</Panel>
+			</Col>
+		</Grid>
+	)}
+}
+
+LoginPage.propTypes = {
+	handleSubmit: PropTypes.func.isRequired
+}
+
+export default LoginPage

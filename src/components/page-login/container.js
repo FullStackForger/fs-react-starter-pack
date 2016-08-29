@@ -7,15 +7,14 @@ import PageLogin from './component'
 import history from '../../config/history'
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-	onLoginClick (event) {
-		event.preventDefault()
+	handleSubmit (loginData) {
 		let subscriberId = auth.subscribe((authStore) => {
 			if (authStore.authenticated) {
 				auth.unsubscribe(subscriberId)
 				history.push('/')
 			}
 		})
-		dispatch(auth.actions.login({username: 'dummy' }))
+		dispatch(auth.actions.login(loginData))
 	}
 })
 
