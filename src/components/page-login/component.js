@@ -16,15 +16,15 @@ class LoginPage extends Component {
 		super(props)
 
 		this.state = {
-			email: null,
-			password: null
+			email: '',
+			password: ''
 		}
 
 		this.onLoginClick = this.onLoginClick.bind(this)
 	}
 
 	onLoginClick () {
-		this.props.handleSubmit({username: 'dummy' })
+		this.props.handleSubmit(this.state)
 	}
 
 	render() { return (
@@ -32,25 +32,30 @@ class LoginPage extends Component {
 			<Col md={6} mdPush={3}>
 				<Panel>
 					<Form horizontal>
-						<FormGroup controlId="formHorizontalEmail">
+						<FormGroup controlId="formHorizontalEmail"> {/* validationState="success" */ }
 							<Col componentClass={ControlLabel} sm={2}>
-								Email
+								 <ControlLabel>Email</ControlLabel>
 							</Col>
 							<Col sm={10}>
-								<FormControl type="email" placeholder="Email" />
+								<FormControl type="email" placeholder="Email"
+									value={this.state.email}
+								/>
+								<FormControl.Feedback />
 							</Col>
 						</FormGroup>
-
 						<FormGroup controlId="formHorizontalPassword">
 							<Col componentClass={ControlLabel} sm={2}>
 								Password
 							</Col>
 							<Col sm={10}>
-								<FormControl type="password" placeholder="Password" />
+								<FormControl type="password" placeholder="Password"
+									value={this.state.password}
+								/>
 							</Col>
 						</FormGroup>
 
-						<Button bsStyle="primary" bsSize="large" block onClick={this.onLoginClick}>
+						<Button bsStyle="primary" bsSize="large" block
+							onClick={this.onLoginClick}>
 							Log in
 						</Button>
 					</Form>
