@@ -16,8 +16,8 @@ class LoginPage extends Component {
 		super(props)
 
 		this.state = {
-			email:  '',
-			password: ''
+			email:  { value: '', valid: false },
+			password: { value: '', valid: false }
 		}
 
 		this.onLoginClick = this.onLoginClick.bind(this)
@@ -27,57 +27,68 @@ class LoginPage extends Component {
 	onChange(key) {
 		return (event) => {
 			let state = {}
-			state[key] = event.target.value
+			state[key] = {
+				value: event.target.value,
+				valid: false
+			}
 			this.setState(state)
 		}
 	}
 
 	onLoginClick () {
-		this.props.handleSubmit(this.state)
+		this.props.handleSubmit({
+			email: this.state.email.value,
+			password: this.state.password.value
+		})
 	}
 
-	render() { return (
-		<Grid>
-			<Col md={6} mdPush={3}>
-				<Panel>
-					<Form horizontal>
-						<FormGroup controlId="loginEmail"> {/* validationState="success" */ }
-							<Col componentClass={ControlLabel} sm={2}>
-								 <ControlLabel>Email</ControlLabel>
-							</Col>
-							<Col sm={10}>
-								<FormControl type="email" placeholder="Email"
-									value={this.state.email}
-									onChange={this.onChange('email')}
-								/>
-								<FormControl.Feedback />
-							</Col>
-						</FormGroup>
-						<FormGroup controlId="loginPassword">
-							<Col componentClass={ControlLabel} sm={2}>
-								Password
-							</Col>
-							<Col sm={10}>
-								<FormControl type="password" placeholder="Password"
-									value={this.state.password}
-									onChange={this.onChange('password')}
-								/>
-							</Col>
-						</FormGroup>
+	render() {
+		let email = this.state.email.value
+		let password = this.state.password.value
 
-						<Button bsStyle="primary" bsSize="large" block
-							onClick={this.onLoginClick}>
-							Log in
-						</Button>
-					</Form>
-					<HelpBlock style={css.signupBlock}>
-							<span style={css.signupSpan}>Don't have an account yet?</span>
-							<Link to="/signup">Sign up</Link>
-					</HelpBlock>
-				</Panel>
-			</Col>
-		</Grid>
-	)}
+		return (
+			<Grid>
+				<Col md={6} mdPush={3}>
+					<Panel>
+						<Form horizontal>
+							<FormGroup controlId="loginEmail"> {/* validationState="success" */ }
+								<Col componentClass={ControlLabel} sm={2}>
+									<ControlLabel>Email</ControlLabel>
+								</Col>
+								<Col sm={10}>
+									<FormControl type="email" placeholder="Email"
+										value={email}
+										onChange={this.onChange('email')}
+									/>
+									<FormControl.Feedback />
+								</Col>
+							</FormGroup>
+							<FormGroup controlId="loginPassword">
+								<Col componentClass={ControlLabel} sm={2}>
+									Password
+								</Col>
+								<Col sm={10}>
+									<FormControl type="password" placeholder="Password"
+										value={password}
+										onChange={this.onChange('password')}
+									/>
+								</Col>
+							</FormGroup>
+
+							<Button bsStyle="primary" bsSize="large" block
+								onClick={this.onLoginClick}>
+								Log in
+							</Button>
+						</Form>
+						<HelpBlock style={css.signupBlock}>
+								<span style={css.signupSpan}>Don't have an account yet?</span>
+								<Link to="/signup">Sign up</Link>
+						</HelpBlock>
+					</Panel>
+				</Col>
+			</Grid>
+		)
+	}
 }
 
 LoginPage.propTypes = {
