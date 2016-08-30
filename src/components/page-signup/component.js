@@ -52,6 +52,13 @@ class SignupPage extends Component {
 		}
 	}
 
+	getValidationState(key) {
+		if (!this.state[key].value) return
+		return this.state[key].valid
+			? 'success'
+			: 'error'
+	}
+
 	validate(key, value) {
 		switch (key) {
 			case 'email': return validateEmail(value)
@@ -74,7 +81,7 @@ class SignupPage extends Component {
 					<Panel>
 						<Form horizontal>
 
-							<FormGroup controlId="signupUserName">
+							<FormGroup controlId="signupUsername" validationState={this.getValidationState('username')}>
 								<Col componentClass={ControlLabel} sm={2}>
 									Username
 								</Col>
@@ -89,7 +96,7 @@ class SignupPage extends Component {
 								</Col>
 							</FormGroup>
 
-							<FormGroup controlId="signupEmail">
+							<FormGroup controlId="signupEmail"  validationState={this.getValidationState('email')}>
 								<Col componentClass={ControlLabel} sm={2}>
 									Email
 								</Col>
@@ -104,7 +111,7 @@ class SignupPage extends Component {
 								</Col>
 							</FormGroup>
 
-							<FormGroup controlId="signupPassword">
+							<FormGroup controlId="signupPassword" validationState={this.getValidationState('password')}>
 								<Col componentClass={ControlLabel} sm={2}>
 									Password
 								</Col>
@@ -119,7 +126,7 @@ class SignupPage extends Component {
 								</Col>
 							</FormGroup>
 
-							<FormGroup controlId="signupPasswordConfirmation">
+							<FormGroup controlId="signupPassword2" validationState={this.getValidationState('password2')}>
 								<Col componentClass={ControlLabel} sm={2}>
 									Password
 								</Col>
