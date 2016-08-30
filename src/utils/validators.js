@@ -12,8 +12,8 @@ export const validateEmail = function(email) {
 
 export const validateUsername = function(password) {
 	let error = null
-	let length = /^(.*){6,}$/
-	if (!length.test(password)) error = 'Password should have at least 6 characters'
+	let length = /^(.){6,}$/
+	if (!length.test(password)) error = 'Username should have at least 6 characters'
 	return {
 		valid: error === null,
 		error: error
@@ -22,7 +22,7 @@ export const validateUsername = function(password) {
 
 export const validatePassword = function(password) {
 	let error = null
-	let length = /^(.*){8,}$/
+	let length = /^(.){8,}$/
 	if (!length.test(password)) error = 'Password should have at least 8 characters'
 	let specials = /^(.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?].*)$/
 	if (!specials.test(password)) error = 'Password should have at least one special character'
