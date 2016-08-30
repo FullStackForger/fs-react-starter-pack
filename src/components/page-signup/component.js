@@ -90,6 +90,7 @@ class SignupPage extends Component {
 										value={username.value}
 										onChange={this.onChange('username')}
 									/>
+									<FormControl.Feedback />
 									<HelpBlock>
 										{username.error}
 									</HelpBlock>
@@ -105,6 +106,7 @@ class SignupPage extends Component {
 										value={email.value}
 										onChange={this.onChange('email')}
 									/>
+									<FormControl.Feedback />
 									<HelpBlock>
 										{email.error}
 									</HelpBlock>
@@ -120,6 +122,7 @@ class SignupPage extends Component {
 										value={password.value}
 										onChange={this.onChange('password')}
 									/>
+									<FormControl.Feedback />
 									<HelpBlock>
 										{password.error}
 									</HelpBlock>
@@ -135,6 +138,7 @@ class SignupPage extends Component {
 										value={password2.value}
 										onChange={this.onChange('password2')}
 									/>
+									<FormControl.Feedback />
 									<HelpBlock>
 										{password2.error}
 									</HelpBlock>
