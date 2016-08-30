@@ -3,7 +3,6 @@ import React, { Component, PropTypes } from 'react'
 import { Grid, Col, Panel } from 'react-bootstrap'
 import { Form, FormGroup, FormControl } from 'react-bootstrap'
 import { Checkbox, Button, ControlLabel, HelpBlock } from 'react-bootstrap'
-import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { Link } from 'react-router'
 import { LinkContainer } from 'react-router-bootstrap'
 
