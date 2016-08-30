@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component, PropTypes} from 'react'
 
 import { Grid, Col, Panel } from 'react-bootstrap'
 import { Form, FormGroup, FormControl } from 'react-bootstrap'
@@ -12,60 +12,86 @@ const css = {
 	signupSpan: { paddingRight: '0.5em' }
 }
 
-export default ({
-	onSignupClick
-}) => (
-	<Grid>
-		<Col md={6} mdPush={3}>
-			<Panel>
-				<Form horizontal>
+class SignupPage extends Component {
+	constructor(props) {
+		super(props)
+		this.onSignupClick = this.onSignupClick.bind(this)
+		this.state = {
+			username: { value: '', valid: false, error: null },
+			email: { value: '', valid: false, error: null },
+			password: { value: '', valid: false, error: null },
+		}
+	}
 
-					<FormGroup controlId="signupUserName">
-						<Col componentClass={ControlLabel} sm={2}>
-							Username
-						</Col>
-						<Col sm={10}>
-							<FormControl type="email" placeholder="Email" />
-						</Col>
-					</FormGroup>
+	onSignupClick () {
+		this.props.handleSignup({
+			username: this.state.username.value,
+			email: this.state.email.value,
+			password: this.state.password.value
+		})
+	}
 
-					<FormGroup controlId="signupEmail">
-						<Col componentClass={ControlLabel} sm={2}>
-							Email
-						</Col>
-						<Col sm={10}>
-							<FormControl type="email" placeholder="Email" />
-						</Col>
-					</FormGroup>
+	render () {
+		return (
+			<Grid>
+				<Col md={6} mdPush={3}>
+					<Panel>
+						<Form horizontal>
 
-					<FormGroup controlId="signupPassword">
-						<Col componentClass={ControlLabel} sm={2}>
-							Password
-						</Col>
-						<Col sm={10}>
-							<FormControl type="password" placeholder="Password" />
-						</Col>
-					</FormGroup>
+							<FormGroup controlId="signupUserName">
+								<Col componentClass={ControlLabel} sm={2}>
+									Username
+								</Col>
+								<Col sm={10}>
+									<FormControl type="email" placeholder="Email" />
+								</Col>
+							</FormGroup>
 
-					<FormGroup controlId="signupPasswordConfirmation">
-						<Col componentClass={ControlLabel} sm={2}>
-							Password
-						</Col>
-						<Col sm={10}>
-							<FormControl type="password" placeholder="Confirm Password" />
-						</Col>
-					</FormGroup>
+							<FormGroup controlId="signupEmail">
+								<Col componentClass={ControlLabel} sm={2}>
+									Email
+								</Col>
+								<Col sm={10}>
+									<FormControl type="email" placeholder="Email" />
+								</Col>
+							</FormGroup>
 
-					<Button bsStyle="primary" bsSize="large" block onClick={onSignupClick}>
-						Sign up
-					</Button>
+							<FormGroup controlId="signupPassword">
+								<Col componentClass={ControlLabel} sm={2}>
+									Password
+								</Col>
+								<Col sm={10}>
+									<FormControl type="password" placeholder="Password" />
+								</Col>
+							</FormGroup>
 
-					<HelpBlock style={css.signupBlock}>
-						<span style={css.signupSpan}>Registered already?</span>
-						<Link to="/login">Log in</Link>
-					</HelpBlock>
-				</Form>
-			</Panel>
-		</Col>
-	</Grid>
-)
+							<FormGroup controlId="signupPasswordConfirmation">
+								<Col componentClass={ControlLabel} sm={2}>
+									Password
+								</Col>
+								<Col sm={10}>
+									<FormControl type="password" placeholder="Confirm Password" />
+								</Col>
+							</FormGroup>
+
+							<Button bsStyle="primary" bsSize="large" block onClick={this.onSignupClick}>
+								Sign up
+							</Button>
+
+							<HelpBlock style={css.signupBlock}>
+								<span style={css.signupSpan}>Registered already?</span>
+								<Link to="/login">Log in</Link>
+							</HelpBlock>
+						</Form>
+					</Panel>
+				</Col>
+			</Grid>
+		)
+	}
+}
+
+SignupPage.propTypes = {
+	handleSignup: PropTypes.func.isRequired
+}
+
+export default SignupPage
