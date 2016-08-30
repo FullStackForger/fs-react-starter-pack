@@ -7,6 +7,9 @@ import { Checkbox, Button, ControlLabel } from 'react-bootstrap'
 import { Link } from 'react-router'
 import { LinkContainer } from 'react-router-bootstrap'
 
+import { validateEmail, validateUsername } from '../../utils/validators'
+import { validatePassword, validatePassword2 } from '../../utils/validators'
+
 const css = {
 	signupBlock: { textAlign: 'center', marginTop: '1em' },
 	signupSpan: { paddingRight: '0.5em' }
@@ -16,10 +19,12 @@ class SignupPage extends Component {
 	constructor(props) {
 		super(props)
 		this.onSignupClick = this.onSignupClick.bind(this)
+		this.onChange = this.onChange.bind(this)
 		this.state = {
 			username: { value: '', valid: false, error: null },
 			email: { value: '', valid: false, error: null },
 			password: { value: '', valid: false, error: null },
+			password2: { value: '', valid: false, error: null },
 		}
 	}
 
@@ -27,11 +32,42 @@ class SignupPage extends Component {
 		this.props.handleSignup({
 			username: this.state.username.value,
 			email: this.state.email.value,
-			password: this.state.password.value
+			password: this.state.password.value,
+			password2: this.state.password.value,
 		})
 	}
 
+	onChange(key) {
+		return (event) => {
+			let value = event.target.value
+			let valid, error
+			({valid, error} = this.validate(key, value))
+			let state = {}
+			state[key] = {
+				value: value,
+				valid: valid,
+				error: error
+			}
+			this.setState(state)
+		}
+	}
+
+	validate(key, value) {
+		switch (key) {
+			case 'email': return validateEmail(value)
+			case 'password': return validatePassword(value)
+			case 'password2': return validatePassword2(value, this.state.password.value)
+			case 'username': return validateUsername(value)
+		}
+		return true
+	}
+
 	render () {
+		let email = this.state.email
+		let username = this.state.username
+		let password = this.state.password
+		let password2 = this.state.password2
+
 		return (
 			<Grid>
 				<Col md={6} mdPush={3}>
@@ -43,7 +79,13 @@ class SignupPage extends Component {
 									Username
 								</Col>
 								<Col sm={10}>
-									<FormControl type="email" placeholder="Email" />
+									<FormControl type="text" placeholder="Email"
+										value={username.value}
+										onChange={this.onChange('username')}
+									/>
+									<HelpBlock>
+										{username.error}
+									</HelpBlock>
 								</Col>
 							</FormGroup>
 
@@ -52,7 +94,13 @@ class SignupPage extends Component {
 									Email
 								</Col>
 								<Col sm={10}>
-									<FormControl type="email" placeholder="Email" />
+									<FormControl type="email" placeholder="Email"
+										value={email.value}
+										onChange={this.onChange('email')}
+									/>
+									<HelpBlock>
+										{email.error}
+									</HelpBlock>
 								</Col>
 							</FormGroup>
 
@@ -61,7 +109,13 @@ class SignupPage extends Component {
 									Password
 								</Col>
 								<Col sm={10}>
-									<FormControl type="password" placeholder="Password" />
+									<FormControl type="password" placeholder="Password"
+										value={password.value}
+										onChange={this.onChange('password')}
+									/>
+									<HelpBlock>
+										{password.error}
+									</HelpBlock>
 								</Col>
 							</FormGroup>
 
@@ -70,7 +124,13 @@ class SignupPage extends Component {
 									Password
 								</Col>
 								<Col sm={10}>
-									<FormControl type="password" placeholder="Confirm Password" />
+									<FormControl type="password" placeholder="Confirm Password"
+										value={password2.value}
+										onChange={this.onChange('password2')}
+									/>
+									<HelpBlock>
+										{password2.error}
+									</HelpBlock>
 								</Col>
 							</FormGroup>
 
