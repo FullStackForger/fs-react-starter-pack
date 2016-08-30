@@ -10,6 +10,16 @@ export const validateEmail = function(email) {
 	}
 }
 
+export const validateUsername = function(password) {
+	let error = null
+	let length = /^(.*){6,}$/
+	if (!length.test(password)) error = 'Password should have at least 6 characters'
+	return {
+		valid: error === null,
+		error: error
+	}
+}
+
 export const validatePassword = function(password) {
 	let error = null
 	let length = /^(.*){8,}$/
@@ -20,6 +30,16 @@ export const validatePassword = function(password) {
 	if (!letters.test(password)) error = 'Password should have at least one letter'
 	let digits = /^(.*[0-9].*)$/
 	if (!digits.test(password)) error = 'Password should have at least one digit'
+	return {
+		valid: error === null,
+		error: error
+	}
+}
+
+export const validatePassword2 = function(passwordConfirmation, password) {
+	let validation = validatePassword(passwordConfirmation)
+	let error = validation.error
+	if (passwordConfirmation != password) error = 'Confirmation doesn\'t match password'
 	return {
 		valid: error === null,
 		error: error
