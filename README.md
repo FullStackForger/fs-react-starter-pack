@@ -1,8 +1,36 @@
 
 
 
+## Setup
 
-## Routing
+### Client
+
+Install dependendencies
+```
+npm install
+```
+
+To start webpack dev server
+```
+npm start
+```
+
+### Server 
+
+Install dependencies
+```
+cd server
+npm install
+```
+
+Run with 
+```
+node server
+```
+
+## Barebones
+
+### Routing
 
 Routing has been done with [react-router 2.8.0][react-router] and [configuration as object][react-router-conf] passed to `Router` component.
 
