@@ -39,8 +39,7 @@ class SignupPage extends Component {
 		this.props.handleSignup({
 			username: this.state.username.value,
 			email: this.state.email.value,
-			password: this.state.password.value,
-			password2: this.state.password.value,
+			password: this.state.password.value
 		})
 	}
 
