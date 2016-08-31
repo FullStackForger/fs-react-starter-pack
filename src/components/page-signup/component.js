@@ -28,6 +28,13 @@ class SignupPage extends Component {
 		}
 	}
 
+	isFormReady() {
+		return this.state.username.valid
+			&& this.state.email.valid
+			&& this.state.password.valid
+			&& this.state.password2.valid
+	}
+
 	onSignupClick () {
 		this.props.handleSignup({
 			username: this.state.username.value,
@@ -145,7 +152,10 @@ class SignupPage extends Component {
 								</Col>
 							</FormGroup>
 
-							<Button bsStyle="primary" bsSize="large" block onClick={this.onSignupClick}>
+							<Button bsStyle="primary" bsSize="large" block
+								onClick={this.onSignupClick}
+								disabled={!this.isFormReady()}
+							>
 								Sign up
 							</Button>
 
