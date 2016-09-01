@@ -10,10 +10,14 @@ import history from './config/history'
 import store from './config/store'
 import routes from './config/routes'
 
+const authConfig = {
+	store: store,
+	baseUrl: 'http://localhost:8080/api/'
+}
 
 ReactDOM.render(
 	<Provider store={store}>
-		<Auth store={store}>
+		<Auth {...authConfig}>
 			<Router history={history} routes={routes} />
 		</Auth>
 	</Provider>,
