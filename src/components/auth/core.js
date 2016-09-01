@@ -4,6 +4,9 @@ import uid from 'uid'
 const defaults = {
 	config: {
 		tokenName: 'if-token',
+		baseUrl: '/',
+		loginUrl: '/auth/login',
+		signupUrl: '/auth/signup',
 		store: null
 	},
 	state: {
@@ -11,7 +14,7 @@ const defaults = {
 		authenticated: false,
 		token: null,
 		error: null,
-		updated: false
+		updated: false,
 	}
 }
 
