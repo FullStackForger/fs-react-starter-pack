@@ -5,8 +5,8 @@ const defaults = {
 	config: {
 		tokenName: 'if-token',
 		baseUrl: '/',
-		loginUrl: '/auth/login',
-		signupUrl: '/auth/signup',
+		loginUrl: 'auth/login',
+		signupUrl: 'auth/signup',
 		store: null
 	},
 	state: {
@@ -15,6 +15,13 @@ const defaults = {
 		token: null,
 		error: null,
 		updated: false,
+	},
+	fetchOpts: {
+		method: 'POST',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+		}
 	}
 }
 
@@ -33,6 +40,7 @@ internals.notifySubscribers = () => {
 		})
 	})
 }
+
 
 const init = opts => {
 	for (var key in opts) {
@@ -62,19 +70,32 @@ const removeToken = () => internals.storage.remove(internals.config.tokenName)
 const isAuthenticated = () => (!!getToken())
 
 const signup = (user, options) => (new Promise((resolve, reject) => {
-	setTimeout(() => {
-		setToken('some.signup.token')
-		internals.notifySubscribers()
-		resolve(getToken())
-	}, 10)
+	let baseUrl, signupUrl
+	({baseUrl, signupUrl} = internals.config)
+	let url = baseUrl + signupUrl
+	let opts = Object.assign(defaults.fetchOpts, {
+		body: JSON.stringify(userData)
+	})
+	return fetch(url, opts)
+		.then((response) => (response.json()))
+		.then((data) => {
+			return setToken(data.token)
+		})
 }))
 
-const login = (user, options) => (new Promise((resolve, reject) => {
-	setTimeout(() => {
-		setToken('some.login.token')
-		resolve(getToken())
-	}, 10)
-}))
+const login = (userData, options) => {
+	let baseUrl, loginUrl
+	({baseUrl, loginUrl} = internals.config)
+	let url = baseUrl + loginUrl
+	let opts = Object.assign(defaults.fetchOpts, {
+		body: JSON.stringify(userData)
+	})
+	return fetch(url, opts)
+		.then((response) => (response.json()))
+		.then((data) => {
+			return setToken(data.token)
+		})
+}
 
 const logout = () => {
 	return new Promise((resolve, reject) => {
