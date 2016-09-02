@@ -41,6 +41,19 @@ internals.notifySubscribers = () => {
 	})
 }
 
+internals.checkResponseStatus = (response) => {
+  if (response.status >= 200 && response.status < 300) {
+    return response
+  } else {
+    var error = new Error(response.statusText)
+    error.response = response
+    throw error
+  }
+}
+
+internals.parseResponseToJSON = (response) => {
+  return response.json()
+}
 
 const init = opts => {
 	for (var key in opts) {
@@ -69,19 +82,19 @@ const removeToken = () => internals.storage.remove(internals.config.tokenName)
 
 const isAuthenticated = () => (!!getToken())
 
-const signup = (user, options) => (new Promise((resolve, reject) => {
+const signup = (user, options) => {
 	let baseUrl, signupUrl
 	({baseUrl, signupUrl} = internals.config)
 	let url = baseUrl + signupUrl
 	let opts = Object.assign(defaults.fetchOpts, {
 		body: JSON.stringify(userData)
 	})
+
 	return fetch(url, opts)
-		.then((response) => (response.json()))
-		.then((data) => {
-			return setToken(data.token)
-		})
-}))
+		.then(internals.checkResponseStatus)
+		.then(internals.parseResponseToJSON)
+		.then((data) => (setToken(data.token)))
+}
 
 const login = (userData, options) => {
 	let baseUrl, loginUrl
@@ -90,11 +103,11 @@ const login = (userData, options) => {
 	let opts = Object.assign(defaults.fetchOpts, {
 		body: JSON.stringify(userData)
 	})
+
 	return fetch(url, opts)
-		.then((response) => (response.json()))
-		.then((data) => {
-			return setToken(data.token)
-		})
+		.then(internals.checkResponseStatus)
+		.then(internals.parseResponseToJSON)
+		.then((data) => (setToken(data.token)))
 }
 
 const logout = () => {
