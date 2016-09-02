@@ -29,15 +29,14 @@ class LoginPage extends Component {
 	onChange(key) {
 		return (event) => {
 			let value = event.target.value
-			let valid, error
-			({valid, error} = this.validate(key, value))
-			let state = {}
-			state[key] = {
-				value: value,
-				valid: valid,
-				error: error
-			}
-			this.setState(state)
+			let validated =  this.validate(key, value)
+			this.setState({
+				[key]: {
+					value: value,
+					valid: validated.valid,
+					error: validated.error
+				}
+			})
 		}
 	}
 
@@ -110,17 +109,21 @@ class LoginPage extends Component {
 								</Col>
 							</FormGroup>
 
-							<Button bsStyle="primary" bsSize="large" block disabled={!formIsReady}
+							<Button bsStyle="primary" bsSize="large" block
+								disabled={!formIsReady}
 								onClick={this.onLoginClick}>
 								Log in
 							</Button>
 						</Form>
 						<HelpBlock style={css.signupBlock}>
-								<span style={css.signupSpan}>Don't have an account yet?</span>
+								<span style={css.signupSpan}>
+									Don't have an account yet?
+								</span>
 								<Link to="/signup">Sign up</Link>
 						</HelpBlock>
 					</Panel>
 				</Col>
+				{this.props.children}
 			</Grid>
 		)
 	}
