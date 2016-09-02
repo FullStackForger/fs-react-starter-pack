@@ -82,7 +82,7 @@ const removeToken = () => internals.storage.remove(internals.config.tokenName)
 
 const isAuthenticated = () => (!!getToken())
 
-const signup = (user, options) => {
+const signup = (userData, options) => {
 	let baseUrl, signupUrl
 	({baseUrl, signupUrl} = internals.config)
 	let url = baseUrl + signupUrl
