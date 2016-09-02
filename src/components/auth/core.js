@@ -1,29 +1,6 @@
 import Storage from '../storage/storage'
+import defaults from './defaults'
 import uid from 'uid'
-
-const defaults = {
-	config: {
-		tokenName: 'if-token',
-		baseUrl: '/',
-		loginUrl: 'auth/login',
-		signupUrl: 'auth/signup',
-		store: null
-	},
-	state: {
-		authenticating: false,
-		authenticated: false,
-		token: null,
-		error: null,
-		updated: false,
-	},
-	fetchOpts: {
-		method: 'POST',
-		headers: {
-			'Accept': 'application/json',
-			'Content-Type': 'application/json'
-		}
-	}
-}
 
 const internals = {
 	initialized: false,
