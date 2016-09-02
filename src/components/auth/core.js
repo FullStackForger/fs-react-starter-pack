@@ -59,46 +59,6 @@ const removeToken = () => internals.storage.remove(internals.config.tokenName)
 
 const isAuthenticated = () => (!!getToken())
 
-const signup = (userData, options) => {
-	let baseUrl, signupUrl
-	({baseUrl, signupUrl} = internals.config)
-	let url = baseUrl + signupUrl
-	let opts = Object.assign(defaults.fetchOpts, {
-		body: JSON.stringify(userData)
-	})
-
-	return fetch(url, opts)
-		.then(internals.checkResponseStatus)
-		.then(internals.parseResponseToJSON)
-		.then((data) => (setToken(data.token)))
-}
-
-const login = (userData, options) => {
-	let baseUrl, loginUrl
-	({baseUrl, loginUrl} = internals.config)
-	let url = baseUrl + loginUrl
-	let opts = Object.assign(defaults.fetchOpts, {
-		body: JSON.stringify(userData)
-	})
-
-	return fetch(url, opts)
-		.then(internals.checkResponseStatus)
-		.then(internals.parseResponseToJSON)
-		.then((data) => (setToken(data.token)))
-}
-
-const logout = () => {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			if (!!getToken()) {
-				removeToken()
-				resolve({success: true})
-			} else {
-				reject(new Error('You are trying to log out unauthenticated user.'))
-			}
-		})
-	})
-}
 
 const interceptState = (reducer) => (state, action) => {
 	internals.state = reducer(state, action)
@@ -111,7 +71,7 @@ const interceptState = (reducer) => (state, action) => {
 export default {
 	init: init,
 	interceptState: interceptState,
-	config: internals.config,
+	config: internals.config,		// todo: should be read only
 	defaults: defaults,
 	isAuthenticated: isAuthenticated,
 	login: login,

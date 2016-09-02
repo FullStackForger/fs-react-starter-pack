@@ -1,4 +1,4 @@
-export defaults {
+export default {
 	config: {
 		tokenName: 'if-token',
 		baseUrl: '/',
