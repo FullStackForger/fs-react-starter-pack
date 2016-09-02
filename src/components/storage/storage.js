@@ -30,9 +30,10 @@ Storage.prototype.get = function (key) {
 
 Storage.prototype.set = function (key, value) {
 		try {
-			return this.storage.setItem(key, value)
+			this.storage.setItem(key, value)
+			return value
 		} catch (e) {
-			this.cache[key] = value
+			return this.cache[key] = value
 		}
 }
 
