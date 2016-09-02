@@ -7,7 +7,6 @@ import history from '../../config/history'
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
 	handleSignup (userData) {
-		debugger;
 		let subscriberId = auth.subscribe((authStore) => {
 			if (authStore.authenticated) {
 				auth.unsubscribe(subscriberId)
