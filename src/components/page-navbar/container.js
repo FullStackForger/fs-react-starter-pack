@@ -3,9 +3,8 @@ import PageNavbar from './component'
 import auth from '../auth/auth'
 
 const mapStateToProps = (state) => {
-	return {
-		// updateds navbar state based on auth state
-		authenticated: state.auth.authenticated
+	return {	
+		authenticated: auth.isAuthenticated()
 	}
 }
 
