@@ -1,20 +1,13 @@
 import React, {Component, PropTypes} from 'react'
-import core from './core'
+import config from './internals/config' 
 
-class Auth extends Component {
+export default class Auth extends Component {
 	constructor (props) {
 		super(props)
-		core.init(props)
+		config.assign(props)
 	}
 
 	render() {
 		return this.props.children
 	}
 }
-
-Auth.propTypes = {
-	store: PropTypes.object.isRequired,
-	tokenName: PropTypes.string
-}
-
-export default Auth
