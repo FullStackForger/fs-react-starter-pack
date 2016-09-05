@@ -6,7 +6,7 @@ import Login from '../components/page-login/container'
 import Logout from '../components/page-logout/container'
 import Signup from '../components/page-signup/container'
 
-import auth from '../components/auth/auth'
+import auth from '../components/auth'
 
 const loginCheck = (nextState, replace, authState, redirectPath) => {
 	if (auth.isAuthenticated() !== authState) replace(redirectPath)
