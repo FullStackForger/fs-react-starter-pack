@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { Router } from 'react-router'
 
-import { Auth } from './components/auth'
+import { AuthRedux } from './components/auth-redux'
 
 import Layout from './components/layout';
 import history from './config/history'
@@ -17,9 +17,9 @@ const authConfig = {
 
 ReactDOM.render(
 	<Provider store={store}>
-		<Auth {...authConfig}>
+		<AuthRedux {...authConfig}>
 			<Router history={history} routes={routes} />
-		</Auth>
+		</AuthRedux>
 	</Provider>,
 	document.getElementById('app')
 );
