@@ -1,4 +1,4 @@
-//import authMiddleware from '../components/auth/middleware'
+import { authMiddleware } from '../components/auth-redux'
 
 export default [
 //	authMiddleware
