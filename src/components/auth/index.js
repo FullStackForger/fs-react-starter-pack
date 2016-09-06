@@ -1,14 +1,17 @@
 import { login, logout, signup } from './local'
-import { isAuthenticated } from './shared'
+import { isAuthenticated, getToken, setToken } from './shared'
 import config from './internals/config'
 
 import Auth from './component'
 export {Auth}
 
-export default {
+export default {	
 	init: config.init,
+	component: Auth,
 	isAuthenticated,
 	login,
 	logout,
-	signup
+	signup,
+	getToken,
+	setToken
 }
