@@ -13,7 +13,7 @@ export const signup = (userData, options) => {
 	return fetch(url, opts)
 		.then(checkResponseStatus)
 		.then(parseResponseToJSON)
-		.then((data) => (setToken(data.token)))
+		.then((data) => ({token: setToken(data.token)}))		
 }
 
 export const login = (userData, options) => {
@@ -26,7 +26,7 @@ export const login = (userData, options) => {
 	return fetch(url, opts)
 		.then(checkResponseStatus)
 		.then(parseResponseToJSON)
-		.then((data) => (setToken(data.token)))
+		.then((data) => ({token: setToken(data.token)}))
 }
 
 export const logout = () => {
