@@ -2,7 +2,7 @@ import storage from './internals/storage'
 import config from './internals/config'
 
 export const setToken = (token) => {
-    storage.set(config.tokenName, token)
+    return storage.set(config.tokenName, token)
 }
 
 export const getToken = () => {
