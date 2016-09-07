@@ -56,3 +56,5 @@ const authReducer = (state = defaultState, action) => {
 
 	return Object.assign(newState, { updated: false })
 }
+
+export default authReducer
