@@ -18,14 +18,13 @@ const authReducer = (state = defaultState, action) => {
 			return Object.assign(newState, {
 				authenticating: true,
 				authenticated: false,
-				payload: action.payload
 			})
 		case ACTION.LOGIN_SUCCESS:
 		case ACTION.SIGNIN_SUCCESS:
 			return Object.assign(newState, {
 				authenticated: true,
 				authenticating: false,
-				payload: action.payload
+				token: action.payload.token
 			})
 		case ACTION.LOGIN_FAILED:
 		case ACTION.SIGNUP_FAILED:
