@@ -28,14 +28,14 @@ export const logout = () => {
 }
 
 export const signup = (userData) => {
-	dispatch(AUTH.LOGIN, userData)
+	dispatch(AUTH.SIGNUP, userData)
 	return auth
-		.login(userData)
+		.signup(userData)
 		.then((token)=> {
-			dispatch(AUTH.LOGIN_SUCCESS, { token })
+			dispatch(AUTH.SIGNUP_SUCCESS, { token })
 		})
 		.catch((error) => {
 			console.error(error.trace)
-			dispatch(AUTH.LOGIN_FAILED, null, error)
+			dispatch(AUTH.SIGNUP_FAILED, null, error)
 		})	
 }
