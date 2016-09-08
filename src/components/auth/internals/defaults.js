@@ -5,7 +5,7 @@ export const configOpts = {
 	signupUrl: 'auth/signup'
 }
 
-export const fetchOpts ={
+export const fetchOpts = {
 	method: 'POST',
 	headers: {
 		'Accept': 'application/json',
