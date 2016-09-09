@@ -17,6 +17,11 @@ class AccountPage extends Component {
 		this.state = defaultState
 	}
 
+	onChange(field) {
+		return (event) => this.setState({
+			[field]: event.target.value
+		})
+	}
 	
 	render() {
 		return (
@@ -31,17 +36,28 @@ class AccountPage extends Component {
 									type="text" 
 									placeholder="Username" 
 									value={this.state.username}
+									onChange={this.onChange('username')}
 								/>
 							</FormGroup>
 
 							<FormGroup controlId="profileEmail">
 								<ControlLabel>Email</ControlLabel>
-								<FormControl type="email" placeholder="Email" />
+								<FormControl 
+									type="email" 
+									placeholder="Email"
+									value={this.state.email}
+									onChange={this.onChange('email')} 
+								/>
 							</FormGroup>
 
 							<FormGroup controlId="profileBio">
 								<ControlLabel>Bio</ControlLabel>
-								<FormControl componentClass="textarea" placeholder="Bio" />
+								<FormControl 
+									componentClass="textarea" 
+									placeholder="Bio"
+									value={this.state.bio}
+									onChange={this.onChange('bio')} 
+								/>
 							</FormGroup>
 
 							<Button bsStyle="primary" className="pull-right">UpdateInformation</Button>
