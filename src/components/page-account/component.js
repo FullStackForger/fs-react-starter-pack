@@ -5,11 +5,16 @@ import { Checkbox, Button, ControlLabel, HelpBlock } from 'react-bootstrap'
 import { Link } from 'react-router'
 import { LinkContainer } from 'react-router-bootstrap'
 
-
+const defaultState = {
+	username: '',
+	email: '',
+	bio: ''
+}
 
 class AccountPage extends Component {
 	constructor(props) {
-		super(props)	
+		super(props)
+		this.state = defaultState
 	}
 
 	
@@ -22,7 +27,11 @@ class AccountPage extends Component {
 
 							<FormGroup controlId="profileUsername">
 								<ControlLabel>Username</ControlLabel>
-								<FormControl type="text" placeholder="Username" />
+								<FormControl 
+									type="text" 
+									placeholder="Username" 
+									value={this.state.username}
+								/>
 							</FormGroup>
 
 							<FormGroup controlId="profileEmail">
