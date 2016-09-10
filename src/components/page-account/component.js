@@ -39,6 +39,7 @@ class AccountPage extends Component {
 							<FormGroup controlId="profileUsername">
 								<ControlLabel>Username</ControlLabel>
 								<FormControl
+									disabled
 									type="text" 
 									placeholder="Username" 
 									value={this.state.username}
@@ -48,7 +49,8 @@ class AccountPage extends Component {
 
 							<FormGroup controlId="profileEmail">
 								<ControlLabel>Email</ControlLabel>
-								<FormControl 
+								<FormControl
+									disabled 
 									type="email" 
 									placeholder="Email"
 									value={this.state.email}
