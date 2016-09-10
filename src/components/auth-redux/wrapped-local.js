@@ -18,7 +18,7 @@ export const logout = () => {
 	dispatch(AUTH.LOGOUT)
 	return auth
 		.logout()
-		.then((token)=> {
+		.then(()=> {
 			dispatch(AUTH.LOGOUT_SUCCESS, { })
 		})
 		.catch((error) => {
