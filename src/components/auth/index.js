@@ -1,4 +1,4 @@
-import { isAuthenticated, getToken, setToken } from './shared'
+import { isAuthenticated, getToken, setToken, getAuthHeader } from './shared'
 import { login, logout, signup } from './local'
 import { getProfile, updateProfile } from './user'
 
@@ -16,6 +16,7 @@ export default {
 	signup,
 	getToken,
 	setToken,
+	getAuthHeader,
 	getProfile,
 	updateProfile
 }

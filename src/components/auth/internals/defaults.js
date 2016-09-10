@@ -1,5 +1,7 @@
 export const configOpts = {
 	tokenName: 'if-token',
+	authHeader: 'Authorization',
+	authToken: 'Bearer',
 	baseUrl: '/',
 	loginUrl: 'auth/login',
 	signupUrl: 'auth/signup',

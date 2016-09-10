@@ -13,4 +13,13 @@ export const removeToken = () => {
     storage.remove(config.tokenName)
 }
 
+export const getAuthHeader = () => {
+    let token;
+    if (isAuthenticated() && config.authHeader && config.authToken) {
+        let token = config.authToken + ' ' + getToken()
+        return {[config.authHeader]: token }
+    }
+    return {}    
+}
+
 export const isAuthenticated = () => (!!getToken())
