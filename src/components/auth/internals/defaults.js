@@ -2,7 +2,8 @@ export const configOpts = {
 	tokenName: 'if-token',
 	baseUrl: '/',
 	loginUrl: 'auth/login',
-	signupUrl: 'auth/signup'
+	signupUrl: 'auth/signup',
+	profileUrl: 'me'
 }
 
 export const fetchOpts = {

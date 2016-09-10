@@ -1,5 +1,7 @@
-import { login, logout, signup } from './local'
 import { isAuthenticated, getToken, setToken } from './shared'
+import { login, logout, signup } from './local'
+import { getProfile, updateProfile } from './user'
+
 import config from './internals/config'
 
 import Auth from './component'
@@ -13,5 +15,7 @@ export default {
 	logout,
 	signup,
 	getToken,
-	setToken
+	setToken,
+	getProfile,
+	updateProfile
 }
