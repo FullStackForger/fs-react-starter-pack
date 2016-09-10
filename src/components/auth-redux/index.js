@@ -12,11 +12,11 @@ export { authReducer }
 
 const isAuthenticated = auth.isAuthenticated
 
-export default {
+export default Object.assign({}, auth, {
 	component: AuthRedux,
 	authMiddleware,
 	isAuthenticated,
 	login,
 	logout,
 	signup
-}
+})
