@@ -13,6 +13,10 @@ const css = {
 	signupSpan: { paddingRight: '0.5em' }
 }
 
+const propTypes = {
+	handleSubmit: PropTypes.func.isRequired
+}
+
 class LoginPage extends Component {
 	constructor(props) {
 		super(props)
@@ -129,8 +133,6 @@ class LoginPage extends Component {
 	}
 }
 
-LoginPage.propTypes = {
-	handleSubmit: PropTypes.func.isRequired
-}
+LoginPage.propTypes = propTypes
 
 export default LoginPage
