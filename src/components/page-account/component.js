@@ -14,7 +14,13 @@ const defaultState = {
 class AccountPage extends Component {
 	constructor(props) {
 		super(props)
-		this.state = defaultState
+		this.state = defaultState	
+	}
+
+	componentDidMount () {		
+		this.props.getProfile()
+			.then((data) => this.setState(data))
+			.catch((err) => console.error(err))
 	}
 
 	onChange(field) {
@@ -32,7 +38,7 @@ class AccountPage extends Component {
 
 							<FormGroup controlId="profileUsername">
 								<ControlLabel>Username</ControlLabel>
-								<FormControl 
+								<FormControl
 									type="text" 
 									placeholder="Username" 
 									value={this.state.username}

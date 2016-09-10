@@ -1,5 +1,5 @@
 import Layout from '../components/layout'
-import Account from '../components/page-account/component'
+import Account from '../components/page-account/container'
 import Home from '../components/page-home/component'
 import Info from '../components/page-info/component'
 import Login from '../components/page-login/container'
