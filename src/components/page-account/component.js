@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import {Grid, Col, Panel} from 'react-bootstrap'
 import { Form, FormGroup, FormControl } from 'react-bootstrap'
 import { Checkbox, Button, ControlLabel, HelpBlock } from 'react-bootstrap'
@@ -9,6 +9,11 @@ const defaultState = {
 	username: '',
 	email: '',
 	bio: ''
+}
+
+const propTypes = {
+	getProfile: PropTypes.func.isRequired,
+	updateProfile: PropTypes.func.isRequired
 }
 
 class AccountPage extends Component {
@@ -86,5 +91,7 @@ class AccountPage extends Component {
 		)
 	}
 }
+
+AccountPage.propTypes = propTypes
 
 export default AccountPage
