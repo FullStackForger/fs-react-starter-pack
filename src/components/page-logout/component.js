@@ -10,17 +10,16 @@ class LogoutPage extends React.Component {
 		this.timer = null
 		this.state = {
 			timeout: this.props.timeout
-		}
-		this.onTimout = this.props.onTimeout
+		}	
 	}
 
 	componentDidMount() {
-		this.props.onLogout()
+		this.props.logout()
 		this.timer = setInterval(() => {
 			let timeout = this.state.timeout - 1
 			if (timeout <= 0) {
 				this.clearTimer()
-				this.onTimout()
+				this.props.redirect()
 				return
 			}
 			this.setState({

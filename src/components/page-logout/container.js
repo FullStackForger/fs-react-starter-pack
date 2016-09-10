@@ -5,14 +5,10 @@ import auth from '../auth-redux'
 
 const mapStateToProps = (state, ownProps) => ({
 	timeout: 3,
-	onTimeout: () => history.push('/')
-})
-
-const mapDispatchToProps = (dispatch, ownProps) => ({
-	onLogout: auth.logout
+	redirect: () => history.push('/'),
+	logout: auth.logout
 })
 
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+	mapStateToProps	
 )(PageLogout)
