@@ -33,19 +33,11 @@ class AccountPage extends Component {
 	}
 	componentDidMount () {		
 		this.props.getProfile()
-			.then((data) => {
-				let { 
-					email = '', 
-					username = '', 
-					bio = ''
-				} = data
-				this.updateState({
-					email, 
-					username, 
-					bio					
-				})
-			})
-			.catch((err) => console.error(err))
+			.then((data) => this.updateState({
+				email: data.email,
+				username: data.username,
+				bio: data.bio || ''								
+			})).catch((err) => console.error(err))
 	}
 
 	onChange(field) {				
