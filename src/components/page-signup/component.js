@@ -92,7 +92,7 @@ class SignupPage extends Component {
 									Username
 								</Col>
 								<Col sm={10}>
-									<FormControl type="text" placeholder="Email"
+									<FormControl type="text" placeholder="Username"
 										value={username.value}
 										onChange={this.onChange('username')}
 									/>
