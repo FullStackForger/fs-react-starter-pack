@@ -8,7 +8,10 @@ export const getProfile = (options) => {
 	let url = baseUrl + profileUrl
 	let opts = Object.assign({}, fetchOpts, {
 		method: 'GET',
-		headers: new Headers(getAuthHeader()),
+		headers: Object.assign({},
+			fetchOpts.headers,
+			getAuthHeader()
+		),
 	}, options)
 	return fetch(url, opts)
 		.then(checkResponseStatus)
@@ -20,10 +23,12 @@ export const updateProfile = (profileData, options) => {
 	let url = baseUrl + profileUrl
 	let opts = Object.assign({}, fetchOpts, {
 		method: 'PUT',
-		headers: new Headers(getAuthHeader()),
+		headers: Object.assign({},
+			fetchOpts.headers,
+			getAuthHeader()
+		),
 		body: JSON.stringify(profileData)
 	}, options)
 	return fetch(url, opts)
 		.then(checkResponseStatus)
-		.then(parseResponseToJSON)
 }
