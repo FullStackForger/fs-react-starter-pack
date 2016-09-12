@@ -20,11 +20,23 @@ class AccountPage extends Component {
 	constructor(props) {
 		super(props)
 		this.state = defaultState	
+		this.onSubmit = this.onSubmit.bind(this)
 	}
 
 	componentDidMount () {		
 		this.props.getProfile()
-			.then((data) => this.setState(data))
+			.then((data) => {
+				let { 
+					email = '', 
+					username = '', 
+					bio = ''
+				} = data
+				this.setState({
+					email, 
+					username, 
+					bio
+				})
+			})
 			.catch((err) => console.error(err))
 	}
 
@@ -34,6 +46,12 @@ class AccountPage extends Component {
 		})
 	}
 	
+	onSubmit () {
+		this.props.updateProfile({
+			bio: this.state.bio
+		})
+	}
+
 	render() {
 		return (
 			<Grid>
@@ -73,7 +91,11 @@ class AccountPage extends Component {
 								/>
 							</FormGroup>
 
-							<Button bsStyle="primary" className="pull-right">UpdateInformation</Button>
+							<Button 
+								bsStyle="primary" 
+								className="pull-right"
+								onClick={this.onSubmit}
+							>UpdateInformation</Button>
 						</Form>
 					</Col></Panel>
 				</Col>
