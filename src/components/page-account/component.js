@@ -5,10 +5,12 @@ import { Checkbox, Button, ControlLabel, HelpBlock } from 'react-bootstrap'
 import { Link } from 'react-router'
 import { LinkContainer } from 'react-router-bootstrap'
 
+const bioMaxLength = 160
 const defaultState = {
 	username: '',
 	email: '',
-	bio: ''
+	bio: '',
+	bioCharsLeft: bioMaxLength
 }
 
 const propTypes = {
@@ -22,7 +24,13 @@ class AccountPage extends Component {
 		this.state = defaultState	
 		this.onSubmit = this.onSubmit.bind(this)
 	}
-
+	updateState(state) {
+		let bio = state.bio || this.state.bio
+		let bioCharsLeft = bioMaxLength - bio.length
+		this.setState(Object.assign({}, state, {
+			bioCharsLeft
+		}))
+	}
 	componentDidMount () {		
 		this.props.getProfile()
 			.then((data) => {
@@ -31,18 +39,18 @@ class AccountPage extends Component {
 					username = '', 
 					bio = ''
 				} = data
-				this.setState({
+				this.updateState({
 					email, 
 					username, 
-					bio
+					bio					
 				})
 			})
 			.catch((err) => console.error(err))
 	}
 
-	onChange(field) {
-		return (event) => this.setState({
-			[field]: event.target.value
+	onChange(field) {				
+		return (event) => this.updateState({ 
+			[field]: event.target.value,			
 		})
 	}
 	
@@ -89,6 +97,9 @@ class AccountPage extends Component {
 									value={this.state.bio}
 									onChange={this.onChange('bio')} 
 								/>
+								<HelpBlock
+									className="pull-right"
+								>{this.state.bioCharsLeft}</HelpBlock>
 							</FormGroup>
 
 							<Button 
