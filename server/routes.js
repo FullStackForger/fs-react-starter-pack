@@ -58,7 +58,7 @@ Router.put('/me', verifyCredentials, function(req, res) {
 		if (err || !user) {
       return res.status(400).send({ message: 'User not found' })
     }
-    user.username = req.body.username
+    user.username = req.body.username || user.username
     user.email = req.body.email || user.email
 		user.bio = req.body.bio || ''
     user.save(function(err) {
