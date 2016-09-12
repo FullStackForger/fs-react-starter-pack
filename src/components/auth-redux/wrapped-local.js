@@ -9,7 +9,7 @@ export const login = (userData) => {
 			dispatch(AUTH.LOGIN_SUCCESS, { token })
 		})
 		.catch((error) => {
-			console.error(error.trace)
+			console.error(error)
 			dispatch(AUTH.LOGIN_FAILED, null, error)
 		})	
 }
@@ -22,7 +22,7 @@ export const logout = () => {
 			dispatch(AUTH.LOGOUT_SUCCESS, { })
 		})
 		.catch((error) => {
-			console.error(error.trace)
+			console.error(error)
 			dispatch(AUTH.LOGIN_FAILED, null, error)
 		})	
 }
@@ -35,7 +35,7 @@ export const signup = (userData) => {
 			dispatch(AUTH.SIGNUP_SUCCESS, { token })
 		})
 		.catch((error) => {
-			console.error(error.trace)
+			console.error(error)
 			dispatch(AUTH.SIGNUP_FAILED, null, error)
 		})	
 }
