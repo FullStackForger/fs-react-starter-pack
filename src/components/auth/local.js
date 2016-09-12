@@ -6,7 +6,7 @@ import { setToken, getToken, removeToken } from './shared'
 export const signup = (userData, options) => {
 	let {baseUrl, signupUrl} = config
 	let url = baseUrl + signupUrl
-	let opts = Object.assign(fetchOpts, {
+	let opts = Object.assign({}, fetchOpts, {
 		body: JSON.stringify(userData)
 	})
 
@@ -19,7 +19,7 @@ export const signup = (userData, options) => {
 export const login = (userData, options) => {
 	let {baseUrl, loginUrl} = config
 	let url = baseUrl + loginUrl
-	let opts = Object.assign(fetchOpts, {
+	let opts = Object.assign({}, fetchOpts, {
 		body: JSON.stringify(userData)
 	})
 	

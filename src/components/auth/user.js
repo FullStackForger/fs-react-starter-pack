@@ -6,7 +6,7 @@ import { getAuthHeader } from './shared'
 export const getProfile = (options) => {
 	let {baseUrl, profileUrl} = config
 	let url = baseUrl + profileUrl
-	let opts = Object.assign(fetchOpts, {
+	let opts = Object.assign({}, fetchOpts, {
 		method: 'GET',
 		headers: new Headers(getAuthHeader()),
 	}, options)
@@ -18,10 +18,10 @@ export const getProfile = (options) => {
 export const updateProfile = (profileData, options) => {
 	let {baseUrl, profileUrl} = config
 	let url = baseUrl + profileUrl
-	let opts = Object.assign(fetchOpts, {
-		methid: 'PUT',
+	let opts = Object.assign({}, fetchOpts, {
+		method: 'PUT',
 		headers: new Headers(getAuthHeader()),
-		body: JSON.stringify(userData)
+		body: JSON.stringify(profileData)
 	}, options)
 	return fetch(url, opts)
 		.then(checkResponseStatus)
