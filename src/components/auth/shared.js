@@ -1,5 +1,6 @@
 import storage from './internals/storage'
 import config from './internals/config'
+import { parseJWT } from './auth/utils'
 
 export const setToken = (token) => {
     return storage.set(config.tokenName, token)
@@ -23,32 +24,12 @@ export const getAuthHeader = () => {
 }
 
 export const isAuthenticated = () => {
-    const token = getToken()
+    const token = parseJWT(getToken())
+    if (!token) return false
 
-    if (!token) {
-        return false
-    }
-    let claims = token.split('.')
-    if (claims.length != 3) {
-        return false
-    }
+    if (!token.payload.exp) return true
 
-    try {        
-        let public64 = claims[1]
-        let publicClaims = JSON.parse(atob(claims[1]))
-        
-        if (!publicClaims.exp) {
-            return true
-        }
-
-        let isExpTimestamp = typeof publicClaims.exp === 'number'
-        if (!isExpTimestamp) {
-            return false
-        }
-        
-        return Math.round(new Date().getTime() / 1000) < publicClaims.exp
-        
-    } catch (e) {
-        return false
-    }
+    let isExpTimestamp = typeof publicClaims.exp === 'number'
+    if (!isExpTimestamp) return false
+    return Math.round(new Date().getTime() / 1000) < publicClaims.exp
 }
