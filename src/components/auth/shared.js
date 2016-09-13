@@ -46,7 +46,7 @@ export const isAuthenticated = () => {
             return false
         }
         
-        return Math.round(new Date().getTime() / 1000) < exp
+        return Math.round(new Date().getTime() / 1000) < publicClaims.exp
         
     } catch (e) {
         return false
