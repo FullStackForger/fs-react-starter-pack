@@ -13,12 +13,15 @@ export const parseResponseToJSON = (response) => {
 }
 
 export const parseJWT = (token) => {
-    if (!token) return null
-    let parts = token.split('.')
-    if (parts.length != 3) return null
+  if (!token) return null
+  let base64Url = token
+  let base64 = base64Url.replace('-', '+').replace('_', '/')
+  let parts = base64.split('.')
+  if (parts.length != 3) return null
 
     try {
       let [headerRaw, payloadRaw, signatureRaw] = parts
+
       let header = JSON.parse(atob(headerRaw))
       let payload = JSON.parse(atob(payloadRaw))
       let signature = atob(signatureRaw)
