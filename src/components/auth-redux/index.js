@@ -1,5 +1,5 @@
 import { auth } from './internals' 
-import { login, logout, signup } from './wrapped-local'
+import { login, logout, signup, refreshToken } from './wrapped-local'
 
 import AuthRedux from './component'
 export {AuthRedux}
@@ -18,5 +18,6 @@ export default Object.assign({}, auth, {
 	isAuthenticated,
 	login,
 	logout,
-	signup
+	signup,
+	refreshToken
 })
