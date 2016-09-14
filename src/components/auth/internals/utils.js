@@ -19,19 +19,19 @@ export const parseJWT = (token) => {
   let parts = base64.split('.')
   if (parts.length != 3) return null
 
-    try {
-      let [headerRaw, payloadRaw, signatureRaw] = parts
+  try {
+    let [headerRaw, payloadRaw, signatureRaw] = parts
 
-      let header = JSON.parse(atob(headerRaw))
-      let payload = JSON.parse(atob(payloadRaw))
-      let signature = atob(signatureRaw)
-      return {
-        header,
-        claims,
-        signature
-      }
-    } catch (err) {
-      console.error('Authentication token is invalid')
-      return null
+    let header = JSON.parse(atob(headerRaw))
+    let payload = JSON.parse(atob(payloadRaw))
+    let signature = atob(signatureRaw)
+    return {
+      header,
+      claims,
+      signature
     }
+  } catch (err) {
+    console.error('Authentication token is invalid')
+    return null
+  }
 }
