@@ -39,3 +39,16 @@ export const signup = (userData) => {
 			dispatch(AUTH.SIGNUP_FAILED, null, error)
 		})	
 }
+
+export const refreshToken = () => {
+	dispatch(AUTH.REFRESH)
+	return auth
+		.refreshToken()
+		.then((token)=> {
+			dispatch(AUTH.REFRESH_SUCCESS, { token })
+		})
+		.catch((error) => {
+			console.error(error)
+			dispatch(AUTH.REFRESH_FAILED, null, error)
+		})
+}
