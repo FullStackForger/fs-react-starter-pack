@@ -15,7 +15,8 @@ export const parseResponseToJSON = (response) => {
 export const parseJWT = (token) => {
   if (!token) return null
   let base64Url = token
-  let base64 = base64Url.replace('-', '+').replace('_', '/')
+  let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/')
+
   let parts = base64.split('.')
   if (parts.length != 3) return null
 
@@ -31,7 +32,7 @@ export const parseJWT = (token) => {
       signature
     }
   } catch (err) {
-    console.error('Authentication token is invalid')
+    console.error(err)
     return null
   }
 }
