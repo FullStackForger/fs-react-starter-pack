@@ -27,7 +27,7 @@ export const parseJWT = (token) => {
     let signature = atob(signatureRaw)
     return {
       header,
-      claims,
+      payload,
       signature
     }
   } catch (err) {
