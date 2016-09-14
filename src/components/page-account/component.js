@@ -69,6 +69,9 @@ class AccountPage extends Component {
 	}
 
 	render() {
+		let exp = new Date(this.props.token.payload.exp * 1000)
+		let tokenExpiryDate = exp.toUTCString()
+		
 		return (
 			<Grid>
 				<Col md={6}>
@@ -140,7 +143,7 @@ class AccountPage extends Component {
 						<div className="panel-body">
 							<HelpBlock>
 								expires:<br />
-								<strong>{Date(this.props.token.payload.exp)}</strong>
+								<strong>{tokenExpiryDate}</strong>
 							</HelpBlock>	
 							<pre style={{fontSize: 9}}>
 								{this.props.token.raw}
