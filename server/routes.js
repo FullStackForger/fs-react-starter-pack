@@ -47,6 +47,11 @@ Router.post('/auth/signup', function(req, res) {
   });
 });
 
+Router.get('/auth/refresh', verifyCredentials, function(req, res) {
+  User.findById(req.user, function(err, user) {
+    res.send({ token: createJWT(user) })
+  });
+})
 
 Router.get('/me', verifyCredentials, function(req, res) {
   User.findById(req.user, function(err, user) {
