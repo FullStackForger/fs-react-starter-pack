@@ -5,11 +5,12 @@ export const configOpts = {
 	baseUrl: '/',
 	loginUrl: 'auth/login',
 	signupUrl: 'auth/signup',
+	refreshUrl: 'auth/refresh',
 	profileUrl: 'me'
 }
 
 export const fetchOpts = {
-	method: 'POST',
+	method: 'GET',
 	headers: {
 		'Accept': 'application/json',
 		'Content-Type': 'application/json'

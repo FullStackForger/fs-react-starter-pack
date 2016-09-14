@@ -15,7 +15,8 @@ const defaultState = {
 
 const propTypes = {
 	getProfile: PropTypes.func.isRequired,
-	updateProfile: PropTypes.func.isRequired
+	updateProfile: PropTypes.func.isRequired,
+	refreshToken: PropTypes.func.isRequired
 }
 
 class AccountPage extends Component {
@@ -23,6 +24,7 @@ class AccountPage extends Component {
 		super(props)
 		this.state = defaultState	
 		this.onSubmit = this.onSubmit.bind(this)
+		this.onRefresh = this.onRefresh.bind(this)
 	}
 	updateState(state) {
 		let bio = state.bio || this.state.bio
@@ -50,6 +52,10 @@ class AccountPage extends Component {
 		this.props.updateProfile({
 			bio: this.state.bio
 		})
+	}
+
+	onRefresh () {
+		this.props.refreshToken()
 	}
 
 	render() {
@@ -111,6 +117,17 @@ class AccountPage extends Component {
 							<Button block>Google +</Button>
 						</Form>
 					</Col></Panel>
+				</Col>
+
+				<Col md={6}>
+					<Panel header="Authentication token">
+						<div>
+							{this.props.token}
+							<Button className="btn-xs pull-right" onClick={this.onRefresh}>
+								<span className="glyphicon glyphicon-refresh"></span>
+							</Button>
+						</div>
+					</Panel>
 				</Col>
 			</Grid>
 		)

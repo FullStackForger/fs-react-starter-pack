@@ -2,9 +2,11 @@ import { connect } from 'react-redux'
 import auth from '../auth-redux'
 import AccountPage from './component'
 
-const { getProfile, updateProfile } = auth
+const { getProfile, updateProfile, refreshToken } = auth
  
 export default connect(() => ({
     getProfile,
-    updateProfile   
+    updateProfile,
+    refreshToken,
+    token: auth.getToken()
 }))(AccountPage)

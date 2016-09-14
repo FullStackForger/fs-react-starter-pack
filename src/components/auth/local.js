@@ -1,12 +1,13 @@
 import config from './internals/config'
 import { fetchOpts } from './internals/defaults'
 import { parseResponseToJSON, checkResponseStatus } from './internals/utils'
-import { setToken, getToken, removeToken } from './shared'
+import { setToken, getToken, removeToken, getAuthHeader } from './shared'
 
 export const signup = (userData, options) => {
 	let {baseUrl, signupUrl} = config
 	let url = baseUrl + signupUrl
 	let opts = Object.assign({}, fetchOpts, {
+		method: 'GET',
 		body: JSON.stringify(userData)
 	})
 
@@ -20,6 +21,8 @@ export const login = (userData, options) => {
 	let {baseUrl, loginUrl} = config
 	let url = baseUrl + loginUrl
 	let opts = Object.assign({}, fetchOpts, {
+		method: 'POST',
+		headers: Object.assign({}, fetchOpts.headers),
 		body: JSON.stringify(userData)
 	})
 	
@@ -42,10 +45,16 @@ export const logout = () => {
 	})
 }
 
-export const refresh = (options) => {
+export const refreshToken = (options) => {
 	let {baseUrl, refreshUrl} = config
 	let url = baseUrl + refreshUrl
-	let opts = Object.assign({}, fetchOpts, options)
+	let opts = Object.assign({}, fetchOpts, {
+		method: 'GET',
+		headers: Object.assign({},
+			fetchOpts.headers,
+			getAuthHeader()
+		),
+	}, options)
 	return fetch(url, opts) 
 		.then(checkResponseStatus)
 		.then(parseResponseToJSON)

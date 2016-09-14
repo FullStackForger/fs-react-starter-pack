@@ -1,5 +1,5 @@
 import { isAuthenticated, getToken, setToken, getAuthHeader } from './shared'
-import { login, logout, signup } from './local'
+import { login, logout, signup, refreshToken } from './local'
 import { getProfile, updateProfile } from './user'
 
 import config from './internals/config'
@@ -13,9 +13,10 @@ export default {
 	isAuthenticated,
 	login,
 	logout,
-	signup,
+	signup,	
 	getToken,
 	setToken,
+	refreshToken,
 	getAuthHeader,
 	getProfile,
 	updateProfile
