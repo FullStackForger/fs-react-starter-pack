@@ -10,7 +10,8 @@ const defaultState = {
 	username: '',
 	email: '',
 	bio: '',
-	bioCharsLeft: bioMaxLength
+	bioCharsLeft: bioMaxLength,
+	tokenRefreshed: null
 }
 
 const propTypes = {
@@ -27,6 +28,7 @@ class AccountPage extends Component {
 	constructor(props) {
 		super(props)
 		this.state = defaultState	
+		this.state.token = this.props.token
 		this.onSubmit = this.onSubmit.bind(this)
 		this.onRefresh = this.onRefresh.bind(this)
 	}
@@ -59,7 +61,11 @@ class AccountPage extends Component {
 	}
 
 	onRefresh () {
-		this.props.refreshToken()
+		this.props.refreshToken().then(() => {			
+			this.setState({
+				tokenRefreshed: Date.now()
+			})
+		})
 	}
 
 	render() {
@@ -138,7 +144,7 @@ class AccountPage extends Component {
 							</HelpBlock>	
 							<pre style={{fontSize: 9}}>
 								{this.props.token.raw}
-							</pre>
+							</pre>							
 						</div>	
 					</div>				
 				</Col>
