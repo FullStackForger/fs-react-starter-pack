@@ -8,5 +8,5 @@ export default connect(() => ({
     getProfile,
     updateProfile,
     refreshToken,
-    token: auth.getToken()
+    token: auth.getToken(true)
 }))(AccountPage)

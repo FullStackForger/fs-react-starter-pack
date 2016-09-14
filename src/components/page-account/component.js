@@ -122,7 +122,9 @@ class AccountPage extends Component {
 				<Col md={6}>
 					<Panel header="Authentication token">
 						<div>
-							{this.props.token}
+							<pre>
+							{JSON.stringify(this.props.token.payload, null, 2)}
+							</pre>							
 							<Button className="btn-xs pull-right" onClick={this.onRefresh}>
 								<span className="glyphicon glyphicon-refresh"></span>
 							</Button>

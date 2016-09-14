@@ -6,8 +6,10 @@ export const setToken = (token) => {
     return storage.set(config.tokenName, token)
 }
 
-export const getToken = () => {
-    return storage.get(config.tokenName)
+export const getToken = (asJSON = false) => {
+    let token = storage.get(config.tokenName)     
+    if (asJSON) return parseJWT(token)
+    return token
 }
 
 export const removeToken = () => {
