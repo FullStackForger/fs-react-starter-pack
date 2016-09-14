@@ -1,6 +1,6 @@
 import storage from './internals/storage'
 import config from './internals/config'
-import { parseJWT } from './auth/utils'
+import { parseJWT } from './internals/utils'
 
 export const setToken = (token) => {
     return storage.set(config.tokenName, token)
