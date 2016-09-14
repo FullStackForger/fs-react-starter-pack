@@ -16,7 +16,11 @@ const defaultState = {
 const propTypes = {
 	getProfile: PropTypes.func.isRequired,
 	updateProfile: PropTypes.func.isRequired,
-	refreshToken: PropTypes.func.isRequired
+	refreshToken: PropTypes.func.isRequired,
+	token: PropTypes.shape({
+		payload: PropTypes.object.isRequired,
+		raw: PropTypes.string.isRequired
+	})
 }
 
 class AccountPage extends Component {
@@ -120,16 +124,23 @@ class AccountPage extends Component {
 				</Col>
 
 				<Col md={6}>
-					<Panel header="Authentication token">
-						<div>
-							<pre>
-							{JSON.stringify(this.props.token.payload, null, 2)}
-							</pre>							
+					<div className="panel panel-default">
+						<div className="panel-heading">
+							Authentication token
 							<Button className="btn-xs pull-right" onClick={this.onRefresh}>
 								<span className="glyphicon glyphicon-refresh"></span>
 							</Button>
 						</div>
-					</Panel>
+						<div className="panel-body">
+							<HelpBlock>
+								expires:<br />
+								<strong>{Date(this.props.token.payload.exp)}</strong>
+							</HelpBlock>	
+							<pre style={{fontSize: 9}}>
+								{this.props.token.raw}
+							</pre>
+						</div>	
+					</div>				
 				</Col>
 			</Grid>
 		)
