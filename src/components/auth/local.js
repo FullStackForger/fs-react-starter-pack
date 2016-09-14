@@ -41,3 +41,13 @@ export const logout = () => {
 		})
 	})
 }
+
+export const refresh = (options) => {
+	let {baseUrl, refreshUrl} = config
+	let url = baseUrl + refreshUrl
+	let opts = Object.assign({}, fetchOpts, options)
+	return fetch(url, opts) 
+		.then(checkResponseStatus)
+		.then(parseResponseToJSON)
+		.then((data) => ({token: setToken(data.token)}))
+}
