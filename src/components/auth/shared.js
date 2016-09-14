@@ -27,9 +27,10 @@ export const isAuthenticated = () => {
     const token = parseJWT(getToken())
     if (!token) return false
 
-    if (!token.payload.exp) return true
+    let exp = token.payload.exp
+    if (!exp) return true
 
-    let isExpTimestamp = typeof publicClaims.exp === 'number'
+    let isExpTimestamp = typeof exp === 'number'
     if (!isExpTimestamp) return false
-    return Math.round(new Date().getTime() / 1000) < publicClaims.exp
+    return Math.round(new Date().getTime() / 1000) < exp
 }
