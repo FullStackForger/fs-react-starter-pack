@@ -2,6 +2,9 @@
   "name": "bootstrap-server",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {},
   "devDependencies": {
     "bcryptjs": "^2.3.0",
