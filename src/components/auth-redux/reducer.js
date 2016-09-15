@@ -24,14 +24,15 @@ const authReducer = (state = defaultState, action) => {
 			return Object.assign(newState, {
 				authenticated: true,
 				authenticating: false,
-				token: action.payload.token
+				token: action.token
 			})
 		case ACTION.LOGIN_FAILED:
 		case ACTION.SIGNUP_FAILED:
+		debugger;
 			return Object.assign(newState, {
 				authenticated: false,
 				authenticating: false,
-				error: action.payload.error
+				error: action.error
 			})
 
 		// LOGOUT
@@ -49,7 +50,7 @@ const authReducer = (state = defaultState, action) => {
 			return Object.assign(newState, {
 				authenticated: false,
 				authenticating: false,
-				error: action.payload.error
+				error: action.error
 			})
 	}
 
