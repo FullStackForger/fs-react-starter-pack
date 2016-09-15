@@ -7,14 +7,14 @@ export const signup = (userData, options) => {
 	let {baseUrl, signupUrl} = config
 	let url = baseUrl + signupUrl
 	let opts = Object.assign({}, fetchOpts, {
-		method: 'GET',
+		method: 'POST',
 		body: JSON.stringify(userData)
 	})
 
 	return fetch(url, opts)
 		.then(checkResponseStatus)
 		.then(parseResponseToJSON)
-		.then((data) => ({token: setToken(data.token)}))		
+		.then((data) => ({token: setToken(data.token)}))
 }
 
 export const login = (userData, options) => {
@@ -22,10 +22,9 @@ export const login = (userData, options) => {
 	let url = baseUrl + loginUrl
 	let opts = Object.assign({}, fetchOpts, {
 		method: 'POST',
-		headers: Object.assign({}, fetchOpts.headers),
 		body: JSON.stringify(userData)
-	})
-	
+	}, options)
+
 	return fetch(url, opts)
 		.then(checkResponseStatus)
 		.then(parseResponseToJSON)
@@ -55,7 +54,7 @@ export const refreshToken = (options) => {
 			getAuthHeader()
 		),
 	}, options)
-	return fetch(url, opts) 
+	return fetch(url, opts)
 		.then(checkResponseStatus)
 		.then(parseResponseToJSON)
 		.then((data) => ({token: setToken(data.token)}))
