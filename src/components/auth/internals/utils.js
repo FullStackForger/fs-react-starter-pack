@@ -36,3 +36,21 @@ export const parseJWT = (token) => {
     return null
   }
 }
+
+export const isDefined = (value) => {
+	return value !== undefined && value !== null
+}
+
+export const parseQueryString = (str) => {
+	let obj = {};
+	let key;
+	let value;
+	(str || '').split('&').forEach((keyValue) => {
+		if (keyValue) {
+			value = keyValue.split('=');
+			key = decodeURIComponent(value[0]);
+			obj[key] = isDefined(value[1]) ? decodeURIComponent(value[1]) : true;
+		}
+	});
+	return obj;
+}
