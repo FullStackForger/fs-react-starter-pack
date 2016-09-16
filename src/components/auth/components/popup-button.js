@@ -60,6 +60,7 @@ class PopupButton extends React.Component {
 		}
 
 		const popup = window.open(this.props.popupUrl, '_blank', PopupButton.generateSpec(options))
+		popup.focus()
 
 		if (this.props.popupUrl === 'about:blank') {
 			popup.document.body.innerHTML = 'Loading...'
