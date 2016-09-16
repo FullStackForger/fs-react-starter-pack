@@ -6,6 +6,7 @@ const propTypes = {
 	height: PropTypes.number,
 	popupUrl: PropTypes.string,
 	redirectUri: PropTypes.string,
+	onClick: PropTypes.func,
 	onClose: PropTypes.func
 }
 
@@ -15,14 +16,34 @@ const defaultProps = {
 	polling: true
 }
 
-class Popup extends React.Component {
+class PopupButton extends React.Component {
 	constructor(props) {
 		super(props)
+
+		this.state = {
+			open: false
+		}
+
+		this.onClick = this.onClick.bind(this)
 	}
 
 	componentDidUpdate() {
-		if (this.props.open) {
+		if (this.state.open) {
 			this.open()
+		}
+	}
+
+	onClick() {
+		this.setState({ open: true })
+		if (this.props.onClick) {
+			this.props.onClick()
+		}
+	}
+
+	onClose() {
+		this.setState({ open: false })
+		if (this.props.onClose) {
+			this.props.onClose()
 		}
 	}
 
@@ -37,7 +58,7 @@ class Popup extends React.Component {
 			scrollbars: 0 // IE, Firefox & Opera only
 		}
 
-		const popup = window.open(this.props.popupUrl, '_blank', Popup.generateSpec(options))
+		const popup = window.open(this.props.popupUrl, '_blank', PopupButton.generateSpec(options))
 
 		if (this.props.popupUrl === 'about:blank') {
 			popup.document.body.innerHTML = 'Loading...'
@@ -58,7 +79,7 @@ class Popup extends React.Component {
 		let polling = setInterval(() => {
 			if (!window || window.closed) {
 				clearInterval(polling)
-				this.props.onClose()
+				this.onClose()
 			}
 			try {
 				const popupUrlPath = window.location.host + window.location.pathname
@@ -86,19 +107,19 @@ class Popup extends React.Component {
 	}
 
 	render() {
-		console.log('popup open?', this.props.open)
-		return null
+		let button = <button onClick={this.onClick}>{this.props.label}</button>
+		return button
 	}
 }
 
-Popup.generateSpec = (options) => {
+PopupButton.generateSpec = (options) => {
 	return Object.keys(options).reduce((previous, current, index) => {
 		let final = index == 1 ? previous + '=' + options[previous] : previous
 		return final + ',' + current + '=' + options[current]
 	})
 }
 
-Popup.defaultProps = defaultProps
-Popup.propTypes = propTypes
+PopupButton.defaultProps = defaultProps
+PopupButton.propTypes = propTypes
 
-export default Popup
+export default PopupButton
