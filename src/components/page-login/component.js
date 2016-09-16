@@ -4,7 +4,6 @@ import { Grid, Col, Panel } from 'react-bootstrap'
 import { Form, FormGroup, FormControl } from 'react-bootstrap'
 import { Checkbox, Button, ControlLabel, HelpBlock } from 'react-bootstrap'
 import { Link } from 'react-router'
-import { LinkContainer } from 'react-router-bootstrap'
 
 import { validateEmail, validatePassword } from '../../utils/validators'
 
@@ -127,7 +126,6 @@ class LoginPage extends Component {
 						</HelpBlock>
 					</Panel>
 				</Col>
-				{this.props.children}
 			</Grid>
 		)
 	}
