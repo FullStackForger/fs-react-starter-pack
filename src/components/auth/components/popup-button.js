@@ -7,7 +7,8 @@ const propTypes = {
 	popupUrl: PropTypes.string,
 	redirectUri: PropTypes.string,
 	onClick: PropTypes.func,
-	onClose: PropTypes.func
+	onClose: PropTypes.func,
+	polling: PropTypes.bool
 }
 
 const defaultProps = {
@@ -106,9 +107,19 @@ class PopupButton extends React.Component {
 		}, 250)
 	}
 
+	renderInternalElement() {
+		if (this.props.children instanceof Array) {
+			return this.props.children
+		}
+		return React.cloneElement(this.props.children, {
+			onClick: this.onClick
+		})
+	}
+
 	render() {
-		let button = <button onClick={this.onClick}>{this.props.label}</button>
-		return button
+		return this.props.children
+			? this.renderInternalElement(this.props)
+			: <button onClick={this.onClick}>{this.props.label}</button>
 	}
 }
 
