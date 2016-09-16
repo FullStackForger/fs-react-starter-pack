@@ -5,7 +5,6 @@ import { Router } from 'react-router'
 
 import { Auth } from './components/auth-redux'
 
-import Layout from './components/layout';
 import history from './config/history'
 import store from './config/store'
 import routes from './config/routes'
