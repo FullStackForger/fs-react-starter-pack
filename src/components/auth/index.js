@@ -4,16 +4,16 @@ import { getProfile, updateProfile } from './user'
 
 import config from './internals/config'
 
-import Auth from './component'
+import Auth from './components/auth'
 export {Auth}
 
-export default {	
+export default {
 	init: config.init,
-	component: Auth,
+	Auth: Auth,
 	isAuthenticated,
 	login,
 	logout,
-	signup,	
+	signup,
 	getToken,
 	setToken,
 	refreshToken,

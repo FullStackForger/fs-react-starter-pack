@@ -1,8 +1,8 @@
-import { auth } from './internals' 
+import { auth } from './internals'
 import { login, logout, signup, refreshToken } from './wrapped-local'
 
-import AuthRedux from './component'
-export {AuthRedux}
+import Auth from './components/auth'
+export {Auth}
 
 import authMiddleware from './middleware'
 export { authMiddleware }
@@ -13,7 +13,7 @@ export { authReducer }
 const isAuthenticated = auth.isAuthenticated
 
 export default Object.assign({}, auth, {
-	component: AuthRedux,
+	Auth,
 	authMiddleware,
 	isAuthenticated,
 	login,

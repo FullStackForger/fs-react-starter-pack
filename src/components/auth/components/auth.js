@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react'
-import config from './internals/config' 
+import config from '../internals/config'
 
 export default class Auth extends Component {
 	constructor (props) {
