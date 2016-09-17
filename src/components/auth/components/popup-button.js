@@ -4,8 +4,9 @@ import { parseQueryString } from '../internals/utils'
 const propTypes = {
 	width: PropTypes.number,
 	height: PropTypes.number,
-	popupUrl: PropTypes.string,
-	redirectUri: PropTypes.string,
+	popupUrl: PropTypes.string.isRequired,
+	autoClose: PropTypes.bool,
+	autoCloseUri: PropTypes.string,
 	onClick: PropTypes.func,
 	onClose: PropTypes.func,
 	polling: PropTypes.bool
@@ -14,7 +15,8 @@ const propTypes = {
 const defaultProps = {
 	width: 500,
 	height: 500,
-	polling: true
+	polling: true,
+	autoClose: true,
 }
 
 class PopupButton extends React.Component {
@@ -41,10 +43,10 @@ class PopupButton extends React.Component {
 		}
 	}
 
-	onClose() {
+	onClose(queryStringData) {
 		this.setState({ open: false })
 		if (this.props.onClose) {
-			this.props.onClose()
+			this.props.onClose(queryStringData)
 		}
 	}
 
@@ -72,31 +74,32 @@ class PopupButton extends React.Component {
 	}
 
 	pollPopup(window) {
-		let redirectUriPath = document.location.hostname + document.location.pathname
+		const autoCloseUriPath = !this.props.autoCloseUri
+			? document.location.origin + document.location.pathname
+			: this.props.autoCloseUri
 
-		// if (requestToken) {
-		//   window.location = config.authorizationUrl + '?' + qs.stringify(requestToken)
-		// }
+		let queryStringData = {}
+		let closing = false
 
-		let polling = setInterval(() => {
-			if (!window || window.closed) {
+		const polling = setInterval(() => {
+			if (!window || window.closed || closing) {
 				clearInterval(polling)
-				this.onClose()
+				if (queryStringData.error) {
+					console.error(queryStringData.error)
+				}
+				this.onClose(queryStringData)
+				window.close()
 			}
 			try {
-				const popupUrlPath = window.location.host + window.location.pathname
+				const popupUrlPath = window.location.origin + window.location.pathname
 
-				if (popupUrlPath === redirectUriPath) {
+				// todo: decouple, use handler to this outside
+				if (popupUrlPath === autoCloseUriPath) {
 					if (window.location.search || window.location.hash) {
 						const query = parseQueryString(window.location.search.substring(1).replace(/\/$/, ''))
 						const hash = parseQueryString(window.location.hash.substring(1).replace(/[\/$]/, ''))
-						const params = Object.assign({}, query, hash)
-
-						if (params.error) {
-							console.error(params.error)
-						} else {
-							console.log(params)
-						}
+						queryStringData = Object.assign({}, query, hash)
+						closing = this.props.autoClose
 					} else {
 						console.info('OAuth redirect has occurred but no query or hash parameters were found.')
 					}
