@@ -6,6 +6,7 @@ export const configOpts = {
 	loginUrl: 'auth/login',
 	signupUrl: 'auth/signup',
 	refreshUrl: 'auth/refresh',
+	oauthUrl: 'auth/{provider}', // dynamic
 	profileUrl: 'me'
 }
 

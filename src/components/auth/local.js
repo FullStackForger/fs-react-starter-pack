@@ -59,3 +59,16 @@ export const refreshToken = (options) => {
 		.then(parseResponseToJSON)
 		.then((data) => ({token: setToken(data.token)}))
 }
+
+export const exchangeCodeForToken = (provider, oauthData, options) => {
+	let {baseUrl, oauthUrl} = config
+	let url = baseUrl + oauthUrl.replace('{provider}', provider)
+	let opts = Object.assign({}, fetchOpts, {
+		method: 'POST',
+		body: JSON.stringify(oauthData)
+	}, options)
+	return fetch(url, opts)
+		.then(checkResponseStatus)
+		.then(parseResponseToJSON)
+		.then((data) => ({token: setToken(data.token)}))
+}

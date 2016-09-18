@@ -54,3 +54,11 @@ export const parseQueryString = (str) => {
 	});
 	return obj;
 }
+
+// HotFix: Facebook redirects back with '_=_' hash which breaks the app
+export const preventBadFacebookHash = () => {
+	const fbHashAppendix = /_=_/
+	if (fbHashAppendix.test(window.location.hash)) {
+		window.location.hash = window.location.hash.replace(fbHashAppendix, '')
+	}
+}

@@ -2,12 +2,15 @@ import React, {Component, PropTypes} from 'react'
 
 import storage from '../internals/storage'
 import PopupButton from './popup-button'
+import { exchangeCodeForToken } from '../local'
 
 const propTypes = {
 	name: PropTypes.string.isRequired,
 	label: PropTypes.string,
 	clientId: PropTypes.string.isRequired,
+	onLoginSuccess: PropTypes.func,
 	tokenEndpoint: PropTypes.string.isRequired,
+	oauthProvider: PropTypes.string.isRequired,
 	oauthEndpoint: PropTypes.string.isRequired,
 	redirectUri: PropTypes.string,
 	scope: PropTypes.arrayOf(PropTypes.string),
@@ -20,11 +23,7 @@ const propTypes = {
 	requiredUrlParams: PropTypes.arrayOf(PropTypes.string),
 	defaultUrlParams: PropTypes.arrayOf(PropTypes.string),
 	responseType: PropTypes.string,
-	responseParams: PropTypes.shape({
-		code: PropTypes.string,
-		clientId: PropTypes.string,
-		redirectUri: PropTypes.string
-	}),
+	responseParams: PropTypes.arrayOf(PropTypes.string),
 	oauthType: PropTypes.string,
 	popupOptions: PropTypes.shape({
 		width: PropTypes.number,
@@ -34,29 +33,11 @@ const propTypes = {
 }
 
 const defaultProps = {
-	name: null,
-	label: null,
-	tokenEndpoint: null,
-	clientId: null,
-	redirectUri: null,
-	oauthEndpoint: null,
-	scope: null,
-	scopePrefix: null,
-	scopeDelimiter: null,
-	state: null,
-	requiredUrlParams: null,
 	defaultUrlParams: ['response_type', 'client_id', 'redirect_uri'],
 	responseType: 'code',
-	responseParams: {
-		code: 'code',
-		clientId: 'clientId',
-		redirectUri: 'redirectUri'
-	},
+	responseParams: ['code', 'clientId', 'redirectUri'],
 	oauthType: '2.0',
-	popupOptions: {
-		width: null,
-		height: null
-	},
+	popupOptions: { width: 500, height: 500 },
 	polling: true
 }
 
@@ -107,7 +88,29 @@ export default class OAuth2 extends Component {
 	}
 
 	onClose(queryStringData) {
-		console.log(queryStringData)
+		if (!queryStringData.error) {
+			const oauthData = {}
+			const provider = this.props.oauthProvider
+			this.props.responseParams.forEach(prop => {
+				switch(prop) {
+					case 'code':
+						oauthData[prop] = queryStringData.code
+						break
+					case 'clientId':
+					case 'redirectUri':
+						oauthData[prop] = this.props[prop]
+						break
+					default:
+						oauthData[prop] = queryStringData[key];
+				}
+			})
+
+			exchangeCodeForToken(provider, oauthData).then(() => {
+				if (this.props.onLoginSuccess) {
+					this.props.onLoginSuccess()
+				}
+			})
+		}
 	}
 
 	render() {
@@ -119,7 +122,7 @@ export default class OAuth2 extends Component {
 			popupUrl: [props.oauthEndpoint, this.buildQueryString()].join('?'),
 			redirectUri: props.redirectUri, // todo: remove coupling with popup
 			polling: props.polling,
-			onClose: this.onClose
+			onClose: this.onClose.bind(this)
 		}
 
 		return (
