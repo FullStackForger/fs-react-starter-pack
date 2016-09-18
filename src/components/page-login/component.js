@@ -10,7 +10,16 @@ import { validateEmail, validatePassword } from '../../utils/validators'
 
 const css = {
 	signupBlock: { textAlign: 'center', marginTop: '1em' },
-	signupSpan: { paddingRight: '0.5em' }
+	signupSpan: { paddingRight: '0.5em' },
+	panelTitle: {
+		padding: '10px 5px 10px',
+		borderBottom: '1px solid #dedede',
+		marginBottom: '22px',
+		textAlign: 'center',
+		fontSize: '1.15em',
+		fontWeight: 'bolder',
+		color: '#898989'
+	}
 }
 
 const propTypes = {
@@ -78,8 +87,21 @@ class LoginPage extends Component {
 
 		return (
 			<Grid>
-				<Col md={6} mdPush={3}>
-					<Panel>
+				<Col md={4}>
+					<Panel><Col xs={10} xsPush={1}>
+						<div style={css.panelTitle}>Social login</div>
+						<div className="form-group">
+							<Facebook
+								className="btn btn-md btn-block"
+								clientId="310178806023492"
+								onLoginSuccess={this.onLoginSuccess}
+							/>
+						</div>
+					</Col></Panel>
+				</Col>
+				<Col md={8}>
+					<Panel><Col xs={10} xsPush={1}>
+						<div style={css.panelTitle}>Login with email</div>
 						<Form horizontal>
 							<FormGroup controlId="loginEmail" validationState={this.getValidationState('email')}>
 								<Col componentClass={ControlLabel} sm={2}>
@@ -114,7 +136,7 @@ class LoginPage extends Component {
 								</Col>
 							</FormGroup>
 
-							<Button bsStyle="primary" bsSize="large" block
+							<Button bsStyle="primary" bsSize="medium" block
 								disabled={!formIsReady}
 								onClick={this.onLoginClick}>
 								Log in
@@ -126,12 +148,7 @@ class LoginPage extends Component {
 								</span>
 								<Link to="/signup">Sign up</Link>
 						</HelpBlock>
-					</Panel>
-				</Col>
-				<Col md={6} mdPush={3}>
-					<Panel>
-						<Facebook clientId="310178806023492" onLoginSuccess={this.onLoginSuccess} />
-					</Panel>
+					</Col></Panel>
 				</Col>
 			</Grid>
 		)

@@ -125,7 +125,8 @@ export default class OAuth2 extends Component {
 			redirectUri: props.redirectUri, // todo: remove coupling with popup
 			polling: props.polling,
 			onClose: this.onClose.bind(this),
-			style: props.style
+			style: props.style,
+			className: props.className
 		}
 
 		return (

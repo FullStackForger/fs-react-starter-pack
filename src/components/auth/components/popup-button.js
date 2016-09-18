@@ -125,7 +125,10 @@ class PopupButton extends React.Component {
 	render() {
 		return this.props.children
 			? this.renderInternalElement(this.props)
-			: <button onClick={this.onClick} style={this.props.style}>{this.props.label}</button>
+			: <button onClick={this.onClick}
+								style={this.props.style}
+								className={this.props.className}
+				>{this.props.label}</button>
 	}
 }
 
