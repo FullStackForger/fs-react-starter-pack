@@ -22,7 +22,9 @@ export default class Facebook extends Component {
 
 	render () {
 		return (
-			<OAuth2 {...this.props} />
+			<OAuth2 {...this.props}>
+				{this.props.children || null}
+			</OAuth2>
 		)
 	}
 }

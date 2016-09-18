@@ -126,7 +126,9 @@ export default class OAuth2 extends Component {
 		}
 
 		return (
-			<PopupButton {...popupProps} />
+			<PopupButton {...popupProps}>
+				{ this.props.children || null }
+			</PopupButton>
 		)
 	}
 }
