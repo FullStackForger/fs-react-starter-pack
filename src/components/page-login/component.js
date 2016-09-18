@@ -13,12 +13,12 @@ const css = {
 	signupSpan: { paddingRight: '0.5em' },
 	panelTitle: {
 		padding: '10px 5px 10px',
-		borderBottom: '1px solid #dedede',
+		borderBottom: '1px solid #eee',
 		marginBottom: '22px',
 		textAlign: 'center',
-		fontSize: '1.15em',
-		fontWeight: 'bolder',
-		color: '#898989'
+		fontSize: '1.1em',
+		fontWeight: 'bold',
+		color: '#ababab'
 	}
 }
 
@@ -89,7 +89,7 @@ class LoginPage extends Component {
 			<Grid>
 				<Col md={4}>
 					<Panel><Col xs={10} xsPush={1}>
-						<div style={css.panelTitle}>Social login</div>
+						<div style={css.panelTitle}>Login with social account</div>
 						<div className="form-group">
 							<Facebook
 								className="btn btn-md btn-block"

@@ -12,7 +12,16 @@ import { validatePassword, validatePassword2 } from '../../utils/validators'
 
 const css = {
 	signupBlock: { textAlign: 'center', marginTop: '1em' },
-	signupSpan: { paddingRight: '0.5em' }
+	signupSpan: { paddingRight: '0.5em' },
+	panelTitle: {
+		padding: '10px 5px 10px',
+		borderBottom: '1px solid #eee',
+		marginBottom: '22px',
+		textAlign: 'center',
+		fontSize: '1.1em',
+		fontWeight: 'bold',
+		color: '#ababab'
+	}
 }
 
 class SignupPage extends Component {
@@ -83,8 +92,9 @@ class SignupPage extends Component {
 
 		return (
 			<Grid>
-				<Col md={6} mdPush={3}>
-					<Panel>
+				<Col md={8}>
+					<Panel><Col xs={10} xsPush={1}>
+						<div style={css.panelTitle}>Register account</div>
 						<Form horizontal>
 
 							<FormGroup controlId="signupUsername" validationState={this.getValidationState('username')}>
@@ -151,7 +161,7 @@ class SignupPage extends Component {
 								</Col>
 							</FormGroup>
 
-							<Button bsStyle="primary" bsSize="large" block
+							<Button bsStyle="primary" bsSize="medium" block
 								onClick={this.onSignupClick}
 								disabled={!this.isFormReady()}
 							>
@@ -163,7 +173,7 @@ class SignupPage extends Component {
 								<Link to="/login">Log in</Link>
 							</HelpBlock>
 						</Form>
-					</Panel>
+					</Col></Panel>
 				</Col>
 			</Grid>
 		)
