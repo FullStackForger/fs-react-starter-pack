@@ -29,6 +29,7 @@ const propTypes = {
 		width: PropTypes.number,
 		height: PropTypes.number
 	}),
+	style: PropTypes.object,
 	polling: PropTypes.bool
 }
 
@@ -37,6 +38,7 @@ const defaultProps = {
 	responseType: 'code',
 	responseParams: ['code', 'clientId', 'redirectUri'],
 	oauthType: '2.0',
+	style: {},
 	popupOptions: { width: 500, height: 500 },
 	polling: true
 }
@@ -122,7 +124,8 @@ export default class OAuth2 extends Component {
 			popupUrl: [props.oauthEndpoint, this.buildQueryString()].join('?'),
 			redirectUri: props.redirectUri, // todo: remove coupling with popup
 			polling: props.polling,
-			onClose: this.onClose.bind(this)
+			onClose: this.onClose.bind(this),
+			style: props.style
 		}
 
 		return (

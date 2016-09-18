@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import { parseQueryString } from '../internals/utils'
 
 const propTypes = {
+	style: PropTypes.object,
 	width: PropTypes.number,
 	height: PropTypes.number,
 	popupUrl: PropTypes.string.isRequired,
@@ -13,6 +14,7 @@ const propTypes = {
 }
 
 const defaultProps = {
+	style: {},
 	width: 500,
 	height: 500,
 	polling: true,
@@ -123,7 +125,7 @@ class PopupButton extends React.Component {
 	render() {
 		return this.props.children
 			? this.renderInternalElement(this.props)
-			: <button onClick={this.onClick}>{this.props.label}</button>
+			: <button onClick={this.onClick} style={this.props.style}>{this.props.label}</button>
 	}
 }
 

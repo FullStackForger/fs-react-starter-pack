@@ -15,6 +15,12 @@ const defaultProps = {
 	display: 'popup',
 	oauthType: '2.0',
 	popupOptions: { width: 580, height: 400 },
+	style: {
+		color: '#fff',
+		backgroundColor: '#3b5998',
+		border: '1px solid #335190',
+		padding: '5px 15px'
+	},
 	onLoginSuccess: () => { console.log('Facebook login successful!') }
 }
 
