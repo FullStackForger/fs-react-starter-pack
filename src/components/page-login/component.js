@@ -5,6 +5,7 @@ import { Form, FormGroup, FormControl } from 'react-bootstrap'
 import { Checkbox, Button, ControlLabel, HelpBlock } from 'react-bootstrap'
 import { Link } from 'react-router'
 
+import { Facebook } from '../auth'
 import { validateEmail, validatePassword } from '../../utils/validators'
 
 const css = {
@@ -13,7 +14,7 @@ const css = {
 }
 
 const propTypes = {
-	handleSubmit: PropTypes.func.isRequired
+	onLoginFormSubmit: PropTypes.func.isRequired
 }
 
 class LoginPage extends Component {
@@ -59,7 +60,7 @@ class LoginPage extends Component {
 	}
 
 	onLoginClick () {
-		this.props.handleSubmit({
+		this.props.onLoginFormSubmit({
 			email: this.state.email.value,
 			password: this.state.password.value
 		})
@@ -124,6 +125,11 @@ class LoginPage extends Component {
 								</span>
 								<Link to="/signup">Sign up</Link>
 						</HelpBlock>
+					</Panel>
+				</Col>
+				<Col md={6} mdPush={3}>
+					<Panel>
+						<Facebook clientId="310178806023492"/>
 					</Panel>
 				</Col>
 			</Grid>

@@ -7,10 +7,11 @@ import PageLogin from './component'
 import history from '../../config/history'
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-	handleSubmit: loginData => auth
+	onLoginFormSubmit: loginData => auth
 		.login(loginData)
 		.then(() => history.push('/'))
-		.catch(err => console.error(err)) 					
+		.catch(err => console.error(err)),
+	onSocialLoginSuccess: () => history.push('/')
 })
 
 export default connect(false, mapDispatchToProps)(PageLogin)
