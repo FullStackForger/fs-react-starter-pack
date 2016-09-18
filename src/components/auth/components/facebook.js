@@ -14,7 +14,8 @@ const defaultProps = {
 	scopeDelimiter: ',',
 	display: 'popup',
 	oauthType: '2.0',
-	popupOptions: { width: 580, height: 400 }
+	popupOptions: { width: 580, height: 400 },
+	onLoginSuccess: () => { console.log('Facebook login successful!') }
 }
 
 export default class Facebook extends Component {

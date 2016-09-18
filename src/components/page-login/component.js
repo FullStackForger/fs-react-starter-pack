@@ -28,6 +28,7 @@ class LoginPage extends Component {
 
 		this.onLoginClick = this.onLoginClick.bind(this)
 		this.onChange = this.onChange.bind(this)
+		this.onLoginSuccess = this.props.onLoginSuccess.bind(this)
 	}
 
 	onChange(key) {
@@ -129,7 +130,7 @@ class LoginPage extends Component {
 				</Col>
 				<Col md={6} mdPush={3}>
 					<Panel>
-						<Facebook clientId="310178806023492"/>
+						<Facebook clientId="310178806023492" onLoginSuccess={this.onLoginSuccess} />
 					</Panel>
 				</Col>
 			</Grid>
