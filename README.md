@@ -49,12 +49,13 @@ render () {
 		<Facebook />
 	)
 }
-
 ```
 
 ### Inspirational packages
 
 * [joshgeller/react-redux-jwt-auth-example](https://github.com/joshgeller/react-redux-jwt-auth-example)
-* [](https://github.com/mjrussell/redux-auth-wrapper)
+* [mjrussell/redux-auth-wrapper](https://github.com/mjrussell/redux-auth-wrapper)
 * [sahat/satellizer](https://github.com/sahat/satellizer)
 * [lynndylanhurley/redux-auth](https://github.com/lynndylanhurley/redux-auth)
+* [jedireza/aqua](https://github.com/jedireza/aqua)
+* [jedireza/frame](https://github.com/jedireza/frame)
