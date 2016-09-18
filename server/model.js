@@ -6,7 +6,10 @@ const userSchema = new Mongoose.Schema({
   email: { type: String, unique: true, lowercase: true },
   password: { type: String, select: false },
   username: { type: String },
-	bio: { type: String, maxlength: 160 }
+	displayName: { type: String },
+	picture: { type: String },
+	bio: { type: String, maxlength: 160 },
+	facebook: { type: String }
 })
 
 userSchema.pre('save', function(next) {
