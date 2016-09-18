@@ -5,21 +5,13 @@ import { Form, FormGroup, FormControl } from 'react-bootstrap'
 import { Checkbox, Button, ControlLabel, HelpBlock } from 'react-bootstrap'
 import { Link } from 'react-router'
 
-import { Facebook } from '../auth'
+import SocialLoginPanel, { SocialLoginTitle } from '../social-login-panel'
 import { validateEmail, validatePassword } from '../../utils/validators'
 
 const css = {
 	signupBlock: { textAlign: 'center', marginTop: '1em' },
 	signupSpan: { paddingRight: '0.5em' },
-	panelTitle: {
-		padding: '10px 5px 10px',
-		borderBottom: '1px solid #eee',
-		marginBottom: '22px',
-		textAlign: 'center',
-		fontSize: '1.1em',
-		fontWeight: 'bold',
-		color: '#ababab'
-	}
+	panelTitle: SocialLoginTitle.css
 }
 
 const propTypes = {
@@ -88,16 +80,10 @@ class LoginPage extends Component {
 		return (
 			<Grid>
 				<Col md={4}>
-					<Panel><Col xs={10} xsPush={1}>
-						<div style={css.panelTitle}>Login with social account</div>
-						<div className="form-group">
-							<Facebook
-								className="btn btn-md btn-block"
-								clientId="310178806023492"
-								onLoginSuccess={this.onLoginSuccess}
-							/>
-						</div>
-					</Col></Panel>
+					<SocialLoginPanel
+						title="Login with social account"
+						onLoginSuccess={this.onLoginSuccess}
+					/>
 				</Col>
 				<Col md={8}>
 					<Panel><Col xs={10} xsPush={1}>
@@ -136,7 +122,7 @@ class LoginPage extends Component {
 								</Col>
 							</FormGroup>
 
-							<Button bsStyle="primary" bsSize="medium" block
+							<Button bsStyle="primary" block
 								disabled={!formIsReady}
 								onClick={this.onLoginClick}>
 								Log in

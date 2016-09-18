@@ -5,7 +5,8 @@ import { Form, FormGroup, FormControl } from 'react-bootstrap'
 import { FieldGroup, HelpBlock } from 'react-bootstrap'
 import { Checkbox, Button, ControlLabel } from 'react-bootstrap'
 import { Link } from 'react-router'
-import { LinkContainer } from 'react-router-bootstrap'
+
+import SocialLoginPanel, { SocialLoginTitle } from '../social-login-panel'
 
 import { validateEmail, validateUsername } from '../../utils/validators'
 import { validatePassword, validatePassword2 } from '../../utils/validators'
@@ -13,15 +14,7 @@ import { validatePassword, validatePassword2 } from '../../utils/validators'
 const css = {
 	signupBlock: { textAlign: 'center', marginTop: '1em' },
 	signupSpan: { paddingRight: '0.5em' },
-	panelTitle: {
-		padding: '10px 5px 10px',
-		borderBottom: '1px solid #eee',
-		marginBottom: '22px',
-		textAlign: 'center',
-		fontSize: '1.1em',
-		fontWeight: 'bold',
-		color: '#ababab'
-	}
+	panelTitle: SocialLoginTitle.css
 }
 
 class SignupPage extends Component {
@@ -35,6 +28,8 @@ class SignupPage extends Component {
 			password: { value: '', valid: false, error: null },
 			password2: { value: '', valid: false, error: null },
 		}
+
+		this.onLoginSuccess = this.props.onLoginSuccess.bind(this)
 	}
 
 	isFormReady() {
@@ -92,6 +87,12 @@ class SignupPage extends Component {
 
 		return (
 			<Grid>
+				<Col md={4}>
+					<SocialLoginPanel
+						title="Login with social account"
+						onLoginSuccess={this.onLoginSuccess}
+					/>
+				</Col>
 				<Col md={8}>
 					<Panel><Col xs={10} xsPush={1}>
 						<div style={css.panelTitle}>Register account</div>
@@ -161,7 +162,7 @@ class SignupPage extends Component {
 								</Col>
 							</FormGroup>
 
-							<Button bsStyle="primary" bsSize="medium" block
+							<Button bsStyle="primary" block
 								onClick={this.onSignupClick}
 								disabled={!this.isFormReady()}
 							>
