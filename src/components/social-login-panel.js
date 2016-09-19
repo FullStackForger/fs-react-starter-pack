@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Panel } from 'react-bootstrap'
-import { Facebook } from './auth'
+import { Facebook, Google } from './auth'
 
 export const css = {
 	panelTitle: {
@@ -32,6 +32,12 @@ const SocialLoginPanel = ({
 				clientId="310178806023492"
 				onLoginSuccess={onLoginSuccess}
 			/>
+			<Google
+				className="btn btn-md btn-block"
+				clientId="389760969675-u3h2dgm1v3lqd22u8aloimkgd10i0rvf.apps.googleusercontent.com"
+				onLoginSuccess={onLoginSuccess}
+			/>
+
 		</div>
 	</Col></Panel>
 )
