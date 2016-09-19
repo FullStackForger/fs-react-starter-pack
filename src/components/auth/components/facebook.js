@@ -4,7 +4,7 @@ import OAuth2 from './oauth2'
 const defaultProps = {
 	clientId: null,
 	name: 'facebook',
-	label: 'Login with Facebook',
+	label: 'Sign in with Facebook',
 	tokenEndpoint: '/auth/facebook',
 	oauthProvider: 'facebook',
 	oauthEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',

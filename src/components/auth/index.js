@@ -4,6 +4,8 @@ import { getProfile, updateProfile } from './user'
 
 import Facebook from './components/facebook'
 export { Facebook }
+import Google from './components/google'
+export { Google }
 
 import config from './internals/config'
 

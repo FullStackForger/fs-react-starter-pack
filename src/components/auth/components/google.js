@@ -8,11 +8,12 @@ const defaultProps = {
 	tokenEndpoint: '/auth/google',
 	oauthProvider: 'google',
 	oauthEndpoint: 'https://accounts.google.com/o/oauth2/auth',
-	redirectUri: window.location.origin + '/', // FB requires be followed by trailing slash for FB
+	redirectUri: window.location.origin,
 	requiredUrlParams: ['scope'],
 	optionalUrlParams: ['display', 'state'],
 	scope: ['profile', 'email'],
-	scopeDelimiter: ',',
+	scopePrefix: 'openid',
+	scopeDelimiter: ' ',
 	display: 'popup',
 	oauthType: '2.0',
 	popupOptions: { width: 452, height: 533 },
@@ -37,5 +38,5 @@ export default class Google extends Component {
 	}
 }
 
-Facebook.defaultProps = defaultProps
-Facebook.propTypes = OAuth2.propTypes
+Google.defaultProps = defaultProps
+Google.propTypes = OAuth2.propTypes
