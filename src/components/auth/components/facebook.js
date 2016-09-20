@@ -21,8 +21,7 @@ const defaultProps = {
 		border: '1px solid #335190',
 		padding: '5px 15px'
 	},
-	className: 'btn btn-md',
-	onLoginSuccess: () => { console.log('Facebook login successful!') }
+	className: 'btn btn-md'
 }
 
 export default class Facebook extends Component {

@@ -8,7 +8,9 @@ const propTypes = {
 	name: PropTypes.string.isRequired,
 	label: PropTypes.string,
 	clientId: PropTypes.string.isRequired,
-	onLoginSuccess: PropTypes.func,
+	onSignIn: PropTypes.func,
+	onSignInSuccess: PropTypes.func,
+	onSignInFailed: PropTypes.func,
 	tokenEndpoint: PropTypes.string.isRequired,
 	oauthProvider: PropTypes.string.isRequired,
 	oauthEndpoint: PropTypes.string.isRequired,
@@ -47,6 +49,8 @@ export default class OAuth2 extends Component {
 	constructor(props) {
 		super(props)
 		//const { name, state, popupOptions, redirectUri, responseType } = params
+		this.onClick = this.onClick.bind(this)
+		this.onClose = this.onClose.bind(this)
 	}
 
 	buildQueryString() {
@@ -89,6 +93,11 @@ export default class OAuth2 extends Component {
 		return keyValuePairs.map(pair => pair.join('=')).join('&')
 	}
 
+	onClick() {
+		if(this.onSignIn) {
+			this.onSignIn(Object.assign({}, this.props))
+		}
+	}
 	onClose(queryStringData) {
 		if (!queryStringData.error) {
 			const oauthData = {}
@@ -107,9 +116,13 @@ export default class OAuth2 extends Component {
 				}
 			})
 
-			exchangeCodeForToken(provider, oauthData).then(() => {
-				if (this.props.onLoginSuccess) {
-					this.props.onLoginSuccess()
+			exchangeCodeForToken(provider, oauthData).then((token) => {
+				if (this.props.onSignInSuccess) {
+					this.props.onSignInSuccess({token})
+				}
+			}).catch((error) => {
+				if (this.props.onSignInFailed) {
+					this.props.onSignInFailed(error)
 				}
 			})
 		}
@@ -124,7 +137,8 @@ export default class OAuth2 extends Component {
 			popupUrl: [props.oauthEndpoint, this.buildQueryString()].join('?'),
 			redirectUri: props.redirectUri, // todo: remove coupling with popup
 			polling: props.polling,
-			onClose: this.onClose.bind(this),
+			onClick: this.onClick,
+			onClose: this.onClose,
 			style: props.style,
 			className: props.className
 		}

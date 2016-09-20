@@ -23,7 +23,6 @@ const defaultProps = {
 		border: '1px solid #d54331',
 		padding: '5px 15px'
 	},
-	onLoginSuccess: () => { console.log('Facebook login successful!') },
 	state: () => encodeURIComponent(Math.random().toString(36).substr(2))
 }
 
