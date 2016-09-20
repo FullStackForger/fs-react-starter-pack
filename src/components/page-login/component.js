@@ -29,7 +29,7 @@ class LoginPage extends Component {
 
 		this.onLoginClick = this.onLoginClick.bind(this)
 		this.onChange = this.onChange.bind(this)
-		this.onLoginSuccess = this.props.onLoginSuccess.bind(this)
+		this.onSignInSuccess = this.props.onSignInSuccess.bind(this)
 	}
 
 	onChange(key) {
@@ -82,7 +82,7 @@ class LoginPage extends Component {
 				<Col md={4}>
 					<SocialLoginPanel
 						title="Login with social account"
-						onLoginSuccess={this.onLoginSuccess}
+						onSignInSuccess={this.onSignInSuccess}
 					/>
 				</Col>
 				<Col md={8}>

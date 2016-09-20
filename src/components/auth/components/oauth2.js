@@ -98,6 +98,7 @@ export default class OAuth2 extends Component {
 			this.onSignIn(Object.assign({}, this.props))
 		}
 	}
+
 	onClose(queryStringData) {
 		if (!queryStringData.error) {
 			const oauthData = {}

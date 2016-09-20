@@ -29,7 +29,7 @@ class SignupPage extends Component {
 			password2: { value: '', valid: false, error: null },
 		}
 
-		this.onLoginSuccess = this.props.onLoginSuccess.bind(this)
+		this.onSignInSuccess = this.props.onSignInSuccess.bind(this)
 	}
 
 	isFormReady() {
@@ -90,7 +90,7 @@ class SignupPage extends Component {
 				<Col md={4}>
 					<SocialLoginPanel
 						title="Login with social account"
-						onLoginSuccess={this.onLoginSuccess}
+						onSignInSuccess={this.onSignInSuccess}
 					/>
 				</Col>
 				<Col md={8}>

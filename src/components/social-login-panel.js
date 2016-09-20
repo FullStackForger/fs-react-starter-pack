@@ -22,7 +22,7 @@ SocialLoginTitle.css = css.panelTitle
 
 const SocialLoginPanel = ({
 	title,
-	onLoginSuccess
+	onSignInSuccess
 }) => (
 	<Panel><Col xs={10} xsPush={1}>
 		<SocialLoginTitle title={title} />
@@ -30,12 +30,12 @@ const SocialLoginPanel = ({
 			<Facebook
 				className="btn btn-md btn-block"
 				clientId="310178806023492"
-				onLoginSuccess={onLoginSuccess}
+				onSignInSuccess={onSignInSuccess}
 			/>
 			<Google
 				className="btn btn-md btn-block"
 				clientId="389760969675-u3h2dgm1v3lqd22u8aloimkgd10i0rvf.apps.googleusercontent.com"
-				onLoginSuccess={onLoginSuccess}
+				onSignInSuccess={onSignInSuccess}
 			/>
 
 		</div>
