@@ -7,7 +7,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 
 const bioMaxLength = 160
 const defaultState = {
-	username: '',
+	displayName: '',
 	email: '',
 	bio: '',
 	bioCharsLeft: bioMaxLength
@@ -26,7 +26,7 @@ const propTypes = {
 class AccountPage extends Component {
 	constructor(props) {
 		super(props)
-		this.state = defaultState	
+		this.state = defaultState
 		this.onSubmit = this.onSubmit.bind(this)
 		this.onRefresh = this.onRefresh.bind(this)
 	}
@@ -37,21 +37,21 @@ class AccountPage extends Component {
 			bioCharsLeft
 		}))
 	}
-	componentDidMount () {		
+	componentDidMount () {
 		this.props.getProfile()
 			.then((data) => this.updateState({
 				email: data.email,
-				username: data.username,
-				bio: data.bio || ''								
+				displayName: data.displayName,
+				bio: data.bio || ''
 			})).catch((err) => console.error(err))
 	}
 
-	onChange(field) {				
-		return (event) => this.updateState({ 
-			[field]: event.target.value,			
+	onChange(field) {
+		return (event) => this.updateState({
+			[field]: event.target.value,
 		})
 	}
-	
+
 	onSubmit () {
 		this.props.updateProfile({
 			bio: this.state.bio
@@ -65,7 +65,7 @@ class AccountPage extends Component {
 	render() {
 		let exp = new Date(this.props.token.payload.exp * 1000)
 		let tokenExpiryDate = exp.toUTCString()
-		
+
 		return (
 			<Grid>
 				<Col md={6}>
@@ -73,42 +73,42 @@ class AccountPage extends Component {
 						<Form horizontal>
 
 							<FormGroup controlId="profileUsername">
-								<ControlLabel>Username</ControlLabel>
+								<ControlLabel>Name</ControlLabel>
 								<FormControl
 									disabled
-									type="text" 
-									placeholder="Username" 
-									value={this.state.username}
-									onChange={this.onChange('username')}
+									type="text"
+									placeholder="Display name"
+									value={this.state.displayName}
+									onChange={this.onChange('displayName')}
 								/>
 							</FormGroup>
 
 							<FormGroup controlId="profileEmail">
 								<ControlLabel>Email</ControlLabel>
 								<FormControl
-									disabled 
-									type="email" 
+									disabled
+									type="email"
 									placeholder="Email"
 									value={this.state.email}
-									onChange={this.onChange('email')} 
+									onChange={this.onChange('email')}
 								/>
 							</FormGroup>
 
 							<FormGroup controlId="profileBio">
 								<ControlLabel>Bio</ControlLabel>
-								<FormControl 
-									componentClass="textarea" 
+								<FormControl
+									componentClass="textarea"
 									placeholder="Bio"
 									value={this.state.bio}
-									onChange={this.onChange('bio')} 
+									onChange={this.onChange('bio')}
 								/>
 								<HelpBlock
 									className="pull-right"
 								>{this.state.bioCharsLeft}</HelpBlock>
 							</FormGroup>
 
-							<Button 
-								bsStyle="primary" 
+							<Button
+								bsStyle="primary"
 								className="pull-right"
 								onClick={this.onSubmit}
 							>UpdateInformation</Button>
@@ -138,12 +138,12 @@ class AccountPage extends Component {
 							<HelpBlock>
 								expires:<br />
 								<strong>{tokenExpiryDate}</strong>
-							</HelpBlock>	
+							</HelpBlock>
 							<pre style={{fontSize: 9}}>
 								{this.props.token.raw}
-							</pre>							
-						</div>	
-					</div>				
+							</pre>
+						</div>
+					</div>
 				</Col>
 			</Grid>
 		)
