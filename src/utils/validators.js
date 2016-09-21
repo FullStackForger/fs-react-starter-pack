@@ -10,7 +10,7 @@ export const validateEmail = function(email) {
 	}
 }
 
-export const validateUsername = function(password) {
+export const validateDisplayName = function(password) {
 	let error = null
 	let length = /^(.){6,}$/
 	if (!length.test(password)) error = 'Username should have at least 6 characters'
