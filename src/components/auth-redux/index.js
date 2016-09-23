@@ -1,5 +1,6 @@
 import { auth } from './internals'
-import { login, logout, signup, refreshToken } from './wrapped-local'
+import { login, logout, signup } from './wrapped-local'
+import { refreshToken, exchangeCodeForToken } from './wrapped-local'
 
 import Auth from './components/auth'
 export {Auth}
@@ -19,5 +20,6 @@ export default Object.assign({}, auth, {
 	login,
 	logout,
 	signup,
-	refreshToken
+	refreshToken,
+	exchangeCodeForToken
 })
