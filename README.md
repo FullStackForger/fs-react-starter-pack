@@ -57,7 +57,11 @@ render () {
 }
 ```
 
+## Sources
+
 ### Inspirational packages
+
+Here is the list of great react packages that inspired me to start this project.
 
 * [joshgeller/react-redux-jwt-auth-example](https://github.com/joshgeller/react-redux-jwt-auth-example)
 * [mjrussell/redux-auth-wrapper](https://github.com/mjrussell/redux-auth-wrapper)
@@ -68,6 +72,9 @@ render () {
 
 * [mxstbr/react-boilerplate](https://github.com/mxstbr/react-boilerplate)
 
-List of react starting projects
-* (andrewhfarmer.com/starter-project)[http://andrewhfarmer.com/starter-project/]
-* (habd.as/awesome-react-boilerplates)[https://habd.as/awesome-react-boilerplates/]
+### List of react starting projects
+
+If you don't like this starter pack or have different requirement for you project you should check out following sites:
+
+* [andrewhfarmer.com/starter-project](http://andrewhfarmer.com/starter-project)
+* [habd.as/awesome-react-boilerplates](https://habd.as/awesome-react-boilerplates)
