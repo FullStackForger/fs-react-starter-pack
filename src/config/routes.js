@@ -1,9 +1,9 @@
 import Layout from '../components/layout'
-import Account from '../components/page-account/container'
+import Account from '../user/UserAccountContainer'
 import Home from '../pages/Home'
 import Info from '../pages/Info'
-import Login from '../components/page-login/container'
-import Logout from '../components/page-logout/container'
+import Login from '../user/UserLoginContainer'
+import Logout from '../user/UserLogoutContainer'
 import Signup from '../components/page-signup/container'
 
 import auth from '../components/auth'
