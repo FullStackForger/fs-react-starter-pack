@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
-import auth from '../auth-redux'
-import AccountPage from './component'
+import auth from '../components/auth-redux'
+import UserAccount from './UserAccount'
 
 const { getProfile, updateProfile, refreshToken } = auth
- 
+
 export default connect(() => ({
     getProfile,
     updateProfile,
@@ -12,4 +12,4 @@ export default connect(() => ({
         raw: auth.getToken(),
         payload: auth.getToken(true).payload
     }
-}))(AccountPage)
+}))(UserAccount)

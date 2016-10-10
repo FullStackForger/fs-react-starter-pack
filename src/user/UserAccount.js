@@ -77,7 +77,7 @@ class AccountPage extends Component {
 								<FormControl
 									disabled
 									type="text"
-									gitplaceholder="Display name"
+									placeholder="Display name"
 									value={this.state.displayName}
 									onChange={this.onChange('displayName')}
 								/>

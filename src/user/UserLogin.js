@@ -5,8 +5,8 @@ import { Form, FormGroup, FormControl } from 'react-bootstrap'
 import { Checkbox, Button, ControlLabel, HelpBlock } from 'react-bootstrap'
 import { Link } from 'react-router'
 
-import SocialLoginPanel, { SocialLoginTitle } from '../social-login-panel'
-import { validateEmail, validatePassword } from '../../utils/validators'
+import SocialLoginPanel, { SocialLoginTitle } from '../components/social-login-panel'
+import { validateEmail, validatePassword } from '../utils/validators'
 
 const css = {
 	signupBlock: { textAlign: 'center', marginTop: '1em' },

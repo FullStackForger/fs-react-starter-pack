@@ -1,10 +1,9 @@
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router'
 
-import auth from '../auth-redux'
+import auth from '../components/auth-redux'
 
-import PageLogin from './component'
-import history from '../../config/history'
+import UserLogin from './UserLogin'
+import history from '../config/history'
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
 	onLoginFormSubmit: loginData => auth
@@ -14,4 +13,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 	onSignInSuccess: () => history.push('/')
 })
 
-export default connect(false, mapDispatchToProps)(PageLogin)
+export default connect(false, mapDispatchToProps)(UserLogin)
