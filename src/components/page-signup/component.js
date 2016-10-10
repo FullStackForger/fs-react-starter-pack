@@ -6,7 +6,7 @@ import { FieldGroup, HelpBlock } from 'react-bootstrap'
 import { Checkbox, Button, ControlLabel } from 'react-bootstrap'
 import { Link } from 'react-router'
 
-import SocialLoginPanel, { SocialLoginTitle } from '../social-login-panel'
+import SocialLoginPanel from '../../user/UserLoginSocialButtons'
 
 import { validateEmail, validateDisplayName } from '../../utils/validators'
 import { validatePassword, validatePassword2 } from '../../utils/validators'
@@ -14,7 +14,7 @@ import { validatePassword, validatePassword2 } from '../../utils/validators'
 const css = {
 	signupBlock: { textAlign: 'center', marginTop: '1em' },
 	signupSpan: { paddingRight: '0.5em' },
-	panelTitle: SocialLoginTitle.css
+	panelTitle: SocialLoginPanel.css
 }
 
 class SignupPage extends Component {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Panel } from 'react-bootstrap'
-import { Facebook, Google } from './auth'
+import { Facebook, Google } from '../components/auth'
 
 export const css = {
 	panelTitle: {
@@ -14,18 +14,12 @@ export const css = {
 	}
 }
 
-export const SocialLoginTitle = ({title}) => (
-	<div style={css.panelTitle}>{title}</div>
-)
-
-SocialLoginTitle.css = css.panelTitle
-
-const SocialLoginPanel = ({
+const UserLoginSocialPanel = ({
 	title,
 	onSignInSuccess
 }) => (
 	<Panel><Col xs={10} xsPush={1}>
-		<SocialLoginTitle title={title} />
+		<div style={css.panelTitle}>{title}</div>
 		<div className="form-group">
 			<Facebook
 				className="btn btn-md btn-block"
@@ -37,8 +31,9 @@ const SocialLoginPanel = ({
 				clientId="389760969675-u3h2dgm1v3lqd22u8aloimkgd10i0rvf.apps.googleusercontent.com"
 				onSignInSuccess={onSignInSuccess}
 			/>
-
 		</div>
 	</Col></Panel>
 )
-export default SocialLoginPanel
+
+UserLoginSocialPanel.css = css
+export default UserLoginSocialPanel
