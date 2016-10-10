@@ -1,6 +1,6 @@
 ![fs-react-starter-pack](https://cloud.githubusercontent.com/assets/10958238/19007584/a5839d9e-875d-11e6-9629-38f468fca30f.jpg)
 
-# FS-React-Starter-Pack
+# FS React Starter Pack
 
 ## Setup
 
@@ -49,8 +49,10 @@ Here is simplest example of social buttons in use inside of your component `rede
 ```
 render () {
 	return (
-		<GooglePlus />
-		<Facebook />
+		<div className="form-group">
+			<Facebook clientId="310178806023492" />
+			<Google clientId="389760969675-u3h2dgm1v3lqd22u8aloimkgd10i0rvf.apps.googleusercontent.com"	/>
+		</div>
 	)
 }
 ```
@@ -63,3 +65,9 @@ render () {
 * [lynndylanhurley/redux-auth](https://github.com/lynndylanhurley/redux-auth)
 * [jedireza/aqua](https://github.com/jedireza/aqua)
 * [jedireza/frame](https://github.com/jedireza/frame)
+
+* [mxstbr/react-boilerplate](https://github.com/mxstbr/react-boilerplate)
+
+List of react starting projects
+* (andrewhfarmer.com/starter-project)[http://andrewhfarmer.com/starter-project/]
+* (habd.as/awesome-react-boilerplates)[https://habd.as/awesome-react-boilerplates/]
