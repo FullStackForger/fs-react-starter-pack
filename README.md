@@ -1,3 +1,7 @@
+![fs-react-starter-pack](https://cloud.githubusercontent.com/assets/10958238/19007584/a5839d9e-875d-11e6-9629-38f468fca30f.jpg)
+
+# FS-React-Starter-Pack
+
 ## Setup
 
 ### Client
@@ -12,7 +16,7 @@ To start webpack dev server
 npm start
 ```
 
-### Server 
+### Server
 
 Install dependencies
 ```
@@ -20,7 +24,7 @@ cd server
 npm install
 ```
 
-Run with 
+Run with
 ```
 node server
 ```
@@ -37,7 +41,7 @@ Routing has been done with [react-router 2.8.0][react-router] and [configuration
 ## Social buttons
 
 This package heavily borrows from other libraries and social buttons are no exception. Satellizer for its simplicity
-and clear code was initial source of inspiration. It is mature and battle tested. Therefore, there was no need to 
+and clear code was initial source of inspiration. It is mature and battle tested. Therefore, there was no need to
 reinvent the wheel. I tried to copycat both code and ideas as much as possible adopting it to React.
 
 Here is simplest example of social buttons in use inside of your component `reder()` method.

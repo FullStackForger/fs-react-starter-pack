@@ -8,7 +8,7 @@ import { Link } from 'react-router'
 
 import SocialLoginPanel, { SocialLoginTitle } from '../social-login-panel'
 
-import { validateEmail, validateUsername } from '../../utils/validators'
+import { validateEmail, validateDisplayName } from '../../utils/validators'
 import { validatePassword, validatePassword2 } from '../../utils/validators'
 
 const css = {
@@ -23,17 +23,17 @@ class SignupPage extends Component {
 		this.onSignupClick = this.onSignupClick.bind(this)
 		this.onChange = this.onChange.bind(this)
 		this.state = {
-			username: { value: '', valid: false, error: null },
+			displayName: { value: '', valid: false, error: null },
 			email: { value: '', valid: false, error: null },
 			password: { value: '', valid: false, error: null },
 			password2: { value: '', valid: false, error: null },
 		}
 
-		this.onLoginSuccess = this.props.onLoginSuccess.bind(this)
+		this.onSignInSuccess = this.props.onSignInSuccess.bind(this)
 	}
 
 	isFormReady() {
-		return this.state.username.valid
+		return this.state.displayName.valid
 			&& this.state.email.valid
 			&& this.state.password.valid
 			&& this.state.password2.valid
@@ -41,7 +41,7 @@ class SignupPage extends Component {
 
 	onSignupClick () {
 		this.props.handleSignup({
-			username: this.state.username.value,
+			displayName: this.state.displayName.value,
 			email: this.state.email.value,
 			password: this.state.password.value
 		})
@@ -74,14 +74,14 @@ class SignupPage extends Component {
 			case 'email': return validateEmail(value)
 			case 'password': return validatePassword(value)
 			case 'password2': return validatePassword2(value, this.state.password.value)
-			case 'username': return validateUsername(value)
+			case 'displayName': return validateDisplayName(value)
 		}
 		return true
 	}
 
 	render () {
 		let email = this.state.email
-		let username = this.state.username
+		let displayName = this.state.displayName
 		let password = this.state.password
 		let password2 = this.state.password2
 
@@ -90,7 +90,7 @@ class SignupPage extends Component {
 				<Col md={4}>
 					<SocialLoginPanel
 						title="Login with social account"
-						onLoginSuccess={this.onLoginSuccess}
+						onSignInSuccess={this.onSignInSuccess}
 					/>
 				</Col>
 				<Col md={8}>
@@ -98,18 +98,18 @@ class SignupPage extends Component {
 						<div style={css.panelTitle}>Register account</div>
 						<Form horizontal>
 
-							<FormGroup controlId="signupUsername" validationState={this.getValidationState('username')}>
+							<FormGroup controlId="signupDisplayName" validationState={this.getValidationState('displayName')}>
 								<Col componentClass={ControlLabel} sm={2}>
-									Username
+									Name
 								</Col>
 								<Col sm={10}>
-									<FormControl type="text" placeholder="Username"
-										value={username.value}
-										onChange={this.onChange('username')}
+									<FormControl type="text" placeholder="Display name"
+										value={displayName.value}
+										onChange={this.onChange('displayName')}
 									/>
 									<FormControl.Feedback />
 									<HelpBlock>
-										{username.error}
+										{displayName.error}
 									</HelpBlock>
 								</Col>
 							</FormGroup>

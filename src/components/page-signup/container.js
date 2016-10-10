@@ -10,7 +10,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 		.signup(loginData)
 		.then(() => history.push('/'))
 		.catch(err => console.error(err)),
-	onLoginSuccess: () => history.push('/')
+	onSignInSuccess: () => history.push('/')
 })
 
 export default connect(false, mapDispatchToProps)(PageSignup)

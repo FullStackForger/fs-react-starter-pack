@@ -11,7 +11,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 		.login(loginData)
 		.then(() => history.push('/'))
 		.catch(err => console.error(err)),
-	onLoginSuccess: () => history.push('/')
+	onSignInSuccess: () => history.push('/')
 })
 
 export default connect(false, mapDispatchToProps)(PageLogin)

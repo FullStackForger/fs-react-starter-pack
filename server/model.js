@@ -5,7 +5,6 @@ const config = require('./config')
 const userSchema = new Mongoose.Schema({
   email: { type: String, unique: true, lowercase: true },
   password: { type: String, select: false },
-  username: { type: String },
 	displayName: { type: String },
 	picture: { type: String },
 	bio: { type: String, maxlength: 160 },

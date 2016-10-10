@@ -36,7 +36,7 @@ Router.post('/auth/signup', function(req, res) {
       return res.status(409).send({ message: 'Email is already taken' })
     }
     var user = new User({
-      username: req.body.username,
+			displayName: req.body.displayName,
       email: req.body.email,
       password: req.body.password
     });
@@ -174,7 +174,8 @@ Router.post('/auth/facebook', function(req, res) {
 					user.facebook = profile.id
 					user.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large'
 					user.displayName = profile.name
-					user.save(function() {
+					user.email = profile.email
+					user.save(function(data) {
 						var token = createJWT(user)
 						res.send({ token: token })
 					})
@@ -195,7 +196,7 @@ Router.put('/me', verifyCredentials, function(req, res) {
 		if (err || !user) {
       return res.status(400).send({ message: 'User not found' })
     }
-    user.username = req.body.username || user.username
+    user.displayName = req.body.displayName || user.displayName
     user.email = req.body.email || user.email
 		user.bio = req.body.bio || ''
     user.save(function(err) {
