@@ -5,13 +5,13 @@ import { Form, FormGroup, FormControl } from 'react-bootstrap'
 import { Checkbox, Button, ControlLabel, HelpBlock } from 'react-bootstrap'
 import { Link } from 'react-router'
 
-import SocialLoginPanel from './UserLoginSocialButtons'
+import SocialLoginPanel from './UserLoginSocialPanel'
 import { validateEmail, validatePassword } from '../utils/validators'
 
 const css = {
 	signupBlock: { textAlign: 'center', marginTop: '1em' },
 	signupSpan: { paddingRight: '0.5em' },
-	panelTitle: SocialLoginPanel.css
+	panelTitle: SocialLoginPanel.css.panelTitle
 }
 
 const propTypes = {
