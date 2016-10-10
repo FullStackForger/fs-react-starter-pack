@@ -1,13 +1,13 @@
 import {connect} from 'react-redux'
-import PageNavbar from './component'
-import auth from '../auth'
+import NavBar from './NavBar'
+import auth from '../components/auth'
 
 const mapStateToProps = (state) => {
-	return {	
+	return {
 		authenticated: auth.isAuthenticated()
 	}
 }
 
 export default connect(
 	mapStateToProps
-)(PageNavbar)
+)(NavBar)

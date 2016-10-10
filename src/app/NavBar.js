@@ -3,7 +3,7 @@ import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { FormGroup, FormControl, Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
-class PageNavBar extends React.Component {
+class NavBar extends React.Component {
 
 	constructor(props) {
 		super(props)
@@ -57,8 +57,8 @@ class PageNavBar extends React.Component {
 	}
 }
 
-PageNavBar.propTypes = {
+NavBar.propTypes = {
 	authenticated: PropTypes.bool.isRequired
 }
 
-export default PageNavBar
+export default NavBar
