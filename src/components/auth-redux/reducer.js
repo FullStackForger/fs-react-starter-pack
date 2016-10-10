@@ -28,7 +28,6 @@ const authReducer = (state = defaultState, action) => {
 			})
 		case ACTION.LOGIN_FAILED:
 		case ACTION.SIGNUP_FAILED:
-		debugger;
 			return Object.assign(newState, {
 				authenticated: false,
 				authenticating: false,
