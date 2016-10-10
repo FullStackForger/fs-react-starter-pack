@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import auth from '../auth-redux'
 
 import PageSignup from './component'
-import history from '../../config/history'
+import history from '../config/history'
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
 	handleSignup: loginData => auth
