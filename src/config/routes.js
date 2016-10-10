@@ -4,7 +4,7 @@ import Home from '../pages/Home'
 import Info from '../pages/Info'
 import Login from '../user/UserLoginContainer'
 import Logout from '../user/UserLogoutContainer'
-import Signup from '../components/page-signup/container'
+import Signup from '../user/UserSignupContainer'
 
 import auth from '../components/auth'
 
