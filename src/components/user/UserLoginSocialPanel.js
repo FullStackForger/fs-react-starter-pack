@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Panel } from 'react-bootstrap'
-import { Facebook, Google } from '../components/auth'
+import { Facebook, Google } from '../auth'
 
 export const css = {
 	panelTitle: {

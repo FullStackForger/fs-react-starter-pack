@@ -8,8 +8,8 @@ import { Link } from 'react-router'
 
 import SocialLoginPanel from './UserLoginSocialPanel'
 
-import { validateEmail, validateDisplayName } from '../utils/validators'
-import { validatePassword, validatePassword2 } from '../utils/validators'
+import { validateEmail, validateDisplayName } from './user-validators'
+import { validatePassword, validatePassword2 } from './user-validators'
 
 const css = {
 	signupBlock: { textAlign: 'center', marginTop: '1em' },

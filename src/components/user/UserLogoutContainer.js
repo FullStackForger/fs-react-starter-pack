@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
-import history from '../config/history'
+import history from '../../config/history'
 import PageLogout from './UserLogout'
-import auth from '../components/auth-redux'
+import auth from '../auth-redux'
 
 const mapStateToProps = (state, ownProps) => ({
 	timeout: 3,

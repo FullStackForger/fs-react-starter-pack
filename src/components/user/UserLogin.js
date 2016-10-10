@@ -6,7 +6,7 @@ import { Checkbox, Button, ControlLabel, HelpBlock } from 'react-bootstrap'
 import { Link } from 'react-router'
 
 import SocialLoginPanel from './UserLoginSocialPanel'
-import { validateEmail, validatePassword } from '../utils/validators'
+import { validateEmail, validatePassword } from './user-validators'
 
 const css = {
 	signupBlock: { textAlign: 'center', marginTop: '1em' },

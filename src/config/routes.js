@@ -1,10 +1,10 @@
-import Layout from '../app/Layout'
-import Account from '../user/UserAccountContainer'
-import Home from '../pages/Home'
-import Info from '../pages/Info'
-import Login from '../user/UserLoginContainer'
-import Logout from '../user/UserLogoutContainer'
-import Signup from '../user/UserSignupContainer'
+import Layout from '../components/Layout'
+import Account from '../components/user/UserAccountContainer'
+import Home from '../components/pages/Home'
+import Info from '../components/pages/Info'
+import Login from '../components/user/UserLoginContainer'
+import Logout from '../components/user/UserLogoutContainer'
+import Signup from '../components/user/UserSignupContainer'
 
 import auth from '../components/auth'
 
