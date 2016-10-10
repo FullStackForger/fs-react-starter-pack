@@ -1,4 +1,4 @@
-import Layout from '../components/layout'
+import Layout from '../app/Layout'
 import Account from '../user/UserAccountContainer'
 import Home from '../pages/Home'
 import Info from '../pages/Info'

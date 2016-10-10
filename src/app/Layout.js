@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import PageNavBar from '../layout/container'
+import NavBar from './NavBarContainer'
 
 export default class Layout extends Component {
 	render() {
 		return (
 			<div>
-				<PageNavBar />
+				<NavBar />
 				{this.props.children}
 			</div>
 		);
