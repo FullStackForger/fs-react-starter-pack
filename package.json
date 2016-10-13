@@ -1,8 +1,9 @@
 {
-  "name": "fs-react-bootstrap",
+  "name": "fs-react-starter-pack",
   "version": "1.0.0",
   "description": "React bootstrap with webpack",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "start": "webpack-dev-server --progress --colors --port 3000",
     "build": "webpack --progress --colors"
