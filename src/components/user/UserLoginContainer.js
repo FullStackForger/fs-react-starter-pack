@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import auth from '../auth-redux'
+import auth from 'react-jwt-auth-redux'
 
 import UserLogin from './UserLogin'
 import history from '../../config/history'

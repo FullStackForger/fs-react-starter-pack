@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import NavBar from './NavBar'
-import auth from '../components/auth'
+import auth from 'react-jwt-auth-redux'
 
 const mapStateToProps = (state) => {
 	return {

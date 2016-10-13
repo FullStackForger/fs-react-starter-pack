@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { Router } from 'react-router'
 
-import { Auth } from './components/auth-redux'
+import { Auth } from 'react-jwt-auth-redux'
 
 import history from './config/history'
 import store from './config/store'

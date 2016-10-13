@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import auth from '../auth-redux'
+import auth from 'react-jwt-auth-redux'
 import UserAccount from './UserAccount'
 
 const { getProfile, updateProfile, refreshToken } = auth

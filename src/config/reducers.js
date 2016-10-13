@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 
-import { authReducer } from '../components/auth-redux'
+import { authReducer } from 'react-jwt-auth-redux'
 
 const reducers = combineReducers({
 	routing: routerReducer,

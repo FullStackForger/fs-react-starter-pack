@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Panel } from 'react-bootstrap'
-import { Facebook, Google } from '../auth'
+import { Facebook, Google } from 'react-jwt-auth-redux'
 
 export const css = {
 	panelTitle: {

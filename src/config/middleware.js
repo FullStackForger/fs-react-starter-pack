@@ -1,4 +1,4 @@
-import { authMiddleware } from '../components/auth-redux'
+import { authMiddleware } from 'react-jwt-auth-redux'
 
 export default [
 //	authMiddleware
