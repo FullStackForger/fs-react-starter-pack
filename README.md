@@ -2,6 +2,8 @@
 
 # FS React Starter Pack
 
+> **Work in progress. Contributions are welcomed!**
+
 ## Setup
 
 ### Client
