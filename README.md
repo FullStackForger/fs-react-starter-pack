@@ -38,22 +38,23 @@ Routing has been done with [react-router 2.8.0][react-router] and [configuration
 [react-router]: https://github.com/reactjs/react-router/blob/v2.8.0/
 [react-router-conf]: https://github.com/reactjs/react-router/blob/v2.8.0/docs/guides/RouteConfiguration.md#configuration-with-plain-routes
 
-## Social buttons
+### User Authentication
 
-This package heavily borrows from other libraries and social buttons are no exception. Satellizer for its simplicity
-and clear code was initial source of inspiration. It is mature and battle tested. Therefore, there was no need to
-reinvent the wheel. I tried to copycat both code and ideas as much as possible adopting it to React.
+Users are authenticated with JSON Web Tokens.
 
-Here is simplest example of social buttons in use inside of your component `reder()` method.
+Starter pack uses `rect-jwt-auth-redux` providing `react-jwt-auth` bindings for Redux. 
+User can login with either login and password or it's social account by clicking social login button provided 
+by `react-jwt-auth`.
 
+Example of `render()` method rendering panel with social login buttons.
 ```
 render () {
-	return (
-		<div className="form-group">
-			<Facebook clientId="310178806023492" />
-			<Google clientId="389760969675-u3h2dgm1v3lqd22u8aloimkgd10i0rvf.apps.googleusercontent.com"	/>
-		</div>
-	)
+    return (
+        <div className="form-group">
+            <Facebook clientId="310178806023492" />
+            <Google clientId="389760969675-u3h2dgm1v3lqd22u8aloimkgd10i0rvf.apps.googleusercontent.com" />
+        </div>
+    )
 }
 ```
 
