@@ -31,7 +31,9 @@
     "webpack-dev-server": "^1.15.1",
     "whatwg-fetch": "^1.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react-jwt-auth-redux": "^0.3.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/indieforger/fs-react-bootstrap-webpack.git"
