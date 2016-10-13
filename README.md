@@ -44,7 +44,7 @@ Routing has been done with [react-router 2.8.0][react-router] and [configuration
 
 Users are authenticated with JSON Web Tokens.
 
-Starter pack uses `rect-jwt-auth-redux` providing `react-jwt-auth` bindings for Redux. 
+Starter pack uses [react-jwt-auth-redux][react-jwt-auth-redux] providing [react-jwt-auth][react-jwt-auth] bindings for Redux. 
 User can login with either login and password or it's social account by clicking social login button provided 
 by `react-jwt-auth`.
 
@@ -81,3 +81,10 @@ If you don't like this starter pack or have different requirement for you projec
 
 * [andrewhfarmer.com/starter-project](http://andrewhfarmer.com/starter-project)
 * [habd.as/awesome-react-boilerplates](https://habd.as/awesome-react-boilerplates)
+
+
+<!-- references --> 
+
+[redux]: http://redux.js.org/
+[react-jwt-auth]: https://github.com/fullstackforger/react-jwt-auth
+[react-jwt-auth-redux]: https://github.com/fullstackforger/react-jwt-auth-redux
