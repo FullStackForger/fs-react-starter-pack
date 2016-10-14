@@ -5,6 +5,8 @@ import { Checkbox, Button, ControlLabel, HelpBlock } from 'react-bootstrap'
 import { Link } from 'react-router'
 import { LinkContainer } from 'react-router-bootstrap'
 
+import defaultPicture from './img/avatar.png'
+
 const bioMaxLength = 160
 const defaultState = {
 	displayName: '',
@@ -42,6 +44,7 @@ class AccountPage extends Component {
 			.then((data) => this.updateState({
 				email: data.email,
 				displayName: data.displayName,
+				picture: data.picture,
 				bio: data.bio || ''
 			})).catch((err) => console.error(err))
 	}
@@ -69,51 +72,67 @@ class AccountPage extends Component {
 		return (
 			<Grid>
 				<Col md={6}>
-					<Panel header="Account details"><Col xs={12}>
+					<Panel header="Account details">
 						<Form horizontal>
+							<Col xs={12} sm={4}>
+								<FormGroup controlId="profileImage">
+									<ControlLabel>Avatar</ControlLabel>
+									<div>
+										<img
+											style={{width: '95%'}}
+											src={this.state.picture || defaultPicture}
+										/>
+									</div>
+								</FormGroup>
+							</Col>
 
-							<FormGroup controlId="profileUsername">
-								<ControlLabel>Name</ControlLabel>
-								<FormControl
-									disabled
-									type="text"
-									placeholder="Display name"
-									value={this.state.displayName}
-									onChange={this.onChange('displayName')}
-								/>
-							</FormGroup>
+							<Col xs={12} sm={8}>
+								<FormGroup controlId="profileUsername">
+									<ControlLabel>Name</ControlLabel>
+									<FormControl
+										disabled
+										type="text"
+										placeholder="Display name"
+										value={this.state.displayName}
+										onChange={this.onChange('displayName')}
+									/>
+								</FormGroup>
 
-							<FormGroup controlId="profileEmail">
-								<ControlLabel>Email</ControlLabel>
-								<FormControl
-									disabled
-									type="email"
-									placeholder="Email"
-									value={this.state.email}
-									onChange={this.onChange('email')}
-								/>
-							</FormGroup>
+								<FormGroup controlId="profileEmail">
+									<ControlLabel>Email</ControlLabel>
+									<FormControl
+										disabled
+										type="email"
+										placeholder="Email"
+										value={this.state.email}
+										onChange={this.onChange('email')}
+									/>
+								</FormGroup>
+							</Col>
 
-							<FormGroup controlId="profileBio">
-								<ControlLabel>Bio</ControlLabel>
-								<FormControl
-									componentClass="textarea"
-									placeholder="Bio"
-									value={this.state.bio}
-									onChange={this.onChange('bio')}
-								/>
-								<HelpBlock
+							<Col xs={12}>
+								<FormGroup controlId="profileBio">
+									<ControlLabel>Bio</ControlLabel>
+									<FormControl
+										componentClass="textarea"
+										placeholder="Bio"
+										value={this.state.bio}
+										onChange={this.onChange('bio')}
+									/>
+									<HelpBlock
+										className="pull-right"
+									>{this.state.bioCharsLeft}</HelpBlock>
+								</FormGroup>
+
+								<Button
+									bsStyle="primary"
 									className="pull-right"
-								>{this.state.bioCharsLeft}</HelpBlock>
-							</FormGroup>
+									onClick={this.onSubmit}
+								>UpdateInformation</Button>
 
-							<Button
-								bsStyle="primary"
-								className="pull-right"
-								onClick={this.onSubmit}
-							>UpdateInformation</Button>
+							</Col>
 						</Form>
-					</Col></Panel>
+					</Panel>
 				</Col>
 
 				<Col md={6}>
