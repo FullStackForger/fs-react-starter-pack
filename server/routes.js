@@ -169,7 +169,11 @@ Router.post('/auth/facebook', function(req, res) {
 				})
 			} else {
 				// Step 3. Create a new user account or return an existing one.
-				User.findOne({ facebook: profile.id }, function(err, existingUser) {
+				User.findOne({ $or:[
+					{ facebook: profile.id },
+					{ email: profile.email}
+				]}, function(err, existingUser) {
+
 					if (existingUser) {
 						var token = createJWT(existingUser)
 						return res.send({ token: token })
@@ -178,7 +182,7 @@ Router.post('/auth/facebook', function(req, res) {
 					user.facebook = profile.id
 					user.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large'
 					user.displayName = profile.name
-					user.email = profile.email
+					user.email = user.email || profile.email
 					user.save(function(data) {
 						var token = createJWT(user)
 						res.send({ token: token })
