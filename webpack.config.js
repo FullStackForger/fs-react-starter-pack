@@ -19,9 +19,13 @@ module.exports = {
 			exclude: /node_modules/,
 			loaders: ['babel-loader'],
 		}, {
-				test: /\.css$/,
-				loader: "style!css"
-			}]
+			test: /\.css$/,
+			loader: "style!css"
+		}, {
+			test: /\.(jpg|png)$/,
+			//include: PATHS.images,
+			loader: 'url?limit=25000'
+		}]
 	},
 	plugins: [
 		new webpack.NoErrorsPlugin(),
