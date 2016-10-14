@@ -8,7 +8,8 @@ const userSchema = new Mongoose.Schema({
 	displayName: { type: String },
 	picture: { type: String },
 	bio: { type: String, maxlength: 160 },
-	facebook: { type: String }
+	facebook: { type: String },
+	google: { type: String }
 })
 
 userSchema.pre('save', function(next) {
