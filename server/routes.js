@@ -101,7 +101,11 @@ Router.post('/auth/google', function(req, res) {
 				})
 			} else {
 				// Step 3b. Create a new user account or return an existing one.
-				User.findOne({ google: profile.sub }, function(err, existingUser) {
+				User.findOne({ $or:[
+						{ google: profile.sub },
+						{ email: profile.email}
+					]}, function(err, existingUser) {
+
 					if (existingUser) {
 						return res.send({ token: createJWT(existingUser) })
 					}
