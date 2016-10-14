@@ -102,17 +102,14 @@ Router.post('/auth/google', function(req, res) {
 			} else {
 				// Step 3b. Create a new user account or return an existing one.
 				User.findOne({ $or:[
-						{ google: profile.sub },
-						{ email: profile.email}
-					]}, function(err, existingUser) {
+					{ google: profile.sub },
+					{ email: profile.email}
+				]}, function(err, existingUser) {
 
-					if (existingUser) {
-						return res.send({ token: createJWT(existingUser) })
-					}
-					var user = new User()
+					var user = existingUser ? existingUser : new User()
+					user.displayName = user.displayName || profile.name
+					user.picture = user.picture || profile.picture.replace('sz=50', 'sz=200')
 					user.google = profile.sub
-					user.picture = profile.picture.replace('sz=50', 'sz=200')
-					user.displayName = profile.name
 					user.email = user.email || profile.email
 					user.save(function(err) {
 						var token = createJWT(user)
@@ -174,16 +171,12 @@ Router.post('/auth/facebook', function(req, res) {
 					{ email: profile.email}
 				]}, function(err, existingUser) {
 
-					if (existingUser) {
-						var token = createJWT(existingUser)
-						return res.send({ token: token })
-					}
-					var user = new User()
-					user.facebook = profile.id
-					user.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large'
+					var user = existingUser ? existingUser : new User()
 					user.displayName = profile.name
+					user.picture = user.picture || 'https://graph.facebook.com/' + profile.id + '/picture?type=large'
+					user.facebook = profile.id
 					user.email = user.email || profile.email
-					user.save(function(data) {
+					user.save(function(err) {
 						var token = createJWT(user)
 						res.send({ token: token })
 					})
