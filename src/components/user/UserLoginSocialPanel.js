@@ -18,7 +18,7 @@ const UserLoginSocialPanel = ({
 	title,
 	onSignInSuccess
 }) => (
-	<Panel><Col xs={10} xsPush={1}>
+	<Panel><Col xs={10} xsPush={1} sm={12} smPush={0}>
 		<div style={css.panelTitle}>{title}</div>
 		<div className="form-group">
 			<Facebook
