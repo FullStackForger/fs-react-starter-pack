@@ -6,6 +6,7 @@ const propTypes = {
 	title: PropTypes.string,
 	onSignInSuccess: PropTypes.func,
 	headerStyle: PropTypes.object,
+	panelClassName: PropTypes.string,
 	headerClassName: PropTypes.string,
 	bodyClassName: PropTypes.string
 }
@@ -15,6 +16,8 @@ const defaultProps = {
 	onSignInSuccess: () => {},
 	facebookClientId: "310178806023492",
 	googleClientId: "389760969675-u3h2dgm1v3lqd22u8aloimkgd10i0rvf.apps.googleusercontent.com",
+	panelClassName: 'panel panel-default',
+	bodyClassName: 'panel-body',
 	headerStyle: {
 		padding: '10px 5px 10px',
 		borderBottom: '1px solid #eee',
@@ -36,8 +39,10 @@ export default class UserLoginSocialPanel extends Component
 	render () {
 		const title = this.props.title
 		const onSignInSuccess = this.props.onSignInSuccess
+		const panelClassName = this.props.panelClassName || ''
 		const headerClassName  = this.props.headerClassName || ''
 		const headerStyle = this.props.headerStyle || null
+		const bodyClassName = this.props.bodyClassName || ''
 		const facebookClientId = this.props.facebookClientId
 		const googleClientId = this.props.googleClientId
 
@@ -50,23 +55,25 @@ export default class UserLoginSocialPanel extends Component
 		)
 
 		return (
-			<Panel><Col xs={10} xsPush={1} sm={12} smPush={0}>
+			<div className={panelClassName}>
 				{headerHtml}
-				<div>
-					<div className="form-group">
-						<Facebook
-							className="btn btn-md btn-block"
-							clientId={facebookClientId}
-							onSignInSuccess={onSignInSuccess}
-						/>
-						<Google
-							className="btn btn-md btn-block"
-							clientId={googleClientId}
-							onSignInSuccess={onSignInSuccess}
-						/>
-					</div>
+				<div className={bodyClassName}>
+					<Col xs={10} xsPush={1} sm={12} smPush={0}>
+						<div className="form-group">
+							<Facebook
+								className="btn btn-md btn-block"
+								clientId={facebookClientId}
+								onSignInSuccess={onSignInSuccess}
+							/>
+							<Google
+								className="btn btn-md btn-block"
+								clientId={googleClientId}
+								onSignInSuccess={onSignInSuccess}
+							/>
+						</div>
+					</Col>
 				</div>
-			</Col></Panel>
+			</div>
 		)
 	}
 }
