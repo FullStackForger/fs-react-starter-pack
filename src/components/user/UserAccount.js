@@ -4,6 +4,7 @@ import { Form, FormGroup, FormControl } from 'react-bootstrap'
 import { Checkbox, Button, ControlLabel, HelpBlock } from 'react-bootstrap'
 import { Link } from 'react-router'
 import { LinkContainer } from 'react-router-bootstrap'
+import SocialLoginPanel from './UserLoginSocialPanel'
 
 import defaultPicture from './img/avatar.png'
 
@@ -136,13 +137,7 @@ class AccountPage extends Component {
 				</Col>
 
 				<Col md={6}>
-					<Panel header="Social accounts"><Col sm={8} smOffset={2}>
-						<Form horizontal>
-
-							<Button block>Facebook</Button>
-							<Button block>Google +</Button>
-						</Form>
-					</Col></Panel>
+					<SocialLoginPanel/>
 				</Col>
 
 				<Col md={6}>
