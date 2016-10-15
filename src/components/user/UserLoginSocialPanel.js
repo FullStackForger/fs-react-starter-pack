@@ -17,7 +17,9 @@ const defaultProps = {
 	facebookClientId: "310178806023492",
 	googleClientId: "389760969675-u3h2dgm1v3lqd22u8aloimkgd10i0rvf.apps.googleusercontent.com",
 	panelClassName: 'panel panel-default',
+	titleAsHeader: false,
 	bodyClassName: 'panel-body',
+	headerClassName: 'panel-heading',
 	headerStyle: {
 		padding: '10px 5px 10px',
 		borderBottom: '1px solid #eee',
@@ -38,6 +40,7 @@ export default class UserLoginSocialPanel extends Component
 
 	render () {
 		const title = this.props.title
+		const titleAsHeader = this.props.titleAsHeader
 		const onSignInSuccess = this.props.onSignInSuccess
 		const panelClassName = this.props.panelClassName || ''
 		const headerClassName  = this.props.headerClassName || ''
@@ -49,16 +52,17 @@ export default class UserLoginSocialPanel extends Component
 		// generate custom header with either this.props.headerClasssName or default panelTiitleStyle
 		const headerHtml = !title ? null : (
 			<div
-				style={headerClassName ? {} : headerStyle}
 				className={headerClassName}
+				style={headerStyle}
 			>{title}</div>
 		)
 
 		return (
 			<div className={panelClassName}>
-				{headerHtml}
+				{(() => { if (titleAsHeader) return headerHtml })()}
 				<div className={bodyClassName}>
 					<Col xs={10} xsPush={1} sm={12} smPush={0}>
+						{(() => { if (!titleAsHeader) return headerHtml })()}
 						<div className="form-group">
 							<Facebook
 								className="btn btn-md btn-block"
