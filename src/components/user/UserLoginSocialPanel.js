@@ -5,6 +5,10 @@ import { Facebook, Google } from 'react-jwt-auth-redux'
 const propTypes = {
 	title: PropTypes.string,
 	onSignInSuccess: PropTypes.func,
+	clientId: PropTypes.shape({
+		facebook: PropTypes.string,
+		google: PropTypes.string
+	}),
 	headerStyle: PropTypes.object,
 	panelClassName: PropTypes.string,
 	headerClassName: PropTypes.string,
@@ -14,8 +18,10 @@ const propTypes = {
 const defaultProps = {
 	title: null,
 	onSignInSuccess: () => {},
-	facebookClientId: "310178806023492",
-	googleClientId: "389760969675-u3h2dgm1v3lqd22u8aloimkgd10i0rvf.apps.googleusercontent.com",
+	clientId: {
+		facebook: "310178806023492",
+		google: "389760969675-u3h2dgm1v3lqd22u8aloimkgd10i0rvf.apps.googleusercontent.com",
+	},
 	panelClassName: 'panel panel-default',
 	titleAsHeader: false,
 	bodyClassName: 'panel-body',
@@ -46,8 +52,8 @@ export default class UserLoginSocialPanel extends Component
 		const headerClassName  = this.props.headerClassName || ''
 		const headerStyle = this.props.headerStyle || null
 		const bodyClassName = this.props.bodyClassName || ''
-		const facebookClientId = this.props.facebookClientId
-		const googleClientId = this.props.googleClientId
+
+		const clientId = this.props.clientId
 
 		// generate custom header with either this.props.headerClasssName or default panelTiitleStyle
 		const headerHtml = !title ? null : (
@@ -66,12 +72,12 @@ export default class UserLoginSocialPanel extends Component
 						<div className="form-group">
 							<Facebook
 								className="btn btn-md btn-block"
-								clientId={facebookClientId}
+								clientId={clientId.facebook}
 								onSignInSuccess={onSignInSuccess}
 							/>
 							<Google
 								className="btn btn-md btn-block"
-								clientId={googleClientId}
+								clientId={clientId.google}
 								onSignInSuccess={onSignInSuccess}
 							/>
 						</div>
