@@ -16,41 +16,56 @@ export const css = {
 
 const propTypes = {
 	title: PropTypes.string,
-	onSignInSuccess: PropTypes.func
+	onSignInSuccess: PropTypes.func,
+	headerClassName: PropTypes.string,
+	bodyClassName: PropTypes.string
 }
 
 const defaultProps = {
 	title: null,
-	onSignInSuccess: () => {}
+	onSignInSuccess: () => {},
+	facebookClientId: "310178806023492",
+	googleClientId: "389760969675-u3h2dgm1v3lqd22u8aloimkgd10i0rvf.apps.googleusercontent.com"
 }
 
 export default class UserLoginSocialPanel extends Component
 {
 
-	constructor(props){
+	constructor(props) {
 		super(props)
 	}
 
 	render () {
 		const title = this.props.title
 		const onSignInSuccess = this.props.onSignInSuccess
+		const headerClassName  = this.props.headerClassName || ''
+		const facebookClientId = this.props.facebookClientId
+		const googleClientId = this.props.googleClientId
+
+		// generate custom header with either this.props.headerClasssName or default panelTiitleStyle
+		const headerHtml = !title ? null : (
+			<div
+				style={headerClassName ? {} : css.panelTitle}
+				className={headerClassName}
+			>{title}</div>
+		)
 
 		return (
 			<Panel><Col xs={10} xsPush={1} sm={12} smPush={0}>
-				{(() => {
-					return title ? <div style={css.panelTitle}>{title}</div> : null
-				})()}
-				<div className="form-group">
-					<Facebook
-						className="btn btn-md btn-block"
-						clientId="310178806023492"
-						onSignInSuccess={onSignInSuccess}
-					/>
-					<Google
-						className="btn btn-md btn-block"
-						clientId="389760969675-u3h2dgm1v3lqd22u8aloimkgd10i0rvf.apps.googleusercontent.com"
-						onSignInSuccess={onSignInSuccess}
-					/>
+				{headerHtml}
+				<div>
+					<div className="form-group">
+						<Facebook
+							className="btn btn-md btn-block"
+							clientId={facebookClientId}
+							onSignInSuccess={onSignInSuccess}
+						/>
+						<Google
+							className="btn btn-md btn-block"
+							clientId={googleClientId}
+							onSignInSuccess={onSignInSuccess}
+						/>
+					</div>
 				</div>
 			</Col></Panel>
 		)
@@ -59,3 +74,4 @@ export default class UserLoginSocialPanel extends Component
 
 UserLoginSocialPanel.css = css
 UserLoginSocialPanel.propTypes = propTypes
+UserLoginSocialPanel.defaultProps = defaultProps
