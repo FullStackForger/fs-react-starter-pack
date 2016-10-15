@@ -137,7 +137,7 @@ class AccountPage extends Component {
 				</Col>
 
 				<Col md={6}>
-					<SocialLoginPanel headerClassName="panel-heading" title="Link social accounts"/>
+					<SocialLoginPanel titleAsHeader={true} title="Link social accounts"/>
 				</Col>
 
 				<Col md={6}>

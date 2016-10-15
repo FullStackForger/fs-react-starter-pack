@@ -53,7 +53,7 @@ export default class UserLoginSocialPanel extends Component
 		const headerHtml = !title ? null : (
 			<div
 				className={headerClassName}
-				style={headerStyle}
+				style={titleAsHeader ? {} : headerStyle}
 			>{title}</div>
 		)
 
