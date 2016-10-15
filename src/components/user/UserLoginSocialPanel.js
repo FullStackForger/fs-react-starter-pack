@@ -19,7 +19,7 @@ const UserLoginSocialPanel = ({
 	onSignInSuccess
 }) => (
 	<Panel><Col xs={10} xsPush={1} sm={12} smPush={0}>
-		<div style={css.panelTitle}>{title}</div>
+		{(() => { return title ? <div style={css.panelTitle}>{title}</div> : null})()}
 		<div className="form-group">
 			<Facebook
 				className="btn btn-md btn-block"
