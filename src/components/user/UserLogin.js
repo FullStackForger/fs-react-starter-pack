@@ -11,7 +11,7 @@ import { validateEmail, validatePassword } from './user-validators'
 const css = {
 	signupBlock: { textAlign: 'center', marginTop: '1em' },
 	signupSpan: { paddingRight: '0.5em' },
-	panelTitle: SocialLoginPanel.css.panelTitle
+	panelTitle: SocialLoginPanel.defaultProps.headerStyle
 }
 
 const propTypes = {
