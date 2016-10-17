@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import { Grid, Col, Panel } from 'react-bootstrap'
+import React, {Component, PropTypes} from 'react'
+import { Grid, Col } from 'react-bootstrap'
 
 export default class Page extends Component {
 	constructor(props) {
@@ -10,11 +10,13 @@ export default class Page extends Component {
 		return (
 			<Grid>
 				<Col md={12}>
-					<Panel>
-						{this.props.children}
-					</Panel>
+					{this.props.children}
 				</Col>
 			</Grid>
 		)
 	}
+}
+
+Page.propTypes = {
+	header: PropTypes.string
 }
