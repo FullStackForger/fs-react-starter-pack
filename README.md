@@ -48,18 +48,6 @@ Starter pack uses [react-jwt-auth-redux][react-jwt-auth-redux] providing [react-
 User can login with either login and password or it's social account by clicking social login button provided 
 by `react-jwt-auth`.
 
-Example of `render()` method rendering panel with social login buttons.
-```
-render () {
-    return (
-        <div className="form-group">
-            <Facebook clientId="310178806023492" />
-            <Google clientId="389760969675-u3h2dgm1v3lqd22u8aloimkgd10i0rvf.apps.googleusercontent.com" />
-        </div>
-    )
-}
-```
-
 ## Sources
 
 ### Inspirational packages
