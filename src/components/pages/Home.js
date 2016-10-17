@@ -13,8 +13,14 @@ export default ()=> (
 		</Panel>
 
 		<div className="text-center">
-			<Button class="btn btn-default" href="https://github.com/fullstackforger/fs-react-starter-pack">GitHub project</Button>
-			<Button class="btn btn-default" href="https://github.com/fullstackforger/fs-react-starter-pack/issues/new">Report issue</Button>
+			<Button className="btn btn-default"
+							href="https://github.com/fullstackforger/fs-react-starter-pack">
+				GitHub project
+			</Button>
+			<Button className="btn btn-default"
+							href="https://github.com/fullstackforger/fs-react-starter-pack/issues/new">
+				Report issue
+			</Button>
 		</div>
 	</Page>
 )
