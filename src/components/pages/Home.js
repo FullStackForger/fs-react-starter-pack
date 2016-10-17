@@ -1,4 +1,8 @@
 import React from 'react'
-export default ()=>(
-	<h3>Home</h3>
+import Page from './Page'
+
+export default ()=> (
+	<Page>
+		<h3>Home</h3>
+	</Page>
 )
