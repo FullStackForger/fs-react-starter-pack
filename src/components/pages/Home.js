@@ -15,10 +15,12 @@ export default ()=> (
 		<div className="text-center">
 			<Button className="btn btn-default"
 							href="https://github.com/fullstackforger/fs-react-starter-pack">
+				<i className="ion-social-github"></i>&nbsp;
 				GitHub project
 			</Button>
 			<Button className="btn btn-default"
 							href="https://github.com/fullstackforger/fs-react-starter-pack/issues/new">
+				<i className="ion-bug"></i>&nbsp;
 				Report issue
 			</Button>
 		</div>
