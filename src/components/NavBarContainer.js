@@ -9,5 +9,8 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(
-	mapStateToProps
+	mapStateToProps,
+	null,
+	null,
+	{ pure: false }
 )(NavBar)
