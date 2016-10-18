@@ -58,6 +58,7 @@ module.exports = function(config) {
 		plugins: [
 			'karma-webpack',
 			'karma-mocha',
+			'karma-mocha-reporter',
 			//'karma-jasmine',
 			'karma-sourcemap-loader',
 			'karma-chrome-launcher',
@@ -70,12 +71,12 @@ module.exports = function(config) {
 			// 	presets: ['airbnb']
 			// }
 		},
-		reporters: ['progress'],
+		reporters: ['mocha'],
 		port: 9876,
 		colors: true,
 		logLevel: config.LOG_INFO,
 		autoWatch: true,
 		browsers: ['Chrome'],
-		singleRun: false,
+		singleRun: false
 	})
 }
