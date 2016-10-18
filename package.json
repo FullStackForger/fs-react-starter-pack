@@ -5,6 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
+    "test": "karma start --single-run",
     "start": "webpack-dev-server --progress --colors --port 3000",
     "build": "webpack --progress --colors"
   },
