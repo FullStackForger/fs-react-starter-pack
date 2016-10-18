@@ -14,7 +14,7 @@ describe("Layout", function () {
 	})
 
 	it("should have navbar", function () {
-		expect(shallow(<Layout />).contains(<nav className="navbar" />)).to.be.true
+		expect(shallow(<Layout />).debug()).to.contain('NavBar')
 	})
 
 	it("should render children", function () {
