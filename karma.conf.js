@@ -13,8 +13,8 @@ module.exports = function(config) {
 
 		preprocessors: {
 			// add webpack as preprocessor
-			'src/*.spec.js': ['webpack'],
-			'src/**/*.spec.js': ['webpack']
+			'src/*.spec.js': ['webpack', 'sourcemap'],
+			'src/**/*.spec.js': ['webpack', 'sourcemap']
 		},
 
 		webpack: {
@@ -22,7 +22,9 @@ module.exports = function(config) {
 			// (you don't need to specify the entry option)
 			// webpack watches dependencies
 
-			//devtool: 'inline-source-map', //
+			//
+			devtool: 'inline-source-map',
+
 			module: {
 				loaders: [{
 					test: /\.js$/,
