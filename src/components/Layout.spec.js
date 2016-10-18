@@ -6,20 +6,22 @@ import { shallow } from 'enzyme';
 const expect = chai.expect
 const should = 	chai.should()
 
-describe("Layout", function () {
+describe("Layout", () => {
 
-	it('should render', function () {
-		const div = shallow(<Layout />)
-		expect(div).to.exist
+	it('should render', () => {
+		const layout = shallow(<Layout />)
+		expect(layout).to.exist
 	})
 
-	it("should have navbar", function () {
-		expect(shallow(<Layout />).debug()).to.contain('NavBar')
+	it("should have navbar", () => {
+		const layout = shallow(<Layout />)
+		expect(layout.debug()).to.contain('NavBar')
 	})
 
-	it("should render children", function () {
+	it("should render children", () => {
 		const children = <div>children</div>
-		expect(shallow(<Layout>{children}</Layout>).contains(<div>children</div>)).to.be.true
+		const layout = shallow(<Layout>{children}</Layout>)
+		expect(layout.contains(children)).to.be.true
 	})
 
 })
