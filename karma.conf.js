@@ -4,7 +4,7 @@ const path = require('path')
 module.exports = function(config) {
 	config.set({
 		basePath: '',
-		frameworks: ['jasmine'],
+		frameworks: ['mocha'],
 		files: [
 			// each file acts as entry point for the webpack configuration
 			'src/*.spec.js',
@@ -57,7 +57,8 @@ module.exports = function(config) {
 
 		plugins: [
 			'karma-webpack',
-			'karma-jasmine',
+			'karma-mocha',
+			//'karma-jasmine',
 			'karma-sourcemap-loader',
 			'karma-chrome-launcher',
 			'karma-phantomjs-launcher'

@@ -1,12 +1,16 @@
 import React from 'react';
 import Layout from './Layout'
+import chai from 'chai'
 import { shallow } from 'enzyme';
+
+const expect = chai.expect
+const should = 	chai.should()
 
 describe("Layout", function () {
 
 	it('should render', function () {
 		const div = shallow(<Layout />)
-		expect(div).not.toBe(null);
+		expect(div).to.exist
 	})
 
 	// it("should render", function () {
