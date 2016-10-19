@@ -1,6 +1,6 @@
 {
   "name": "fs-react-starter-pack",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "React bootstrap with webpack",
   "main": "index.js",
   "private": true,
@@ -54,7 +54,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/indieforger/fs-react-bootstrap-webpack.git"
+    "url": "git+https://github.com/indieforger/fs-react-starter-pack.git"
   },
   "keywords": [
     "react",
@@ -68,7 +68,7 @@
     "webpack"
   ],
   "bugs": {
-    "url": "https://github.com/indieforger/fs-react-bootstrap-webpack/issues"
+    "url": "https://github.com/indieforger/fs-react-starter-pack/issues"
   },
-  "homepage": "https://github.com/indieforger/fs-react-bootstrap-webpack#readme"
+  "homepage": "https://github.com/indieforger/fs-react-starter-pack"
 }
