@@ -2,7 +2,7 @@ const Path = require('path')
 const Hapi = require('Hapi')
 const Webpack = require('webpack')
 const DashboardPlugin = require('webpack-dashboard/plugin')
-const wpConfig = require('../webpack.dashboard')
+const wpConfig = require('../internals/webpack.dashboard.js')
 
 const server = new Hapi.Server()
 const host = 'localhost'

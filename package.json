@@ -8,7 +8,8 @@
     "test": "karma start --single-run",
     "dev": "node ./src/server.js",
     "dev:dash": "webpack-dashboard -- node ./src/server.js",
-    "start": "webpack-dev-server --progress --colors --port 3000",
+    "dev:wp-server": "webpack-dev-server --config ./internals/webpack.wp-dev-server.js --progress --colors --port 3000",
+    "start": "npm run dev",
     "build": "webpack --progress --colors"
   },
   "author": "IndieForger",

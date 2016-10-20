@@ -12,32 +12,31 @@
 
 > **Work in progress. Contributions are welcomed!**
 
-## Setup
+## Setup instruction
 
 ### Client
 
-Install dependendencies
 ```
-npm install
-```
-
-To start webpack dev server
-```
-npm start
+npm install && npm start
 ```
 
-### Server
+If you want you start dev server with hot reload support use
+```
+npm run hot
+```
+
+
+### API Server
+
+It is demo server wit API endpoints you need for the starter.
+
+> In the future API will be moved to external package such us [hapilizer]()
 
 Install dependencies
 ```
-cd server
-npm install
+cd server && npm install && node start
 ```
 
-Run with
-```
-node server
-```
 
 ## Barebones
 
@@ -58,7 +57,7 @@ by `react-jwt-auth`.
 
 ## Sources
 
-### Inspirational packages
+### Great packages
 
 Here is the list of great react packages that inspired me to start this project.
 
@@ -68,7 +67,6 @@ Here is the list of great react packages that inspired me to start this project.
 * [lynndylanhurley/redux-auth](https://github.com/lynndylanhurley/redux-auth)
 * [jedireza/aqua](https://github.com/jedireza/aqua)
 * [jedireza/frame](https://github.com/jedireza/frame)
-
 * [mxstbr/react-boilerplate](https://github.com/mxstbr/react-boilerplate)
 
 ### List of react starting projects
@@ -77,7 +75,7 @@ If you don't like this starter pack or have different requirement for you projec
 
 * [andrewhfarmer.com/starter-project](http://andrewhfarmer.com/starter-project)
 * [habd.as/awesome-react-boilerplates](https://habd.as/awesome-react-boilerplates)
-
+* react-hot-loader usage [examples](https://github.com/gaearon/react-hot-loader/tree/master/docs) 
 
 <!-- references --> 
 
