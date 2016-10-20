@@ -11,7 +11,8 @@ const renderContainer = function () {
 
 if (module.hot) {
 	module.hot.accept('./app', function () {
-		const HotApp = require('./app')
+		const HotApp = require('./app').default
+
 		ReactDOM.render(
 			<HotApp/>,
 			document.getElementById('app')

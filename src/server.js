@@ -17,7 +17,8 @@ const devMiddleware = require('webpack-dev-middleware')(compiler, {
 	port,
 	historyApiFallback: true,
 	publicPath: wpConfig.output.publicPath,
-	quiet: true  // important for webpack-dashboard to work
+	hot: true,
+	quiet: true  // webpack-dashboard setup
 })
 
 const hotMiddleware = require('webpack-hot-middleware')(compiler, {
