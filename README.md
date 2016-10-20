@@ -20,17 +20,11 @@
 npm install && npm start
 ```
 
-If you want you start dev server with hot reload support use
-```
-npm run hot
-```
-
-
 ### API Server
 
 It is demo server wit API endpoints you need for the starter.
 
-> In the future API will be moved to external package such us [hapilizer]()
+> In the future API will be moved to external package such us [hapilizer](https://github.com/fullstackforger/hapilizer)
 
 Install dependencies
 ```
