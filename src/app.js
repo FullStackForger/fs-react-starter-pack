@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { Router } from 'react-router'
 
@@ -14,11 +13,10 @@ const authConfig = {
 	baseUrl: 'http://localhost:8080/api/'
 }
 
-ReactDOM.render(
+export default () => (
 	<Provider store={store}>
 		<Auth {...authConfig}>
 			<Router history={history} routes={routes} />
 		</Auth>
-	</Provider>,
-	document.getElementById('app')
-);
+	</Provider>
+)

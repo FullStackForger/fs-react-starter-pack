@@ -6,6 +6,8 @@
   "private": true,
   "scripts": {
     "test": "karma start --single-run",
+    "dev": "node ./src/server.js",
+    "dev:dash": "webpack-dashboard -- node ./src/server.js",
     "start": "webpack-dev-server --progress --colors --port 3000",
     "build": "webpack --progress --colors"
   },
@@ -20,6 +22,8 @@
     "chai": "^3.5.0",
     "enzyme": "^2.5.1",
     "file-loader": "^0.9.0",
+    "hapi": "^15.1.1",
+    "html-webpack-plugin": "^2.22.0",
     "json-loader": "^0.5.4",
     "karma": "^1.3.0",
     "karma-chrome-launcher": "^2.0.0",
@@ -46,7 +50,10 @@
     "uid": "0.0.2",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
+    "webpack-dashboard": "^0.2.0",
+    "webpack-dev-middleware": "^1.8.4",
     "webpack-dev-server": "^1.16.2",
+    "webpack-hot-middleware": "^2.13.0",
     "whatwg-fetch": "^1.0.0"
   },
   "dependencies": {

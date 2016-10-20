@@ -1,17 +1,18 @@
-const webpack = require('webpack')
 const path = require('path')
+const Webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
+	devtool: 'eval',
 	entry: [
-		'webpack-dev-server/client?http://localhost:3000',
-		'webpack/hot/only-dev-server',
 		'whatwg-fetch',
-		'./src/client'
+		'webpack-hot-middleware/client',
+		'./src/client.js'
 	],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+		publicPath: '/'
   },
 	module: {
 		loaders: [{
@@ -28,7 +29,9 @@ module.exports = {
 		}]
 	},
 	plugins: [
-		new webpack.NoErrorsPlugin(),
-		new webpack.HotModuleReplacementPlugin()
+		new Webpack.optimize.OccurrenceOrderPlugin(),
+		//new Webpack.NoErrorsPlugin(),
+		new Webpack.HotModuleReplacementPlugin(),
+		new HtmlWebpackPlugin()
 	]
 }
