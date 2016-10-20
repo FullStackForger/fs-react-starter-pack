@@ -1,7 +1,5 @@
 # FS React Starter Pack
-![fs-react-starter-pack](https://cloud.githubusercontent.com/assets/10958238/19007584/a5839d9e-875d-11e6-9629-38f468fca30f.jpg)
 
----
 
 [![Build Status](https://travis-ci.org/fullstackforger/fs-react-starter-pack.svg?branch=master)](https://travis-ci.org/fullstackforger/fs-react-starter-pack)
 [![dependencies Status](https://david-dm.org/fullstackforger/fs-react-starter-pack/status.svg)](https://david-dm.org/fullstackforger/fs-react-starter-pack)
@@ -10,7 +8,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/fullstackforger/fs-react-starter-pack/badge.svg?branch=master)](https://coveralls.io/github/fullstackforger/fs-react-starter-pack?branch=master)
 [![Code Climate](https://codeclimate.com/github/fullstackforger/fs-react-starter-pack/badges/gpa.svg)](https://codeclimate.com/github/fullstackforger/fs-react-starter-pack)
 
----
+![fs-react-starter-pack](https://cloud.githubusercontent.com/assets/10958238/19007584/a5839d9e-875d-11e6-9629-38f468fca30f.jpg)
 
 > **Work in progress. Contributions are welcomed!**
 
