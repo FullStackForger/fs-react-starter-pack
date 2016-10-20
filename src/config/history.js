@@ -1,8 +1,11 @@
-import { browserHistory, hashHistory } from 'react-router'
+import { browserHistory, hashHistory, createMemoryHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import store from './store'
+import { isServer } from './env'
 
-const history = syncHistoryWithStore(hashHistory, store)
+const history = isServer
+	? syncHistoryWithStore(browserHistory, store)
+	: createMemoryHistory()
 
 history.listen(location => {
 	//analyticsService.track(location.pathname)

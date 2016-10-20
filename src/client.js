@@ -9,6 +9,16 @@ const renderContainer = function () {
 	document.body.appendChild(el)
 }
 
+if (module.hot) {
+	module.hot.accept('./app', function () {
+		const HotApp = require('./app')
+		ReactDOM.render(
+			<HotApp/>,
+			document.getElementById('app')
+		)
+	})
+}
+
 renderContainer()
 ReactDOM.render(
 	<App/>,
