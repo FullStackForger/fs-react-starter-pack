@@ -1,0 +1,28 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+body {
+	background-color: #efefef;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+.panel {
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+
+@media (min-width: 768px) {
+	.form-horizontal .control-label {
+		padding-top: 4px;
+	}
+}

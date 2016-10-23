@@ -1,9 +1,9 @@
 import { browserHistory, hashHistory, createMemoryHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import store from './store'
-import { isServer } from './env'
+import { isBrowser } from './env'
 
-const history = isServer
+const history = isBrowser
 	? syncHistoryWithStore(browserHistory, store)
 	: createMemoryHistory()
 

@@ -4,9 +4,9 @@ import { Router } from 'react-router'
 
 import { Auth } from 'react-jwt-auth-redux'
 
-import history from './config/history'
-import store from './config/store'
-import routes from './config/routes'
+import history from '../config/history'
+import store from '../config/store'
+import routes from '../config/routes'
 
 const authConfig = {
 	store: store,

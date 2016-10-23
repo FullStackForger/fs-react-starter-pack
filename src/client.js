@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './app'
+import App from './components/App'
 import { isBrowser } from './config/env'
 
 const renderContainer = function () {
@@ -11,7 +11,7 @@ const renderContainer = function () {
 
 if (module.hot) {
 	module.hot.accept('./app', function () {
-		const HotApp = require('./app').default
+		const HotApp = require('./components/App').default
 
 		ReactDOM.render(
 			<HotApp/>,
