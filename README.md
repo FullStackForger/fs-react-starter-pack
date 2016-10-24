@@ -1,16 +1,19 @@
-# FS React Starter Pack
-
-
-[![Build Status](https://travis-ci.org/fullstackforger/fs-react-starter-pack.svg?branch=master)](https://travis-ci.org/fullstackforger/fs-react-starter-pack)
-[![dependencies Status](https://david-dm.org/fullstackforger/fs-react-starter-pack/status.svg)](https://david-dm.org/fullstackforger/fs-react-starter-pack)
-[![devDependencies Status](https://david-dm.org/fullstackforger/fs-react-starter-pack/dev-status.svg)](https://david-dm.org/fullstackforger/fs-react-starter-pack?type=dev)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ff404c431141498d88306b538dc7e44e)](https://www.codacy.com/app/fullstackforger/fs-react-starter-pack?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fullstackforger/fs-react-starter-pack&amp;utm_campaign=Badge_Grade)
-[![Coverage Status](https://coveralls.io/repos/github/fullstackforger/fs-react-starter-pack/badge.svg?branch=master)](https://coveralls.io/github/fullstackforger/fs-react-starter-pack?branch=master)
-[![Code Climate](https://codeclimate.com/github/fullstackforger/fs-react-starter-pack/badges/gpa.svg)](https://codeclimate.com/github/fullstackforger/fs-react-starter-pack)
-
 ![fs-react-starter-pack](https://cloud.githubusercontent.com/assets/10958238/19007584/a5839d9e-875d-11e6-9629-38f468fca30f.jpg)
 
+# FS React Starter Pack
+
+### React boilerplate (React, Webpack, React Bootstrap)
+
+[![Build Status](https://travis-ci.org/fullstackforger/fs-react-starter-pack.svg?branch=master)](https://travis-ci.org/fullstackforger/fs-react-starter-pack)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ff404c431141498d88306b538dc7e44e)](https://www.codacy.com/app/fullstackforger/fs-react-starter-pack?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fullstackforger/fs-react-starter-pack&amp;utm_campaign=Badge_Grade)
+[![Coverage Status](https://coveralls.io/repos/github/fullstackforger/fs-react-starter-pack/badge.svg?branch=master)](https://coveralls.io/github/fullstackforger/fs-react-starter-pack?branch=master)
+[![Code Climate](https://codeclimate.com/github/fullstackforger/fs-react-starter-pack/badges/gpa.svg)](https://codeclimate.com/github/fullstackforger/fs-react-starter-pack)  
+[![dependencies Status](https://david-dm.org/fullstackforger/fs-react-starter-pack/status.svg)](https://david-dm.org/fullstackforger/fs-react-starter-pack)
+[![devDependencies Status](https://david-dm.org/fullstackforger/fs-react-starter-pack/dev-status.svg)](https://david-dm.org/fullstackforger/fs-react-starter-pack?type=dev)
+[![peerDependencies Status](https://david-dm.org/fullstackforger/fs-react-starter-pack/peer-status.svg)](https://david-dm.org/fullstackforger/fs-react-starter-pack?type=peer)
+
 > **Work in progress. Contributions are welcomed!**
+
 
 ## Setup instruction
 
@@ -43,11 +46,10 @@ Routing has been done with [react-router 2.8.0][react-router] and [configuration
 
 ### User Authentication
 
-Users are authenticated with JSON Web Tokens.
+Users can register and login using email and password or sign in with social account.
 
-Starter pack uses [react-jwt-auth-redux][react-jwt-auth-redux] providing [react-jwt-auth][react-jwt-auth] bindings for Redux. 
-User can login with either login and password or it's social account by clicking social login button provided 
-by `react-jwt-auth`.
+Token based authentication is delivered with  [react-jwt-auth][react-jwt-auth] for authentication
+and [react-jwt-auth-redux][react-jwt-auth-redux] for Redux bindings.  
 
 ## Sources
 
