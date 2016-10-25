@@ -122,7 +122,7 @@ server.register([Inert, Vision], (err) => {
 			const context = { foo: 'baz' }
 			context.state = 'window.state = ' + JSON.stringify(context) + ''
 
-			reply.view('<div>mememe</div>', context)
+			reply.view('App', context)
 		}
 	})
 
