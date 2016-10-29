@@ -115,11 +115,9 @@ server.register([Inert, Vision], (err) => {
 		method: 'GET',
 		path: '/',
 		handler: (request, reply) => {
-
-			const context = { foo: 'baz' }
-			context.state = 'window.state = ' + JSON.stringify(context) + ''
-
-			reply.view('App', context)
+			reply.view('App', {
+				state: 'window.state = ' + JSON.stringify({foo: 'baz'}) + ''
+			})
 		}
 	})
 
