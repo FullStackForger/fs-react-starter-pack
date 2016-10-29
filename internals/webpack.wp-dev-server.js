@@ -1,21 +1,23 @@
 const webpack = require('webpack')
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
+	context: path.resolve(__dirname, '../src'),
 	entry: [
 		'webpack-dev-server/client?http://localhost:3000',
 		'webpack/hot/only-dev-server',
 		'whatwg-fetch',
-		'./src/client'
+		'./client.js'
 	],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, '../dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/'
   },
 	module: {
 		loaders: [{
-			test: /\.js?$/,
+			test: /\.(js|jsx)$/,
 			exclude: /node_modules/,
 			loaders: ['babel-loader'],
 		}, {
@@ -29,6 +31,7 @@ module.exports = {
 	},
 	plugins: [
 		new webpack.NoErrorsPlugin(),
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.HotModuleReplacementPlugin(),
+		new HtmlWebpackPlugin()
 	]
 }
