@@ -16,6 +16,7 @@ export default function Layout(props) {
 			<link rel="stylesheet" href="styles/main.css" />
 		</head>
 		<body>
+
 		<div id="app" dangerouslySetInnerHTML={{ __html: props.children }}></div>
 		<script id="state" dangerouslySetInnerHTML={{ __html: props.state }}></script>
 		<script src="bundle.js"></script>
@@ -23,3 +24,5 @@ export default function Layout(props) {
 		</html>
 	)
 }
+// 		<div id="app" dangerouslySetInnerHTML={{ __html: props.children }}></div>
+//		<script id="state" dangerouslySetInnerHTML={{ __html: props.state }}></script>

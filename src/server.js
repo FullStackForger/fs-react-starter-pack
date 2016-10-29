@@ -28,11 +28,6 @@ require('babel-core/register')({
 	presets: ['react', 'es2015']
 })
 
-server.connection({
-	host,
-	port
-})
-
 const devMiddleware = require('webpack-dev-middleware')(compiler, {
 	host,
 	port,
@@ -46,7 +41,7 @@ const hotMiddleware = require('webpack-hot-middleware')(compiler, {
 	log: () => {}
 })
 
-
+server.connection({ host, port })
 server.ext('onRequest', (request, reply) => {
 
 	devMiddleware(request.raw.req, request.raw.res, (err) => {
@@ -67,25 +62,6 @@ server.ext('onRequest', (request, reply) => {
 		reply.continue()
 	})
 })
-
-// server.ext('onPreResponse', (request, reply) => {
-//
-// 	// config for html-webpack-plugin
-// 	const filename = Path.join(compiler.outputPath, 'index.html')
-//
-// 	compiler.outputFileSystem.readFile(filename, (fileReadError, result) => {
-//
-// 		if (fileReadError) {
-// 			// better logging output
-// 			if (fileReadError.path) {
-// 				fileReadError.message += ': ' + fileReadError.path
-// 			}
-// 			return reply(fileReadError)
-// 		}
-//
-// 		reply(result).type('text/html')
-// 	})
-// })
 
 server.on('request-error', (request, err) => {
 	console.log('Error response (500) sent for request: ' + request.id + ' because: ' + err.message)
@@ -111,25 +87,30 @@ server.register([Inert, Vision], (err) => {
 		}
 	})
 
+	server.route({ method: 'GET', path: '/fonts/{path*}',  handler: { directory: { path: 'fonts' } } })
+	server.route({ method: 'GET', path: '/img/{path*}',  handler: { directory: { path: 'img' } } })
+	server.route({ method: 'GET', path: '/styles/{param*}',  handler: { directory: { path: 'styles' } } })
 	server.route({
 		method: 'GET',
-		path: '/',
+		path: '/{url*}',
 		handler: (request, reply) => {
-			reply.view('App', {
-				state: 'window.state = ' + JSON.stringify({foo: 'baz'}) + ''
-			})
-		}
-	})
 
-	server.route({
-		method: 'GET',
-		path: '/{param*}',
-		handler: {
-			directory: {
-				path: '.',
-				redirectToSlash: false,
-				index: false
-			}
+			const routes = require('./config/routes').default
+			const match = require('react-router').match
+
+			// router match checks application routes
+			match({ routes, location: request.url.path }, (error, redirectLocation, renderProps) => {
+				if (error) {
+					reply({error: `${request.url.path} doesn't exist`})
+				} else if (redirectLocation) {
+					response.redirect(redirectLocation.pathname + redirectLocation.search)
+				} else if (renderProps) {
+					reply.view('App', {
+						renderProps: renderProps,
+						state: `window.state = ${JSON.stringify({foo: 'baz'})}`
+					})
+				}
+			})
 		}
 	})
 
