@@ -6,7 +6,8 @@ import { Link } from 'react-router'
 import { LinkContainer } from 'react-router-bootstrap'
 import SocialLoginPanel from './UserLoginSocialPanel'
 
-import defaultPicture from './img/avatar.png'
+//import defaultPicture from './img/avatar.png'
+const defaultPicture = './img/avatar.png'
 
 const bioMaxLength = 160
 const defaultState = {

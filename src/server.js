@@ -8,7 +8,15 @@ const Webpack = require('webpack')
 const DashboardPlugin = require('webpack-dashboard/plugin')
 const wpConfig = require('../internals/webpack.dashboard.js')
 
-const server = new Hapi.Server()
+const server = new Hapi.Server({
+	connections: {
+		routes: {
+			files: {
+				relativeTo: Path.join(process.cwd(), 'assets')
+			}
+		}
+	}
+})
 
 const host = 'localhost'
 const port = 3000
@@ -25,7 +33,6 @@ server.connection({
 	port
 })
 
-
 const devMiddleware = require('webpack-dev-middleware')(compiler, {
 	host,
 	port,
@@ -40,26 +47,26 @@ const hotMiddleware = require('webpack-hot-middleware')(compiler, {
 })
 
 
-// server.ext('onRequest', (request, reply) => {
-//
-// 	devMiddleware(request.raw.req, request.raw.res, (err) => {
-// 		if (err) {
-// 			return reply(err)
-// 		}
-//
-// 		reply.continue()
-// 	})
-// })
-//
-// server.ext('onRequest', (request, reply) => {
-// 	hotMiddleware(request.raw.req, request.raw.res, (err) => {
-// 		if (err) {
-// 			return reply(err)
-// 		}
-//
-// 		reply.continue()
-// 	})
-// })
+server.ext('onRequest', (request, reply) => {
+
+	devMiddleware(request.raw.req, request.raw.res, (err) => {
+		if (err) {
+			return reply(err)
+		}
+
+		reply.continue()
+	})
+})
+
+server.ext('onRequest', (request, reply) => {
+	hotMiddleware(request.raw.req, request.raw.res, (err) => {
+		if (err) {
+			return reply(err)
+		}
+
+		reply.continue()
+	})
+})
 
 // server.ext('onPreResponse', (request, reply) => {
 //
@@ -106,16 +113,6 @@ server.register([Inert, Vision], (err) => {
 
 	server.route({
 		method: 'GET',
-		path: '/assets/{filename*}',
-		handler: {
-			file: function (request) {
-				return Path.join(process.cwd(), './assets/' + request.params.filename)
-			}
-		}
-	})
-
-	server.route({
-		method: 'GET',
 		path: '/',
 		handler: (request, reply) => {
 
@@ -125,6 +122,19 @@ server.register([Inert, Vision], (err) => {
 			reply.view('App', context)
 		}
 	})
+
+	server.route({
+		method: 'GET',
+		path: '/{param*}',
+		handler: {
+			directory: {
+				path: '.',
+				redirectToSlash: false,
+				index: false
+			}
+		}
+	})
+
 
 	server.start((err) => {
 		if (err) throw err

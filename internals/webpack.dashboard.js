@@ -4,19 +4,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
 	devtool: 'eval',
+	context: path.resolve(__dirname, '../src'),
 	entry: [
 		'whatwg-fetch',
 		'webpack-hot-middleware/client',
-		'./src/client.js'
+		'./client.js'
 	],
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
+	output: {
+		path: path.join(__dirname, 'dist'),
+		filename: 'bundle.js',
 		publicPath: '/'
   },
 	module: {
 		loaders: [{
-			test: /\.js?$/,
+			test: /\.(js|jsx)$/,
 			exclude: /node_modules/,
 			loaders: ['babel-loader'],
 		}, {
@@ -32,6 +33,6 @@ module.exports = {
 		new Webpack.optimize.OccurrenceOrderPlugin(),
 		//new Webpack.NoErrorsPlugin(),
 		new Webpack.HotModuleReplacementPlugin(),
-		new HtmlWebpackPlugin()
+		//new HtmlWebpackPlugin()
 	]
 }
