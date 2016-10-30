@@ -22,24 +22,12 @@ export default class App extends Component{
 			: <RouterContext {...this.props.renderProps} />
 
 		return (
-			<div>
-				<div>{JSON.stringify(this.props.renderProps)}</div>
-				<hr />
-				<Provider store={store}>
-					<Auth store={store} baseUrl="http://localhost:8080/api/">
-						{router}
-					</Auth>
-				</Provider>
-			</div>
+			<Provider store={store}>
+				<Auth store={store} baseUrl="http://localhost:8080/api/">
+					{router}
+				</Auth>
+			</Provider>
 		)
-
-		// return (
-		// 	<Provider store={store}> b
-		// 		<Auth {...authConfig}>
-		// 			{router}
-		// 		</Auth>
-		// 	</Provider>
-		// )
 	}
 }
 
