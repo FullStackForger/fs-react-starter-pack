@@ -10,16 +10,16 @@ const renderContainer = function () {
 	document.body.appendChild(el)
 }
 
-// if (module.hot) {
-// 	module.hot.accept('./components/App.jsx', function () {
-// 		const HotApp = require('./components/App.jsx').default
-//
-// 		ReactDOM.render(
-// 			<HotApp/>,
-// 			document.getElementById('app')
-// 		)
-// 	})
-// }
+if (module.hot) {
+	module.hot.accept('./components/App.jsx', function () {
+		const HotApp = require('./components/App.jsx').default
+
+		ReactDOM.render(
+			<HotApp/>,
+			document.getElementById('app')
+		)
+	})
+}
 
 initStore(browserHistory, window.storeState)
 renderContainer()
