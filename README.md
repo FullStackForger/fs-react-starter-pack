@@ -5,14 +5,15 @@
 ### React boilerplate (React, Webpack, React Bootstrap)
 
 [![Build Status](https://travis-ci.org/fullstackforger/fs-react-starter-pack.svg?branch=master)](https://travis-ci.org/fullstackforger/fs-react-starter-pack)
+[![GitHub issues open](https://img.shields.io/github/issues/fullstackforger/fs-react-starter-pack.svg?maxAge=2592000)]() 
+[![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/fullstackforger/fs-react-starter-pack.svg?maxAge=2592000)]()
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ff404c431141498d88306b538dc7e44e)](https://www.codacy.com/app/fullstackforger/fs-react-starter-pack?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fullstackforger/fs-react-starter-pack&amp;utm_campaign=Badge_Grade)
 [![Coverage Status](https://coveralls.io/repos/github/fullstackforger/fs-react-starter-pack/badge.svg?branch=master)](https://coveralls.io/github/fullstackforger/fs-react-starter-pack?branch=master)
 [![Code Climate](https://codeclimate.com/github/fullstackforger/fs-react-starter-pack/badges/gpa.svg)](https://codeclimate.com/github/fullstackforger/fs-react-starter-pack)  
 [![dependencies Status](https://david-dm.org/fullstackforger/fs-react-starter-pack/status.svg)](https://david-dm.org/fullstackforger/fs-react-starter-pack)
 [![devDependencies Status](https://david-dm.org/fullstackforger/fs-react-starter-pack/dev-status.svg)](https://david-dm.org/fullstackforger/fs-react-starter-pack?type=dev)
-[![peerDependencies Status](https://david-dm.org/fullstackforger/fs-react-starter-pack/peer-status.svg)](https://david-dm.org/fullstackforger/fs-react-starter-pack?type=peer)  
-[![GitHub issues open](https://img.shields.io/github/issues/fullstackforger/fs-react-starter-pack.svg?maxAge=2592000)]() 
-[![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/fullstackforger/fs-react-starter-pack.svg?maxAge=2592000)]()
+[![peerDependencies Status](https://david-dm.org/fullstackforger/fs-react-starter-pack/peer-status.svg)](https://david-dm.org/fullstackforger/fs-react-starter-pack?type=peer)
+[![license](https://img.shields.io/github/license/fullstackforger/fs-react-starter-pack.svg)]()
 
 > **Work in progress. Contributions are welcomed!**
 
