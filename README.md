@@ -10,7 +10,9 @@
 [![Code Climate](https://codeclimate.com/github/fullstackforger/fs-react-starter-pack/badges/gpa.svg)](https://codeclimate.com/github/fullstackforger/fs-react-starter-pack)  
 [![dependencies Status](https://david-dm.org/fullstackforger/fs-react-starter-pack/status.svg)](https://david-dm.org/fullstackforger/fs-react-starter-pack)
 [![devDependencies Status](https://david-dm.org/fullstackforger/fs-react-starter-pack/dev-status.svg)](https://david-dm.org/fullstackforger/fs-react-starter-pack?type=dev)
-[![peerDependencies Status](https://david-dm.org/fullstackforger/fs-react-starter-pack/peer-status.svg)](https://david-dm.org/fullstackforger/fs-react-starter-pack?type=peer)
+[![peerDependencies Status](https://david-dm.org/fullstackforger/fs-react-starter-pack/peer-status.svg)](https://david-dm.org/fullstackforger/fs-react-starter-pack?type=peer)  
+[![GitHub issues open](https://img.shields.io/github/issues/fullstackforger/fs-react-starter-pack.svg?maxAge=2592000)]() 
+[![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/fullstackforger/fs-react-starter-pack.svg?maxAge=2592000)]()
 
 > **Work in progress. Contributions are welcomed!**
 
