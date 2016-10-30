@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import auth from 'react-jwt-auth-redux'
 
 import UserLogin from './UserLogin'
-import history from '../../config/history'
+import { history } from '../../config/store'
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
 	onLoginFormSubmit: loginData => auth

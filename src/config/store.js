@@ -1,21 +1,50 @@
 import { createStore, applyMiddleware, compose } from 'redux'
+import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux'
 import { isBrowser } from './env'
 
 import reducers from './reducers'
 import middleware from './middleware'
 import DevTools from './devtools'
 
-const initialState = {}
-const enhancers = [
-	applyMiddleware(...middleware)
-]
-
-if (isBrowser) {
-	enhancers.push(window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument())
+const internal = {
+	store: null,
+	history: null
 }
 
-const middlewares = compose.apply(null, enhancers)
+// create getters
+const external = {}
+Object.keys(internal).forEach(function (key) {
+	if (key === "default") return;
+	Object.defineProperty(exports, key, {
+		enumerable: true,
+		get: function get() {
+			if (internal[key] === null) {
+				throw new Error(`Store hasn't been initialized yet. Use initStore() method to configure store.`)
+			}
+			return internal[key]
+		}
+	})
+})
 
-const store = createStore(reducers, initialState, middlewares)
+export const initStore = function(history, initialState) {
+	const enhancers = [
+		applyMiddleware(routerMiddleware(history)),
+		applyMiddleware(...middleware)
+	]
 
-export default store
+	const devTools = []
+	if (isBrowser) {
+		devTools.push(window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument())
+	}
+
+	internal.store = createStore(reducers, initialState, compose(
+		...enhancers,
+		...devTools
+	))
+
+	internal.history = syncHistoryWithStore(history, internal.store)
+	return external
+}
+
+// export getters
+export default external

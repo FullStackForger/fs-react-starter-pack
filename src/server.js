@@ -95,11 +95,20 @@ server.register([Inert, Vision], (err) => {
 		path: '/{url*}',
 		handler: (request, reply) => {
 
+			// require transpiled es6 dependencies
 			const routes = require('./config/routes').default
-			const match = require('react-router').match
+			const reactRouter = require('react-router')
+			const match = reactRouter.match
+			const createMemoryHistory = reactRouter.createMemoryHistory
+			const initStore = require('./config/store').initStore
+			const memoryHistory = createMemoryHistory(request.url.path)
 
-			// router match checks application routes
-			match({ routes, location: request.url.path }, (error, redirectLocation, renderProps) => {
+			// initialize store (it syncs history with store)
+			initStore(memoryHistory)
+			const history = require('./config/store').history
+
+			// match application routes
+			match({ history, routes, location: request.url.path }, (error, redirectLocation, renderProps) => {
 				if (error) {
 					reply({error: `${request.url.path} doesn't exist`})
 				} else if (redirectLocation) {

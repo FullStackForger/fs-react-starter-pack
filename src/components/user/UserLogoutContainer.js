@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import history from '../../config/history'
+import { history } from '../../config/store'
 import PageLogout from './UserLogout'
 import auth from 'react-jwt-auth-redux'
 

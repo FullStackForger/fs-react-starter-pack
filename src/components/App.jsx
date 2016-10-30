@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux'
-import { Router } from 'react-router'
+import { Router, RouterContext } from 'react-router'
 import { Auth } from 'react-jwt-auth-redux'
 
-import history from '../config/history'
-import store from '../config/store'
+import {history, store} from '../config/store'
 import routes from '../config/routes'
 import {isBrowser} from '../config/env'
 
@@ -24,16 +23,28 @@ export default class App extends Component{
 
 	render() {
 		const router = isBrowser
-			? <Router history={history} routes={routes} />
-			: <Router {...this.props.renderProps} />
+			? <Router {...{history, routes}} />
+			: <RouterContext {...this.props.renderProps} />
 
 		return (
-			<Provider store={store}>
-				<Auth {...authConfig}>
-					{router}
-				</Auth>
-			</Provider>
+			<div>
+				<div>{JSON.stringify(this.props.renderProps)}</div>
+				<hr />
+				<Provider store={store}>
+					<Auth {...authConfig}>
+						{router}
+					</Auth>
+				</Provider>
+			</div>
 		)
+
+		// return (
+		// 	<Provider store={store}> b
+		// 		<Auth {...authConfig}>
+		// 			{router}
+		// 		</Auth>
+		// 	</Provider>
+		// )
 	}
 }
 
