@@ -18,7 +18,7 @@ export default function Layout(props) {
 		<body>
 
 		<div id="app" dangerouslySetInnerHTML={{ __html: props.children }}></div>
-		<script id="state" dangerouslySetInnerHTML={{ __html: props.state }}></script>
+		<script id="store-state" dangerouslySetInnerHTML={{ __html: props.storeState }}></script>
 		<script src="bundle.js"></script>
 		</body>
 		</html>

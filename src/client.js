@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { browserHistory } from 'react-router'
+import { initStore } from './config/store'
 import App from './components/App.jsx'
-import { isBrowser } from './config/env'
 
 const renderContainer = function () {
 	const el = document.createElement('div')
@@ -9,17 +10,18 @@ const renderContainer = function () {
 	document.body.appendChild(el)
 }
 
-if (module.hot) {
-	module.hot.accept('./components/App.jsx', function () {
-		const HotApp = require('./components/App.jsx').default
+// if (module.hot) {
+// 	module.hot.accept('./components/App.jsx', function () {
+// 		const HotApp = require('./components/App.jsx').default
+//
+// 		ReactDOM.render(
+// 			<HotApp/>,
+// 			document.getElementById('app')
+// 		)
+// 	})
+// }
 
-		ReactDOM.render(
-			<HotApp/>,
-			document.getElementById('app')
-		)
-	})
-}
-
+initStore(browserHistory, window.storeState)
 renderContainer()
 ReactDOM.render(
 	<App/>,

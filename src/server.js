@@ -104,7 +104,7 @@ server.register([Inert, Vision], (err) => {
 			const memoryHistory = createMemoryHistory(request.url.path)
 
 			// initialize store (it syncs history with store)
-			initStore(memoryHistory)
+			const store = initStore(memoryHistory)
 			const history = require('./config/store').history
 
 			// match application routes
@@ -116,7 +116,7 @@ server.register([Inert, Vision], (err) => {
 				} else if (renderProps) {
 					reply.view('App', {
 						renderProps: renderProps,
-						state: `window.state = ${JSON.stringify({foo: 'baz'})}`
+						storeState: `window.storeState = ${JSON.stringify(store.getState())}`
 					})
 				}
 			})

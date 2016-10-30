@@ -43,7 +43,7 @@ export const initStore = function(history, initialState) {
 	))
 
 	internal.history = syncHistoryWithStore(history, internal.store)
-	return external
+	return internal.store
 }
 
 // export getters
