@@ -2,6 +2,7 @@ const Path = require('path')
 const Hapi = require('hapi')
 const Inert = require('inert')
 const Vision = require('vision')
+const WebpackPlugin = require('hapi-webpack-plugin')
 const HapiReactViews = require('hapi-react-views')
 
 const Webpack = require('webpack')
@@ -21,54 +22,37 @@ const server = new Hapi.Server({
 const host = 'localhost'
 const port = 3000
 
-const compiler = Webpack(wpConfig)
-compiler.apply(new DashboardPlugin())
-
 require('babel-core/register')({
 	presets: ['react', 'es2015']
 })
 
-const devMiddleware = require('webpack-dev-middleware')(compiler, {
+const wpPluginAssets = {
 	host,
 	port,
 	historyApiFallback: true,
 	publicPath: wpConfig.output.publicPath,
 	hot: true,
 	quiet: true  // webpack-dashboard setup
-})
-
-const hotMiddleware = require('webpack-hot-middleware')(compiler, {
-	log: () => {}
-})
+}
 
 server.connection({ host, port })
-server.ext('onRequest', (request, reply) => {
-
-	devMiddleware(request.raw.req, request.raw.res, (err) => {
-		if (err) {
-			return reply(err)
-		}
-
-		reply.continue()
-	})
-})
-
-server.ext('onRequest', (request, reply) => {
-	hotMiddleware(request.raw.req, request.raw.res, (err) => {
-		if (err) {
-			return reply(err)
-		}
-
-		reply.continue()
-	})
-})
 
 server.on('request-error', (request, err) => {
 	console.log('Error response (500) sent for request: ' + request.id + ' because: ' + err.message)
 	console.log(err.stack)
 })
 
-server.register([Inert, Vision], (err) => {
+const compiler = Webpack(wpConfig)
+compiler.apply(new DashboardPlugin())
+
+server.register([Inert, Vision, {
+	register: WebpackPlugin,
+	options: {
+		compiler: compiler,
+		assets: wpPluginAssets,
+		hot: {}
+	}
+}], (err) => {
 
 	if (err) {
 		console.log('Failed to load plugins.')
