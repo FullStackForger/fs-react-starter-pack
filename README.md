@@ -5,8 +5,8 @@
 ### React boilerplate (React, Webpack, React Bootstrap)
 
 [![Build Status](https://travis-ci.org/fullstackforger/fs-react-starter-pack.svg?branch=master)](https://travis-ci.org/fullstackforger/fs-react-starter-pack)
-[![GitHub issues open](https://img.shields.io/github/issues/fullstackforger/fs-react-starter-pack.svg?maxAge=2592000)]() 
-[![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/fullstackforger/fs-react-starter-pack.svg?maxAge=2592000)]()
+[![GitHub issues open](https://img.shields.io/github/issues/fullstackforger/fs-react-starter-pack.svg?maxAge=2592000)](https://github.com/fullstackforger/fs-react-starter-pack/issues?q=is%3Aissue+is%3Aopen) 
+[![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/fullstackforger/fs-react-starter-pack.svg?maxAge=2592000)](https://github.com/fullstackforger/fs-react-starter-pack/issues?q=is%3Aissue+is%3Aclosed)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ff404c431141498d88306b538dc7e44e)](https://www.codacy.com/app/fullstackforger/fs-react-starter-pack?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fullstackforger/fs-react-starter-pack&amp;utm_campaign=Badge_Grade)
 [![Coverage Status](https://coveralls.io/repos/github/fullstackforger/fs-react-starter-pack/badge.svg?branch=master)](https://coveralls.io/github/fullstackforger/fs-react-starter-pack?branch=master)
 [![Code Climate](https://codeclimate.com/github/fullstackforger/fs-react-starter-pack/badges/gpa.svg)](https://codeclimate.com/github/fullstackforger/fs-react-starter-pack)  
