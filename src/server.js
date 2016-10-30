@@ -112,7 +112,7 @@ server.register([Inert, Vision], (err) => {
 				if (error) {
 					reply({error: `${request.url.path} doesn't exist`})
 				} else if (redirectLocation) {
-					response.redirect(redirectLocation.pathname + redirectLocation.search)
+					reply.redirect(redirectLocation.pathname + redirectLocation.search)
 				} else if (renderProps) {
 					reply.view('App', {
 						renderProps: renderProps,
