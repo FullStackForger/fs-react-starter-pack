@@ -21,8 +21,6 @@ export default class App extends Component{
 			? <Router history={history} routes={routes} />
 			: <RouterContext {...this.props.renderProps} />
 
-		console.log('isBrowser: ' + enverse.is.browser + ':' + (new Date()).getTime() )
-
 		return (
 			<div>
 				<div>{JSON.stringify(this.props.renderProps)}</div>

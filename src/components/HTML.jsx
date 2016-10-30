@@ -24,5 +24,3 @@ export default function Layout(props) {
 		</html>
 	)
 }
-// 		<div id="app" dangerouslySetInnerHTML={{ __html: props.children }}></div>
-//		<script id="state" dangerouslySetInnerHTML={{ __html: props.state }}></script>
