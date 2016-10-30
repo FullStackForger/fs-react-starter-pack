@@ -37,22 +37,22 @@ Install dependencies
 cd server && npm install && node start
 ```
 
-
 ## Barebones
 
-### Routing
+### Routing with [react-router][react-router] 
 
-Routing has been done with [react-router 2.8.0][react-router] and [configuration as object][react-router-conf] passed to `Router` component.
+Router is configured using [configuration object][react-router-conf] passed to `Router` component.
 
-[react-router]: https://github.com/reactjs/react-router/blob/v2.8.0/
-[react-router-conf]: https://github.com/reactjs/react-router/blob/v2.8.0/docs/guides/RouteConfiguration.md#configuration-with-plain-routes
+### Authentication with [react-jwt-auth-redux][react-jwt-auth-redux] 
 
-### User Authentication
+Authentication is delivered with [react-jwt-auth][react-jwt-auth] for authentication
+and [react-jwt-auth-redux][react-jwt-auth-redux] for Redux bindings.
 
-Users can register and login using email and password or sign in with social account.
+Users can register and login using email and password or sign in with social account.  
 
-Token based authentication is delivered with  [react-jwt-auth][react-jwt-auth] for authentication
-and [react-jwt-auth-redux][react-jwt-auth-redux] for Redux bindings.  
+### Isomorphic checks with [enverse][enverse]
+
+[Enverse][enverse] is super simple library with tiny footprint for environment checks.
 
 ## Sources
 
@@ -78,6 +78,9 @@ If you don't like this starter pack or have different requirement for you projec
 
 <!-- references --> 
 
+[enverse]: https://github.com/fullstackforger/enverse
 [redux]: http://redux.js.org/
 [react-jwt-auth]: https://github.com/fullstackforger/react-jwt-auth
 [react-jwt-auth-redux]: https://github.com/fullstackforger/react-jwt-auth-redux
+[react-router]: https://github.com/reactjs/react-router/blob/v2.8.0/
+[react-router-conf]: https://github.com/reactjs/react-router/blob/v2.8.0/docs/guides/RouteConfiguration.md#configuration-with-plain-routes
