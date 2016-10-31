@@ -28,11 +28,10 @@ npm install && npm start
 
 ### API Server
 
-It is demo server wit API endpoints you need for the starter.
-
+> **side note:** It is demo server wit API endpoints you need for the starter.  
 > In the future API will be moved to external package such us [hapilizer](https://github.com/fullstackforger/hapilizer)
 
-Install dependencies
+Install dependencies and start API server (from another terminal)
 ```
 cd server && npm install && node start
 ```
