@@ -1,9 +1,9 @@
-const Path = require('path')
-const Hapi = require('hapi')
-const Inert = require('inert')
-const Vision = require('vision')
-const WebpackPlugin = require('hapi-webpack-plugin')
-const HapiReactViews = require('hapi-react-views')
+import Path from 'path'
+import Hapi from 'hapi'
+import Inert from 'inert'
+import Vision from 'vision'
+import WebpackPlugin from 'hapi-webpack-plugin'
+import HapiReactViews from 'hapi-react-views'
 
 const Webpack = require('webpack')
 const DashboardPlugin = require('webpack-dashboard/plugin')
@@ -21,10 +21,6 @@ const server = new Hapi.Server({
 
 const host = 'localhost'
 const port = 3000
-
-require('babel-core/register')({
-	presets: ['react', 'es2015']
-})
 
 const wpPluginAssets = {
 	host,

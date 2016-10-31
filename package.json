@@ -6,11 +6,10 @@
   "private": true,
   "scripts": {
     "test": "karma start --single-run",
-    "dev": "node ./src/server.js",
-    "dev:dash": "webpack-dashboard -- node ./src/server.js",
+    "dev": "babel-node ./src/server.js",
+    "dev:dash": "webpack-dashboard -- babel-node ./src/server.js",
     "dev:wp": "webpack-dev-server --config ./internals/webpack.wp-dev-server.js --progress --colors --port 3000",
-    "start": "npm run dev",
-    "build": "webpack --progress --colors"
+    "start": "npm run dev"
   },
   "author": "IndieForger",
   "license": "MIT",
